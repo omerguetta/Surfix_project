@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+main,
+footer,
+nav,
+aside,
+section,
+article,
+div {
+    display: block;
+}
+
+/* tob navbar  */
+
+.top_nav{
+    padding: 10px 3px;
+}
+
+#logo {
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    height: 42px;
+    width: 100px;
+    padding: 0;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    background-image: url('../images/profile.jpg');
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%; 
+    margin-top: 8px;
+}
+
+.profile-rating {
+    font-size: 0.75rem; 
+    color: #f39c12;
+}
+
+/* main container */
+
+#wrapper{
+    margin: 0 15px;
+    padding-top: 80px;
+    height: 1000vh;
+}
