@@ -52,6 +52,60 @@ div {
     padding: auto;
 }
 
+.nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-bottom: 40px;
+}
+
+.nav-item span {
+    padding-left: 30px;
+}
+
+.session-link {
+    background-image: url(../images/surfer-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.for-you-link {
+    background-image: url(../images/foryou-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.location-link {
+    background-image: url(../images/location-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.graph-link {
+    background-image: url(../images/graph-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.video-link {
+    background-image: url(../images/video-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.weather-link {
+    background-image: url(../images/cloud-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+h5 {
+    margin-left: 15px;
+}
+
 /* main container */
 
 #wrapper {
