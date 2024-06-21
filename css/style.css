@@ -47,6 +47,7 @@ div {
 .profile-rating {
     font-size: 0.75rem; 
     color: #f39c12;
+    padding: auto;
 }
 
 /* main container */
