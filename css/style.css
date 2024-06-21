@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +16,9 @@ div {
     display: block;
 }
 
-/* tob navbar  */
+/* top navbar */
 
-.top_nav{
+.top_nav {
     padding: 10px 3px;
 }
 
@@ -40,20 +42,98 @@ div {
     background-size: cover;
     height: 32px;
     width: 32px;
-    border-radius: 50%; 
+    border-radius: 50%;
     margin-top: 8px;
 }
 
 .profile-rating {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
     color: #f39c12;
     padding: auto;
 }
 
 /* main container */
 
-#wrapper{
+#wrapper {
     margin: 0 15px;
     padding-top: 80px;
-    height: 1000vh;
+}
+
+.search-conatiner {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    background-color: #F6F6F6;
+    border-color: #E8E8E8;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 20px;
+}
+
+.search-conatiner span {
+    color: #BDBDBD;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 15px;
+}
+
+/* footer */
+
+footer {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer .container-fluid {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer .footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer .footer-item a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 5px;
+}
+
+.home-icon {
+    background-image: url('../images/home-icon.png');
+}
+
+.notifications-icon {
+    background-image: url('../images/notifications-icon.png');
+}
+
+.settings-icon {
+    background-image: url('../images/settings-icon.png');
+}
+
+.footer-item span {
+    color: black;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
