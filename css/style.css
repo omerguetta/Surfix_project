@@ -41,21 +41,115 @@ div {
     background-size: cover;
     height: 32px;
     width: 32px;
-    border-radius: 50%; 
+    border-radius: 50%;
     margin-top: 8px;
 }
 
 .profile-rating {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
     color: #f39c12;
+    padding: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-bottom: 40px;
+}
+
+.nav-item span {
+    padding-left: 30px;
+}
+
+.session-link {
+    background-image: url(../images/surfer-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.for-you-link {
+    background-image: url(../images/foryou-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.location-link {
+    background-image: url(../images/location-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.graph-link {
+    background-image: url(../images/graph-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.video-link {
+    background-image: url(../images/video-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.weather-link {
+    background-image: url(../images/cloud-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.offcanvas-header h5 {
+    margin-left: 15px;
 }
 
 /* main container */
 
-#wrapper{
+main {
+    background-color: #F2F3F7;
+}
+
+#surfboard-icon {
+    margin-left: 10px;
+}
+
+#wrapper {
     margin: 0 15px;
-    padding-top: 90px;
-    height: 1000vh;
+    padding-top: 80px;
+}
+
+.welcom-section {
+    display: flex;
+    margin-bottom: 22px;
+}
+
+.welcom-section h5 {
+    color: rgba(0, 0, 0, 0.70);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 13px;
+}
+
+.data-section {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-left: 28px;
+    margin-right: 28px;
+}
+
+.circle-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .search_input{
@@ -80,4 +174,121 @@ div {
 .titles_container{
     display: flex;
     justify-content: space-between;
+}
+
+.waves {
+    position: absolute;
+    top: 22%;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/waves.svg);
+}
+
+.top-section {
+    margin-bottom: 20px;
+}
+
+.top-section span {
+    margin-top: 10px;
+    width: 47px;
+    height: 24px;
+    background-color: #FFF;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.start-surfing-section {
+    justify-content: center;
+    margin: auto;
+    max-width: 200px;
+    background-color: #FFF;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#start-surfing-icon {
+    width: auto;
+    height: auto;
+}
+
+.card img {
+    width: 37px;
+    height: 37px;
+    margin-top: 20px;
+}
+
+.card {
+    align-items: center;
+    border-color: white;
+    cursor: pointer;
+    --bs-card-spacer-y: 0.2rem;
+}
+
+.card h5 {
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.row {
+    padding-bottom: 100px;
+}
+
+/* footer */
+
+footer {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer .container-fluid {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer .footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer .footer-item a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 5px;
+}
+
+.home-icon {
+    background-image: url('../images/home-icon.png');
+}
+
+.notifications-icon {
+    background-image: url('../images/notifications-icon.png');
+}
+
+.settings-icon {
+    background-image: url('../images/settings-icon.png');
+}
+
+.footer-item span {
+    color: black;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
