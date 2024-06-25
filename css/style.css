@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +14,11 @@ div {
     display: block;
 }
 
-/* top navbar */
+/* tob navbar  */
 
-.top_nav {
+.top_nav{
     padding: 10px 3px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.10);
 }
 
 #logo {
@@ -119,6 +118,7 @@ main {
 #wrapper {
     margin: 0 15px;
     padding-top: 80px;
+    min-height: 100vh;
 }
 
 .welcom-section {
@@ -151,6 +151,30 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.search_input{
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+.list_title{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.view_all_btn{
+    background: none;
+    border: none;
+    color: #3C8CE2;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0;
+}
+
+.titles_container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .waves {
@@ -241,6 +265,7 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+    border-top: solid 1px rgba(0, 0, 0, 0.10);
 }
 
 footer .container-fluid {
