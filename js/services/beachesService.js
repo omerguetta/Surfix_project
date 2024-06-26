@@ -1,0 +1,44 @@
+const  BASE_URL = 'http://localhost:3000/api';
+
+async function getBeaches() {
+    const response = await fetch(`${BASE_URL}/beach`);
+    return await response.json();
+}
+
+async function getBeach(beachId) {
+    const response = await fetch(`${BASE_URL}/beach/${beachId}`);
+    return await response.json();
+}
+
+async function removeBeach(beachId) {
+    const response = await fetch(`${BASE_URL}/beach/${beachId}`, {
+        method: 'DELETE'
+    });
+    return await response.json();
+}
+
+async function addBeach(beach) {
+    const response = await fetch(`${BASE_URL}/beach`, {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({beach})
+    });
+    return await response.json();
+}
+
+async function updateBeach(beachId, beach) {
+    const response = await fetch(`${BASE_URL}/beach/${beachId}`, {
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({beach})
+    });
+    return await response.json();
+}
+
+export default {
+    getBeaches,
+    getBeach,
+    removeBeach,
+    addBeach,
+    updateBeach,
+}
