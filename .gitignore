@@ -1,4 +1,5 @@
-.idea
+../.idea
 server/.idea
 server/node_modules
-sever/.env
+server/.env
+

@@ -70,13 +70,14 @@ div {
     border-bottom: solid 1px rgba(0, 0, 0, 0.10);
 }
 
-.beach_list li {
+.beach-list-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #F2F3F7;
     padding-left: 0;
     padding-right: 0;
+    cursor: pointer;
 }
 
 .beach-list-item .wave_img{
@@ -359,4 +360,12 @@ footer .footer-item a {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.beach-form{
+    margin-top: 10px;
+}
+
+.bread-home{
+    height: 16px;
 }

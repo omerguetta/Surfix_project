@@ -1,4 +1,4 @@
-import beachesService from "./services/beachesService.js";
+import beachesService from "./services/beachService.js";
 
 window.onload = (async () => {
     // await displayBeaches();
@@ -58,9 +58,9 @@ function createBeachList(beaches) {
 
         listItem.append(beachCard, beachActions);
 
-        // listItem.addEventListener('click', () => {
-        //     window.location.href = `beach.html?beachId=${beach.id}`;
-        // });
+        listItem.addEventListener('click', () => {
+            window.location.href = `edit_beach.html?beachId=${beach.id}`;
+        });
 
         beachList.appendChild(listItem);
     });
