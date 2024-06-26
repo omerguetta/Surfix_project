@@ -235,6 +235,22 @@ main {
     background-image: url(../images/waves.svg);
 }
 
+.surfer {
+    position: absolute;
+    top: 22%;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/surfer.svg);
+}
+
+.sup {
+    position: absolute;
+    top: 22%;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/sup.svg);
+}
+
 .top-section {
     margin-bottom: 20px;
 }
