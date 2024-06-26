@@ -294,3 +294,36 @@ footer .footer-item a {
     font-weight: 600;
     line-height: normal;
 }
+
+.btn-outline-primary {
+    color: black;
+    border-color: black;
+    border-radius: 50%;
+    --bs-btn-hover-bg: #d3d3d3;
+    --bs-btn-hover-border-color: #d3d3d3;
+    --bs-btn-active-bg: #d3d3d3;
+    --bs-btn-active-border-color: #d3d3d3;
+}
+
+.btn-disabled {
+    pointer-events: none;
+    opacity: 0.65;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.navbar-text {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
