@@ -326,6 +326,23 @@ main {
     --bs-gutter-x: 1rem;
 }
 
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-item {
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 /* footer */
 
 footer {
