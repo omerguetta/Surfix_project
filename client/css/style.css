@@ -16,9 +16,7 @@ div {
     display: block;
 }
 
-/* tob navbar  */
-
-.top_nav{
+.top_nav {
     padding: 10px 3px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.10);
 }
@@ -35,7 +33,6 @@ div {
     display: flex;
     align-items: center;
     flex-direction: column;
-    align-items: center;
 }
 
 .profile-pic {
@@ -50,7 +47,6 @@ div {
 .profile-rating {
     font-size: 0.75rem;
     color: #f39c12;
-    padding: auto;
 }
 
 .nav-item {
@@ -65,6 +61,59 @@ div {
 
 .nav-item span {
     padding-left: 30px;
+}
+
+.list_title {
+    margin-bottom: 10px;
+}
+
+.beach_list {
+    margin-bottom: 10px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.10);
+}
+
+.beach-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F3F7;
+    padding-left: 0;
+    padding-right: 0;
+    cursor: pointer;
+}
+
+.beach-list-item .wave_img{
+    height: 30px;
+    margin-right: 10px;
+}
+
+.beach-list-item p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.beach-list-item span {
+    font-size: 10px;
+}
+
+.beach-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.beach-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.beach-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.beach-actions img{
+    height: 20px;
 }
 
 .session-link {
@@ -107,8 +156,6 @@ div {
     margin-left: 15px;
 }
 
-/* main container */
-
 main {
     background-color: #F2F3F7;
 }
@@ -119,7 +166,7 @@ main {
 
 #wrapper {
     margin: 0 15px;
-    padding-top: 80px;
+    padding: 80px 0;
     min-height: 100vh;
 }
 
@@ -155,17 +202,17 @@ main {
     flex-direction: column;
 }
 
-.search_input{
+.search_input {
     height: 45px;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
-.list_title{
+.list_title {
     font-size: 20px;
     font-weight: 700;
 }
 
-.view_all_btn{
+.title_btn {
     background: none;
     border: none;
     color: #3C8CE2;
@@ -174,7 +221,11 @@ main {
     padding: 0;
 }
 
-.titles_container{
+.title_btn:hover {
+    color: rgba(60, 140, 226, 0.5);
+}
+
+.titles_container {
     display: flex;
     justify-content: space-between;
 }
@@ -426,4 +477,12 @@ footer .footer-item a {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.beach-form{
+    margin-top: 10px;
+}
+
+.bread-home{
+    height: 16px;
 }
