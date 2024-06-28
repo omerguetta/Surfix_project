@@ -16,6 +16,11 @@ div {
     display: block;
 }
 
+a {
+    text-decoration: none;
+    color: var(--bs-breadcrumb-item-active-color);
+}
+
 h5 {
     font-family: Inter;
 }
@@ -172,13 +177,17 @@ main {
 
 #wrapper {
     margin: 0 15px;
-    padding: 80px 0;
     min-height: 100vh;
 }
 
 .welcom-section {
     display: flex;
     margin-bottom: 22px;
+    margin-top: 80px;
+}
+
+.omer {
+    margin-top: 80px;
 }
 
 .welcom-section h5 {
@@ -208,6 +217,10 @@ main {
 .search_input {
     height: 45px;
     margin: 10px 0;
+}
+
+.navigation-section {
+    margin-top: 80px;
 }
 
 .list_title {
@@ -305,7 +318,7 @@ main {
 
 .session-data-section {
     color: #000;
-    margin-top: 10px;
+    margin-top: 80px;
     margin-bottom: 20px;
 }
 
@@ -391,14 +404,14 @@ main {
 
 #edit-icon {
     position: absolute;
-    left: 165px;
+    left: 220px;
     top: 23px;
     cursor: pointer;
 }
 
 #remove-icon {
     position: absolute;
-    left: 190px;
+    left: 240px;
     top: 23px;
     cursor: pointer;
 }
@@ -441,9 +454,9 @@ main {
 }
 
 .beach-data {
-    margin-top: -70px;
     margin-left: 15px;
     margin-right: 15px;
+    margin-top: 0px;
 }
 
 .beach-data .row {
@@ -493,7 +506,7 @@ main {
     font-size: 12px;
     font-weight: 700;
     top: 10px;
-    left: 17px;
+    /* left: 17px; */
 }
 
 .wetsuit img {
@@ -505,8 +518,67 @@ main {
 }
 
 #sun-icon {
-    bottom: 19px;
+    bottom: 17px;
 }
+
+.wind h6, .tide h6, .waterTemperature {
+    color: var(--Black, #000);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.waterTemperature {
+    position: absolute;
+    top: 32px;
+    left: 29px;
+}
+
+.wind p, .tide p, .airTemperature {
+    position: absolute;
+    bottom: 0px;
+    color: #979C9F;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.airTemperature {
+    left: 30px;
+    /* top: 75px;
+    bottom: 0px; */
+}
+
+.waveHeight {
+    position: absolute;
+    /* left: 10px; */
+    top: 32px;
+    color: var(--Black, #000);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0px;
+}
+
+.knee span {
+    position: absolute;
+    top: 57px;
+    /* left: 10px; */
+    color: #FF9B52;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
 
 /* footer */
 
@@ -567,6 +639,7 @@ footer .footer-item a {
 
 .beach-form{
     margin-top: 10px;
+    padding-bottom: 100px;
 }
 
 .bread-home{
