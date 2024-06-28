@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const beachesController = require('../controllers/beachesController');
+const beachesController = require('../controllers/beachesController.js');
 
 router.get('/', beachesController.getBeaches);
 router.get('/:beachId', beachesController.getBeach);
