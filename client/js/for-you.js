@@ -45,25 +45,73 @@ function createBeachItem(beachData) {
 }
 
 function populateBeachesList(beachesData) {
+    const beach_container = document.querySelector('.beaches_container');
+    beach_container.innerHTML = '';
+
     const beachList = document.createElement('ul');
     beachList.className = 'list-group list-group-flush beach_list';
     beachesData.forEach(beachData => {
         const beach = createBeachItem(beachData);
         beachList.appendChild(beach);
     });
-    document.querySelector('.beaches_container').appendChild(beachList);
+    beach_container.appendChild(beachList);
 }
 
-async function getBeachesListFromServer() {
+async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
     try {
-        const response = await fetch("http://localhost:3000/api/beach");
+        const response = await fetch(`http://localhost:3000/api/beach${filters}`);
         const beachesData = await response.json();
+        if (isFirstLoad) {
+            setMinMaxDistance(beachesData);
+        }
         populateBeachesList(beachesData);
     } catch (error) {
         console.error('Error fetching beaches:', error);
     }
 }
 
+function updateFilters() {
+    const searchInput = document.getElementById('searchInput');
+    const distanceInput = document.getElementById('maxDistance');
+    const spotsDropdown = document.getElementById('spotsDropdown');
+
+    const newParams = new URLSearchParams();
+
+    if (searchInput.value.trim()) {
+        newParams.set('name', searchInput.value.trim());
+    }
+    if (distanceInput.value.trim()) {
+        newParams.set('maxDistance', distanceInput.value.trim());
+    }
+    if (spotsDropdown.value) {
+        newParams.set('spot', spotsDropdown.value);
+    }
+
+    history.pushState({}, '', `?${newParams.toString()}`);
+    getBeachesListFromServer(`?${newParams.toString()}`);
+}
+
+function setMinMaxDistance(beachesData) {
+
+    const maxDistance = Math.max(...beachesData.map(beach => beach.distance));
+    const minDistance = Math.min(...beachesData.map(beach => beach.distance));
+
+    const distanceInput = document.getElementById('maxDistance');
+    distanceInput.max = maxDistance;
+    distanceInput.min = minDistance;
+    distanceInput.value = maxDistance; // Set initial value to max for filtering purposes
+
+    document.getElementById('rangeValue').textContent = maxDistance;
+}
+
 window.onload = () => {
-    getBeachesListFromServer();
+    document.getElementById('maxDistance').addEventListener('change', (event) => {
+        document.getElementById('rangeValue').textContent = event.target.value;
+        updateFilters();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', updateFilters);
+    document.getElementById('spotsDropdown').addEventListener('change', updateFilters);
+
+    getBeachesListFromServer(window.location.search, true);
 };
