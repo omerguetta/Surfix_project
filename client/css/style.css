@@ -280,8 +280,8 @@ main {
 }
 
 .card img {
-    width: 37px;
-    height: 37px;
+    width: 30px;
+    height: 30px;
     margin-top: 20px;
 }
 
@@ -303,6 +303,95 @@ main {
 
 .row {
     padding-bottom: 100px;
+}
+
+.session-data-section {
+    color: #000;
+    font-family: Inter;
+    line-height: normal;
+    font-style: normal;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.session-data-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.session-data-section h5 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.session-data-section .session-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.session-content img {
+    margin-right: 10px;
+}
+
+.session-data-section .session-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.session-data-section h6 {
+    margin-left: 18px;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.session-data-section  li {
+    margin-bottom: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.waves-graph {
+    background-color: rgba(0, 124, 130, 0.50);
+}
+
+.speed-graph {
+    background-color: rgba(36, 193, 187, 0.50);
+}
+
+.pareformane-graph {
+    background-color: rgba(36, 104, 193, 0.50);
+}
+
+.rowing-graph {
+    background-color: rgba(109, 77, 201, 0.50);
+}
+
+.g-4, .gy-4 {
+    --bs-gutter-y: 1rem;
+}
+
+.g-4, .gx-4 {
+    --bs-gutter-x: 1rem;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-item {
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* footer */
