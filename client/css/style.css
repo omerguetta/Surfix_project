@@ -383,9 +383,23 @@ main {
     position: relative;
 }
 
-.beach-header img {
+#plus-icon {
     position: absolute;
     right: 20px;
+    cursor: pointer;
+}
+
+#edit-icon {
+    position: absolute;
+    left: 165px;
+    top: 23px;
+    cursor: pointer;
+}
+
+#remove-icon {
+    position: absolute;
+    left: 190px;
+    top: 23px;
     cursor: pointer;
 }
 
