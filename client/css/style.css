@@ -68,7 +68,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     margin-bottom: 40px;
 }
 
-.nav-item span {
+.nav-item a {
     padding-left: 30px;
 }
 
@@ -418,14 +418,14 @@ main {
 
 #edit-icon {
     position: absolute;
-    left: 220px;
+    right: 60px;
     top: 23px;
     cursor: pointer;
 }
 
 #remove-icon {
     position: absolute;
-    left: 240px;
+    right: 80px;
     top: 23px;
     cursor: pointer;
 }
