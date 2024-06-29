@@ -101,6 +101,10 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     margin: 0;
 }
 
+.beaches_container {
+    margin-bottom: 65px;
+}
+
 .beach-list-item span {
     font-size: 10px;
 }
@@ -584,6 +588,12 @@ main {
     font-family: Inter;
     font-size: 12px;
     font-weight: 400;
+}
+
+.add-new-beach {
+    position: absolute;
+    right: 20px;
+    top: 90px;
 }
 
 /* footer */
