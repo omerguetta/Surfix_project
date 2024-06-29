@@ -91,7 +91,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     cursor: pointer;
 }
 
-.beach-list-item .wave_img{
+.beach-list-item .wave_img {
     height: 30px;
     margin-right: 10px;
 }
@@ -246,12 +246,23 @@ main {
     justify-content: space-between;
 }
 
-.waves {
+.waves, .sup, .surfer {
     position: absolute;
     top: 22%;
     width: 24px;
     height: 24px;
+}
+
+.waves {
     background-image: url(../images/waves.svg);
+}
+
+.sup {
+    background-image: url(../images/sup.svg);
+}
+
+.surfer {
+    background-image: url(../images/surfer.svg);
 }
 
 .surfer {
@@ -500,6 +511,11 @@ main {
     right: 10px;
 }
 
+#play-button {
+    right: 55px;
+    top: 25px;
+}
+
 .wind h5, .tide h5, .wetsuit h5, .knee h5 {
     color: black;
     font-size: 12px;
@@ -559,6 +575,15 @@ main {
     color: #FF9B52;
     font-size: 12px;
     font-weight: 700;
+}
+
+.waveDirection {
+    position: absolute;
+    right: 30px;
+    color: black;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 /* footer */

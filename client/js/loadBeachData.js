@@ -17,6 +17,8 @@ async function displayBeach(beach) {
     const waveHeight = document.querySelector(".waveHeight");
     waveHeight.textContent = `${beach.wave_height} m`;
 
+    const waveDirection = document.querySelector(".waveDirection");
+    waveDirection.textContent = `${beach.wave_direction}`;
 }
 
 async function getBeachFromServer(beachId) {
