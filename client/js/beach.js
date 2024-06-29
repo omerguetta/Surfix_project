@@ -17,6 +17,8 @@ async function displayBeach(beach) {
     const waveHeight = document.querySelector(".waveHeight");
     waveHeight.textContent = `${beach.wave_height} m`;
 
+    const waveDirection = document.querySelector(".waveDirection");
+    waveDirection.textContent = `${beach.wave_direction}`;
 }
 
 async function getBeachFromServer(beachId) {
@@ -50,11 +52,14 @@ window.onload = (async () => {
     const beachId = urlParams.get('beachId');
     await getBeachFromServer(beachId);
 
+    document.querySelector(".goBack").addEventListener('click', () => {
+        window.location.href = document.referrer;
+    });
     document.querySelector('#remove-icon').addEventListener('click', (event) => {
         event.preventDefault();
         handleDeleteBeach(beachId);
     });
     document.querySelector('#edit-icon').addEventListener('click', () => {
-        window.location.href = `./edit_beach.html?beachId=${beachId}`;
+        window.location.href = `./beach_form.html?beachId=${beachId}`;
     });
 });
