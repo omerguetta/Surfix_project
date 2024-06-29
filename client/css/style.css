@@ -18,7 +18,6 @@ div {
 
 a {
     text-decoration: none;
-    color: var(--bs-breadcrumb-item-active-color);
 }
 
 span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
