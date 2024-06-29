@@ -486,6 +486,7 @@ main {
     border-radius: 8px;
     align-content: center;
     align-items: center;
+    top: 10px;
 }
 
 .recomand-section h5 {
