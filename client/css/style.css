@@ -67,7 +67,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     margin-bottom: 40px;
 }
 
-.nav-item span {
+.nav-item a {
     padding-left: 30px;
 }
 
@@ -390,6 +390,10 @@ main {
     --bs-gutter-x: 1rem;
 }
 
+.beach-header img {
+    cursor: pointer;
+}
+
 .beach-header {
     position: relative;
     padding: 15px;
@@ -408,14 +412,14 @@ main {
 
 #edit-icon {
     position: absolute;
-    left: 220px;
+    right: 60px;
     top: 23px;
     cursor: pointer;
 }
 
 #remove-icon {
     position: absolute;
-    left: 240px;
+    right: 80px;
     top: 23px;
     cursor: pointer;
 }
@@ -476,6 +480,7 @@ main {
     border-radius: 8px;
     align-content: center;
     align-items: center;
+    top: 10px;
 }
 
 .recomand-section h5 {

@@ -35,4 +35,9 @@ window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get('beachId');
     await getBeachFromServer(beachId);
+
+    const goBack = document.querySelector(".goBack");
+    goBack.addEventListener('click', () => {
+        window.location.href = document.referrer;
+    });
 });
