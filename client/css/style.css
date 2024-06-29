@@ -101,7 +101,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
 }
 
 .beaches_container {
-    margin-bottom: 65px;
+    margin-bottom: 35px;
 }
 
 .beach-list-item span {
@@ -186,10 +186,6 @@ main {
 .welcom-section {
     display: flex;
     margin-bottom: 22px;
-}
-
-.top-edit-section {
-    margin-top: 80px;
 }
 
 .welcom-section h5 {
