@@ -38,7 +38,7 @@ function createBeachItem(beachData) {
     listItem.append(beachCard, beachActions);
 
     listItem.addEventListener('click', () => {
-        window.location.href = `beach-page.html?beachId=${beachData.id}`;
+        window.location.href = `beach_page.html?beachId=${beachData.id}`;
     });
 
     return listItem;
