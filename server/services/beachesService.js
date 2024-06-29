@@ -22,12 +22,6 @@ async function query(filters = {}) {
                 values.push(filters.maxDistance);
             }
 
-            if (filters.spots && filters.spots.length > 0) {
-                if (whereClause) whereClause += ' AND ';
-                whereClause += `spot_id IN (?)`;
-                values.push(filters.spots);
-            }
-
             if (filters.name) {
                 if (whereClause) whereClause += ' AND ';
                 whereClause += `name LIKE CONCAT('%', ?, '%')`;

@@ -41,7 +41,6 @@ async function handleDeleteBeach(beachId) {
     }
 }
 
-
 async function displayBeach(beach) {
     const form = document.querySelector('.beach-form');
     if (form) {

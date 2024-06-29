@@ -73,7 +73,6 @@ async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
 function updateFilters() {
     const searchInput = document.getElementById('searchInput');
     const distanceInput = document.getElementById('maxDistance');
-    const spotsDropdown = document.getElementById('spotsDropdown');
 
     const newParams = new URLSearchParams();
 
@@ -82,9 +81,6 @@ function updateFilters() {
     }
     if (distanceInput.value.trim()) {
         newParams.set('maxDistance', distanceInput.value.trim());
-    }
-    if (spotsDropdown.value) {
-        newParams.set('spot', spotsDropdown.value);
     }
 
     history.pushState({}, '', `?${newParams.toString()}`);
@@ -99,9 +95,9 @@ function setMinMaxDistance(beachesData) {
     const distanceInput = document.getElementById('maxDistance');
     distanceInput.max = maxDistance;
     distanceInput.min = minDistance;
-    distanceInput.value = maxDistance; // Set initial value to max for filtering purposes
+    distanceInput.value = maxDistance;
 
-    document.getElementById('rangeValue').textContent = maxDistance;
+    document.getElementById('rangeValue').textContent = maxDistance.toString();
 }
 
 window.onload = () => {
