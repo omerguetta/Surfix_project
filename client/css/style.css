@@ -400,6 +400,10 @@ main {
     --bs-gutter-x: 1rem;
 }
 
+.beach-header img {
+    cursor: pointer;
+}
+
 .beach-header {
     position: relative;
     padding: 15px;
