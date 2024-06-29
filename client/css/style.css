@@ -515,7 +515,7 @@ main {
 }
 
 .wind h6, .tide h6, .waterTemperature {
-    color: var(--Black, #000);
+    color: black;
     font-size: 28px;
     font-weight: 700;
 }
@@ -543,7 +543,7 @@ main {
 
 .waveHeight {
     top: 32px;
-    color: var(--Black, #000);
+    color: black;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 0px;
