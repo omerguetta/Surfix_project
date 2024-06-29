@@ -21,7 +21,7 @@ a {
     color: var(--bs-breadcrumb-item-active-color);
 }
 
-h5 {
+span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     font-family: Inter;
 }
 
@@ -186,7 +186,7 @@ main {
     margin-top: 80px;
 }
 
-.omer {
+.top-edit-section {
     margin-top: 80px;
 }
 
@@ -386,14 +386,13 @@ main {
 }
 
 .beach-header {
+    position: relative;
     padding: 15px;
     margin-top: 90px;
     color: #000;
     background-color: #fff;
-    font-family: Inter;
     font-size: 20px;
     font-weight: 700;
-    position: relative;
 }
 
 #plus-icon {
@@ -429,9 +428,9 @@ main {
 }
 
 .menu-item {
+    position: relative;
     color: #000;
     text-decoration: none;
-    position: relative;
     cursor: pointer;
     font-weight: bold;
 }
@@ -441,8 +440,8 @@ main {
 }
 
 .menu-item.selected-item::after {
-    content: '';
     display: block;
+    content: '';
     width: 100%;
     height: 2px;
     background-color: black;
@@ -460,18 +459,18 @@ main {
 }
 
 .beach-data .row {
-    height: 100px;
     display: flex;
     gap: 10px;
+    height: 100px;
     margin-bottom: 10px;
 }
 
 .beach-data .col {
+    position: relative;
     background-color: white;
     border-radius: 8px;
     align-content: center;
     align-items: center;
-    position: relative;
 }
 
 .recomand-section h5 {
@@ -506,7 +505,6 @@ main {
     font-size: 12px;
     font-weight: 700;
     top: 10px;
-    /* left: 17px; */
 }
 
 .wetsuit img {
@@ -523,15 +521,15 @@ main {
 
 .wind h6, .tide h6, .waterTemperature {
     color: var(--Black, #000);
-    font-family: Inter;
     font-size: 28px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
+}
+
+.waterTemperature, .waveHeight, .knee span {
+    position: absolute;
 }
 
 .waterTemperature {
-    position: absolute;
     top: 32px;
     left: 29px;
 }
@@ -540,57 +538,40 @@ main {
     position: absolute;
     bottom: 0px;
     color: #979C9F;
-    font-family: Inter;
     font-size: 12px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
 .airTemperature {
     left: 30px;
-    /* top: 75px;
-    bottom: 0px; */
 }
 
 .waveHeight {
-    position: absolute;
-    /* left: 10px; */
     top: 32px;
     color: var(--Black, #000);
-    font-family: Inter;
     font-size: 20px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     margin-bottom: 0px;
 }
 
 .knee span {
-    position: absolute;
     top: 57px;
-    /* left: 10px; */
     color: #FF9B52;
-    font-family: Inter;
     font-size: 12px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
-
-
 
 /* footer */
 
 footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
     height: 65px;
     background-color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: fixed;
-    bottom: 0;
     border-top: solid 1px rgba(0, 0, 0, 0.10);
 }
 
@@ -630,11 +611,8 @@ footer .footer-item a {
 
 .footer-item span {
     color: black;
-    font-family: Inter;
     font-size: 12px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
 }
 
 .beach-form{
