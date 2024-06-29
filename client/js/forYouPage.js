@@ -59,6 +59,7 @@ function populateBeachesList(beachesData) {
 
 async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
     try {
+        console.log('filters:', filters);
         const response = await fetch(`http://localhost:3000/api/beach${filters}`);
         const beachesData = await response.json();
         if (isFirstLoad) {
@@ -82,6 +83,10 @@ function updateFilters() {
     if (distanceInput.value.trim()) {
         newParams.set('maxDistance', distanceInput.value.trim());
     }
+    //add sorting by name to the query
+    if(document.getElementById('sortByName').checked){
+        newParams.set('sortByName', 'name');
+    }
 
     history.pushState({}, '', `?${newParams.toString()}`);
     getBeachesListFromServer(`?${newParams.toString()}`);
@@ -101,6 +106,7 @@ function setMinMaxDistance(beachesData) {
 }
 
 window.onload = () => {
+    document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
     document.querySelector('.add-new-beach').addEventListener('click', ()=>{
         window.location.href = '../pages/beach_form.html';

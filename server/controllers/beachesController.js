@@ -9,12 +9,12 @@ module.exports = {
 }
 
 async function getBeaches(req, res) {
-    const {name, maxDistance, spots} = req.query;
+    const {name, maxDistance, sortByName} = req.query;
 
     const filters = {};
     if (name) filters.name = name;
     if (maxDistance) filters.maxDistance = parseInt(maxDistance);
-    if (spots) filters.spots = spots.split(',').map(spot => parseInt(spot));
+    if (sortByName) filters.sortByName = sortByName;
 
     const rows = await beachesService.query(filters);
     res.send(rows);

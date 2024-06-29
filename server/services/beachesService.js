@@ -10,9 +10,11 @@ module.exports = {
 
 async function query(filters = {}) {
     try {
+        console.log({filters});
         const connection = await dbConnection.connect();
 
         let whereClause = '';
+        let sortClause = '';
         const values = [];
 
         if (filters) {
@@ -27,11 +29,18 @@ async function query(filters = {}) {
                 whereClause += `name LIKE CONCAT('%', ?, '%')`;
                 values.push(filters.name);
             }
+
+            if (filters.sortByName) {
+                sortClause += ' ORDER BY name ASC';
+            }
         }
 
         let sql = `SELECT * FROM tbl_122_beach`;
         if (whereClause) {
             sql += ` WHERE (${whereClause})`;
+        }
+        if (sortClause) {
+            sql += sortClause;
         }
 
         const [rows] = await connection.execute(sql, values);

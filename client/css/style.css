@@ -125,7 +125,8 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
     align-items: center;
     gap: 10px;
 }
-.beach-actions img{
+
+.beach-actions img {
     height: 20px;
 }
 
@@ -360,7 +361,7 @@ main {
     font-weight: 400;
 }
 
-.session-data-section  li {
+.session-data-section li {
     margin-bottom: 8px;
     width: 14px;
     height: 14px;
@@ -458,7 +459,7 @@ main {
     margin-top: 2px;
 }
 
-.beach-data img, .recomand-section .profile,  .beach-data h5 {
+.beach-data img, .recomand-section .profile, .beach-data h5 {
     position: absolute;
 }
 
@@ -645,11 +646,11 @@ footer .footer-item a {
     font-weight: 600;
 }
 
-.beach-form{
+.beach-form {
     margin-top: 10px;
     padding-bottom: 50px;
 }
 
-.bread-home{
+.bread-home {
     height: 16px;
 }
