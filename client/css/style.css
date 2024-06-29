@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +14,15 @@ section,
 article,
 div {
     display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bs-breadcrumb-item-active-color);
+}
+
+span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
+    font-family: Inter;
 }
 
 .top_nav {
@@ -154,6 +165,8 @@ div {
     margin-left: 15px;
 }
 
+/* main */
+
 main {
     background-color: #F2F3F7;
 }
@@ -164,22 +177,23 @@ main {
 
 #wrapper {
     margin: 0 15px;
-    padding: 80px 0;
     min-height: 100vh;
 }
 
 .welcom-section {
     display: flex;
     margin-bottom: 22px;
+    margin-top: 80px;
+}
+
+.top-edit-section {
+    margin-top: 80px;
 }
 
 .welcom-section h5 {
     color: rgba(0, 0, 0, 0.70);
-    font-family: Inter;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     margin-top: 13px;
 }
 
@@ -203,6 +217,10 @@ main {
 .search_input {
     height: 45px;
     margin: 10px 0;
+}
+
+.navigation-section {
+    margin-top: 80px;
 }
 
 .list_title {
@@ -294,23 +312,13 @@ main {
 
 .card h5 {
     color: #000;
-    font-family: Inter;
     font-size: 14px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
-}
-
-.row {
-    padding-bottom: 100px;
 }
 
 .session-data-section {
     color: #000;
-    font-family: Inter;
-    line-height: normal;
-    font-style: normal;
-    margin-top: 10px;
+    margin-top: 80px;
     margin-bottom: 20px;
 }
 
@@ -377,34 +385,193 @@ main {
     --bs-gutter-x: 1rem;
 }
 
+.beach-header {
+    position: relative;
+    padding: 15px;
+    margin-top: 90px;
+    color: #000;
+    background-color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#plus-icon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+#edit-icon {
+    position: absolute;
+    left: 220px;
+    top: 23px;
+    cursor: pointer;
+}
+
+#remove-icon {
+    position: absolute;
+    left: 240px;
+    top: 23px;
+    cursor: pointer;
+}
+
 .menu-container {
+    background-color: #fff;
+    padding-bottom: 12px;
+}
+
+.menu-text {
     display: flex;
     justify-content: space-around;
-    padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .menu-item {
+    position: relative;
     color: #000;
     text-decoration: none;
-    padding: 10px;
-    position: relative;
     cursor: pointer;
     font-weight: bold;
+}
+
+.menu-item:hover, .menu-item:focus {
+    border-bottom: 2px solid #000;
+}
+
+.menu-item.selected-item::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin-top: 2px;
+}
+
+.beach-data img, .recomand-section .profile,  .beach-data h5 {
+    position: absolute;
+}
+
+.beach-data {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 0px;
+}
+
+.beach-data .row {
+    display: flex;
+    gap: 10px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.beach-data .col {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    align-content: center;
+    align-items: center;
+}
+
+.recomand-section h5 {
+    display: flex;
+    color: rgba(108, 117, 125, 0.80);
+    font-size: 14px;
+    font-weight: 700;
+    top: 10px;
+    left: 53px;
+    cursor: pointer;
+}
+
+.recomand-section .profile {
+    top: 2px;
+    left: 10px;
+}
+
+.recomand-section img {
+    cursor: pointer;
+    right: 8px;
+    top: 8px;
+}
+
+.wind img {
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+}
+
+.wind h5, .tide h5, .wetsuit h5, .knee h5 {
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+    top: 10px;
+}
+
+.wetsuit img {
+    left: 10px;
+}
+
+#drop-icon {
+    top: 42px;
+}
+
+#sun-icon {
+    bottom: 17px;
+}
+
+.wind h6, .tide h6, .waterTemperature {
+    color: var(--Black, #000);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.waterTemperature, .waveHeight, .knee span {
+    position: absolute;
+}
+
+.waterTemperature {
+    top: 32px;
+    left: 29px;
+}
+
+.wind p, .tide p, .airTemperature {
+    position: absolute;
+    bottom: 0px;
+    color: #979C9F;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.airTemperature {
+    left: 30px;
+}
+
+.waveHeight {
+    top: 32px;
+    color: var(--Black, #000);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.knee span {
+    top: 57px;
+    color: #FF9B52;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 /* footer */
 
 footer {
+    position: fixed;
+    display: flex;
+    bottom: 0;
     height: 65px;
     background-color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: fixed;
-    bottom: 0;
     border-top: solid 1px rgba(0, 0, 0, 0.10);
 }
 
@@ -444,15 +611,13 @@ footer .footer-item a {
 
 .footer-item span {
     color: black;
-    font-family: Inter;
     font-size: 12px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
 }
 
 .beach-form{
     margin-top: 10px;
+    padding-bottom: 100px;
 }
 
 .bread-home{
