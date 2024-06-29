@@ -101,13 +101,10 @@ function setMinMaxDistance(beachesData) {
 }
 
 window.onload = () => {
+    document.getElementById('searchInput').addEventListener('input', updateFilters);
     document.getElementById('maxDistance').addEventListener('change', (event) => {
         document.getElementById('rangeValue').textContent = event.target.value;
         updateFilters();
     });
-
-    document.getElementById('searchInput').addEventListener('input', updateFilters);
-    document.getElementById('spotsDropdown').addEventListener('change', updateFilters);
-
     getBeachesListFromServer(window.location.search, true);
 };
