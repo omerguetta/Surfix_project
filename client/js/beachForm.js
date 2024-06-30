@@ -92,4 +92,7 @@ window.onload = (async () => {
         document.querySelector('.submit_btn').textContent = 'Create';
         await displayBeach({});
     }
+    document.querySelector(".BeachPage").addEventListener('click', () => {
+        window.location.href = document.referrer;
+    });
 });
