@@ -46,14 +46,14 @@ async function displayBeach(beach) {
     const form = document.querySelector('.beach-form');
     if (form) {
         form.name.value = beach.name || '';
-        form.distance.value = beach.distance || '';
-        form.onshore_wind.value = beach.onshore_wind || '';
-        form.rising_tide.value = beach.rising_tide || '';
-        form.air_temperature.value = beach.air_temperature || '';
-        form.water_temperature.value = beach.water_temperature || '';
-        form.wave_direction.value = beach.wave_direction || '';
-        form.wave_height.value = beach.wave_height || '';
-        form.visibility.value = beach.visibility || '';
+        form.distance.value = (beach.distance || '') + ' km';
+        form.onshore_wind.value = (beach.onshore_wind || '') + ' km/h';
+        form.rising_tide.value = (beach.rising_tide || '') + ' m';
+        form.air_temperature.value = (beach.air_temperature || '') + ' °C';
+        form.water_temperature.value = (beach.water_temperature || '') + ' °C';
+        form.wave_direction.value = (beach.wave_direction || '') + ' °';
+        form.wave_height.value = (beach.wave_height || '') + ' m';
+        form.visibility.value = (beach.visibility || '') + ' km';
 
         if (beach.id) {
             form.setAttribute('data-beach-id', beach.id);

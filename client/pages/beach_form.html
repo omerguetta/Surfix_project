@@ -75,7 +75,7 @@
                     <a class="link-body-emphasis text-decoration-none" href="for_you.html">For You</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a class="link-body-emphasis text-decoration-none" href="./beach.html" >Beach Page</a>
+                    <a class="link-body-emphasis text-decoration-none" href="./beach.html">Beach Page</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     Edit Beach
@@ -88,43 +88,44 @@
         <form class="beach-form">
             <div class="form-group  mb-3">
                 <label for="name">Beach Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Beach Name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Beach Name" required>
             </div>
             <div class="form-group mb-3">
                 <label for="distance">Distance</label>
-                <input type="text" class="form-control" id="distance" name="distance" placeholder="Distance">
+                <input type="number" class="form-control" id="distance" name="distance" placeholder="Distance" required>
             </div>
             <div class="form-group mb-3">
                 <label for="onshore_wind">Onshore Wind</label>
-                <input type="text" class="form-control" id="onshore_wind" name="onshore_wind"
-                       placeholder="Onshore Wind">
+                <input type="number" class="form-control" id="onshore_wind" name="onshore_wind"
+                       placeholder="Onshore Wind" required>
             </div>
             <div class="form-group mb-3">
                 <label for="rising_tide">Rising Tide</label>
-                <input type="text" class="form-control" id="rising_tide" name="rising_tide" placeholder="Rising Tide">
+                <input type="number" class="form-control" id="rising_tide" name="rising_tide" placeholder="Rising Tide"
+                       required>
             </div>
             <div class="form-group mb-3">
-                <label for="air_temperature">Air Temperature</label>
-                <input type="text" class="form-control" id="air_temperature" name="air_temperature"
-                       placeholder="Air Temperature">
+                <label for="air_temperature">Air Temperature (C)</label>
+                <input type="number" class="form-control" id="air_temperature" name="air_temperature"
+                       placeholder="Air Temperature" required>
             </div>
             <div class="form-group mb-3">
-                <label for="water_temperature">Water Temperature</label>
-                <input type="text" class="form-control" id="water_temperature" name="water_temperature"
-                       placeholder="Water Temperature">
+                <label for="water_temperature">Water Temperature (C)</label>
+                <input type="number" class="form-control" id="water_temperature" name="water_temperature"
+                       placeholder="Water Temperature" required>
             </div>
             <div class="form-group mb-3">
                 <label for="wave_direction">Wave Direction</label>
                 <input type="text" class="form-control" id="wave_direction" name="wave_direction"
-                       placeholder="Wave Direction">
+                       placeholder="Wave Direction" required>
             </div>
             <div class="form-group mb-3">
-                <label for="wave_height">Wave Height</label>
-                <input type="text" class="form-control" id="wave_height" name="wave_height" placeholder="Wave Height">
+                <label for="wave_height">Wave Height (m)</label>
+                <input type="number" class="form-control" id="wave_height" name="wave_height" placeholder="Wave Height" required>
             </div>
             <div class="form-group mb-3">
-                <label for="visibility">Visibility</label>
-                <input type="text" class="form-control" id="visibility" name="visibility" placeholder="Visibility">
+                <label for="visibility">Visibility (km)</label>
+                <input type="number" class="form-control" id="visibility" name="visibility" placeholder="Visibility" required>
             </div>
 
             <hr class="my-4">
