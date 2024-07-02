@@ -33,7 +33,6 @@ async function getBeachFromServer(beachId) {
 
 async function handleDeleteBeach(beachId) {
     try {
-        console.log(beachId);
         const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`, {
             method: 'DELETE'
         });

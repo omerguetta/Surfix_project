@@ -59,7 +59,6 @@ function populateBeachesList(beachesData) {
 
 async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
     try {
-        console.log('filters:', filters);
         const response = await fetch(`https://surfix.onrender.com/api/beach${filters}`);
         const beachesData = await response.json();
         if (isFirstLoad) {
