@@ -23,7 +23,7 @@ async function displayBeach(beach) {
 
 async function getBeachFromServer(beachId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`);
+        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`);
         const beachData = await response.json();
         await displayBeach(beachData);
     } catch (error) {
@@ -34,7 +34,7 @@ async function getBeachFromServer(beachId) {
 async function handleDeleteBeach(beachId) {
     try {
         console.log(beachId);
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
+        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`, {
             method: 'DELETE'
         });
         if (response.ok) {

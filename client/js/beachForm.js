@@ -7,7 +7,7 @@ async function handleFormSubmit(event) {
     const beachId = form.getAttribute('data-beach-id');
 
     try {
-        const url = beachId ? `http://localhost:3000/api/beach/${beachId}` : 'http://localhost:3000/api/beach';
+        const url = beachId ? `https://surfix.onrender.com/api/beach/${beachId}` : 'https://surfix.onrender.com/api/beach';
         const method = beachId ? 'PUT' : 'POST';
         const response = await fetch(url, {
             method: method,
@@ -29,7 +29,7 @@ async function handleFormSubmit(event) {
 async function handleDeleteBeach(beachId) {
     try {
         console.log(beachId);
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
+        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`, {
             method: 'DELETE'
         });
         if (response.ok) {
@@ -72,7 +72,7 @@ async function displayBeach(beach) {
 
 async function getBeachFromServer(beachId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`);
+        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`);
         const beachData = await response.json();
         await displayBeach(beachData);
     } catch (error) {
