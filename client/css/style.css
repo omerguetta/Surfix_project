@@ -39,7 +39,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     font-family: Inter;
 }
 
-.top_nav {
+.top-nav {
     padding: 10px 3px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.10);
 }
@@ -86,11 +86,11 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     padding-left: 30px;
 }
 
-.list_title {
+/* .list-title {
     margin-bottom: 10px;
-}
+} */
 
-.beach_list {
+.beach-list {
     margin-bottom: 10px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.10);
 }
@@ -105,7 +105,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     cursor: pointer;
 }
 
-.beach-list-item .wave_img {
+.beach-list-item .wave-img {
     height: 30px;
     margin-right: 10px;
 }
@@ -115,7 +115,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     margin: 0;
 }
 
-.beaches_container {
+.beaches-container {
     margin-bottom: 35px;
 }
 
@@ -235,17 +235,17 @@ main {
     flex-direction: column;
 }
 
-.search_input {
+.search-input {
     height: 45px;
     margin: 10px 0;
 }
 
-.list_title {
+.list-title {
     font-size: 20px;
     font-weight: 700;
 }
 
-.title_btn {
+.title-btn {
     background: none;
     border: none;
     color: #3C8CE2;
@@ -254,7 +254,7 @@ main {
     padding: 0;
 }
 
-.title_btn:hover {
+.title-btn:hover {
     color: rgba(60, 140, 226, 0.5);
 }
 
