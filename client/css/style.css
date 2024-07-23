@@ -180,6 +180,13 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     background-size: contain;
 }
 
+.settings-link {
+    background-image: url(../images/settings-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 150px;
+}
+
 .offcanvas-header h5 {
     margin-left: 15px;
 }
