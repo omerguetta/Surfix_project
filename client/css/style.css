@@ -675,6 +675,8 @@ footer .footer-item a {
 .calendar-header select {
     margin: 0 5px;
     flex: 1;
+    border-radius: 5px;
+    border: none;
 }
 
 .calendar-header select:nth-of-type(1) {
@@ -714,16 +716,16 @@ footer .footer-item a {
     }
 
     .calendar-header {
-        flex-direction: row; /* להחזיר את הבחירות באותה שורה */
+        flex-direction: row;
         align-items: center;
-        justify-content: center; /* למרכז את הבחירות בקווים */
-        gap: 10px; /* הוספת רווח בין הבחירות */
+        justify-content: center;
+        gap: 10px;
     }
 
     .calendar-header select {
-        margin: 0; /* ביטול ה-margin בין הבחירות */
+        margin: 0;
         flex: none;
-        max-width: 100%; /* לא להגדיר מקסימום רוחב כדי להתאים לגודל המסך */
+        max-width: 100%;
     }
 }
-}
+
