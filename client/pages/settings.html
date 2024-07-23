@@ -37,25 +37,32 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="session-link" href="./pages/session_page.html">SESSIONS</a>
+                                <img href="./session_page.html" src="../images/surfer-icon.png" alt="surfer-icon">
+                                <a href="./session_page.html">SESSIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="for-you-link" href="./pages/for_you.html">FOR YOU</a>
+                                <img href="./for_you.html" src="../images/foryou-icon.svg" alt="foryou-icon">
+                                <a href="./for_you.html">FOR YOU</a>
                             </li>
                             <li class="nav-item">
-                                <a class="location-link">LOCATIONS</a>
+                                <img src="../images/location-icon.png" alt="location-icon">
+                                <a href="#">LOCATIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="graph-link">GRAPH</a>
+                                <img src="../images/graph-icon.png" alt="graph-icon">
+                                <a href="#">GRAPH</a>
                             </li>
                             <li class="nav-item">
-                                <a class="video-link">VIDEOS</a>
+                                <img src="../images/video-icon.png" alt="video-icon">
+                                <a href="#">VIDEOS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="weather-link">WEATHER</a>
+                                <img src="../images/cloud-icon.png" alt="cloud-icon">
+                                <a href="#">WEATHER</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="settings-link">SETTINGS</a>
+                            <li class="nav-item setting">
+                                <img src="../images/settings-icon.png" alt="setting-icon">
+                                <a href="./settings.html">SETTINGS</a>
                             </li>
                         </ul>
                     </div>
@@ -66,13 +73,72 @@
 
     <main>
         <div id="wrapper">
+            <section class="navigation-section">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
+                        <li class="breadcrumb-item">
+                            <a class="link-body-emphasis" href="../index.html">
+                                <img class="bread-home" src="../images/home-icon.png" alt="home">
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a class="link-body-emphasis">
+                                <img class="bread-home" src="../images/settings-icon.png" alt="settings">
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </section>
 
+            <section class="filters_container mb-3">
+                <input type="text" class="search-input form-control" id="searchInput" placeholder="Search">
+            </section>
+
+            <div class="offcanvas-body setting-data">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/lock-icon.png" alt="Privacy">
+                        <a href="#">Privacy</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/acount-icon.png" alt="acount-icon">
+                        <a href="#">Account</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/security-icon.png" alt="security-icon">
+                        <a href="#">Security</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/help-icon.png" alt="help-icon">
+                        <a>About</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/person-icon.png" alt="person-icon">
+                        <a>Invite friends</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/eye-icon.png" alt="background">
+                        <a href="#">Change background</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/notification_icon.png" alt="notification_icon">
+                        <a href="#">Notifications</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                </ul>
+            </div>
         </div>
     </main>
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">
             <div class="footer-item">
-                <a class="settings-icon" href="#"></a>
+                <a class="settings-icon" href="./settings.html"></a>
                 <span>Settings</span>
             </div>
             <div class="footer-item">

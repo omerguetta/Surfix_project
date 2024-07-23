@@ -83,7 +83,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
 }
 
 .nav-item a {
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 /* .list-title {
@@ -109,6 +109,12 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     height: 30px;
     margin-right: 10px;
 }
+
+.nav-item > img {
+    height: 25px;
+    /* margin: 0px 0px 0px auto; */
+    cursor: pointer;
+} 
 
 .beach-list-item p {
     font-size: 14px;
@@ -144,48 +150,19 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     height: 20px;
 }
 
-.session-link {
-    background-image: url(../images/surfer-icon.png);
+.nav-item > .link {
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.for-you-link {
-    background-image: url(../images/foryou-icon.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
+.arrow {
+    margin: 0px 0px 0px auto;
 }
 
-.location-link {
-    background-image: url(../images/location-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.graph-link {
-    background-image: url(../images/graph-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.video-link {
-    background-image: url(../images/video-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.weather-link {
-    background-image: url(../images/cloud-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.settings-link {
-    background-image: url(../images/settings-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+.setting {
     margin-top: 150px;
 }
+
 
 .offcanvas-header h5 {
     margin-left: 15px;
@@ -610,6 +587,11 @@ main {
     position: absolute;
     right: 20px;
     top: 90px;
+}
+
+.setting-data {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* footer */
