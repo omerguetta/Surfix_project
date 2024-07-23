@@ -82,7 +82,7 @@ function updateFilters() {
     if (distanceInput.value.trim()) {
         newParams.set('maxDistance', distanceInput.value.trim());
     }
-    //add sorting by name to the query
+
     if(document.getElementById('sortByName').checked){
         newParams.set('sortByName', 'name');
     }
