@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+
+@media (min-width: 768px) {
+    footer {
+        display: none;
+    }
+    footer .footer-item a,
+    footer .footer-item span {
+        display: none;
+        background-image: none;
+        cursor: auto;
+    }
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +35,7 @@ a {
     color: black;
 }
 
-span, h5, .beach-header, p, .airTemperature, h6, .waterTemperatur, .waveHeight {
+span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight {
     font-family: Inter;
 }
 
@@ -185,12 +199,12 @@ main {
     min-height: 100vh;
 }
 
-.welcom-section {
+.welcome-section {
     display: flex;
     margin-bottom: 22px;
 }
 
-.welcom-section h5 {
+.welcome-section h5 {
     color: rgba(0, 0, 0, 0.70);
     font-size: 14px;
     font-weight: 700;
@@ -375,7 +389,7 @@ main {
     background-color: rgba(36, 193, 187, 0.50);
 }
 
-.pareformane-graph {
+.performance-graph {
     background-color: rgba(36, 104, 193, 0.50);
 }
 
@@ -458,7 +472,7 @@ main {
     margin-top: 2px;
 }
 
-.beach-data img, .recomand-section .profile, .beach-data h5 {
+.beach-data img, .recommend-section .profile, .beach-data h5 {
     position: absolute;
 }
 
@@ -483,7 +497,7 @@ main {
     top: 10px;
 }
 
-.recomand-section h5 {
+.recommend-section h5 {
     display: flex;
     color: rgba(108, 117, 125, 0.80);
     font-size: 14px;
@@ -493,12 +507,12 @@ main {
     cursor: pointer;
 }
 
-.recomand-section .profile {
+.recommend-section .profile {
     top: 2px;
     left: 10px;
 }
 
-.recomand-section img {
+.recommend-section img {
     cursor: pointer;
     right: 8px;
     top: 8px;
