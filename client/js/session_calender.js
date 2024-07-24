@@ -1,5 +1,3 @@
-// session_calendar.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const calendarElement = document.getElementById('calendar');
     const currentDate = new Date();
