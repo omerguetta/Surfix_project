@@ -1,4 +1,4 @@
-const beachesService = require('../services/beachesService.js');
+const beachService = require('../services/beachService.js');
 
 module.exports = {
     getBeach,
@@ -17,7 +17,7 @@ async function getBeaches(req, res) {
         if (maxDistance) filters.maxDistance = parseInt(maxDistance);
         if (sortByName) filters.sortByName = sortByName;
 
-        const rows = await beachesService.query(filters);
+        const rows = await beachService.query(filters);
         res.json(rows);
     } catch (error) {
         res.status(500).json({message: 'Failed to retrieve beaches', error: error.message});
@@ -26,7 +26,7 @@ async function getBeaches(req, res) {
 
 async function getBeach(req, res) {
     try {
-        const beach = await beachesService.getById(req.params.beachId);
+        const beach = await beachService.getById(req.params.beachId);
         if (beach) {
             res.json(beach);
         } else {
@@ -40,7 +40,7 @@ async function getBeach(req, res) {
 async function addBeach(req, res) {
     try {
         const beach = req.body;
-        const addedBeach = await beachesService.add(beach);
+        const addedBeach = await beachService.add(beach);
         res.status(201).json(addedBeach);
     } catch (error) {
         console.error('Error adding beach:', error);
@@ -52,7 +52,7 @@ async function updateBeach(req, res) {
     try {
         const beachId = req.params.beachId;
         const beach = req.body;
-        const updatedBeach = await beachesService.update(beach, beachId);
+        const updatedBeach = await beachService.update(beach, beachId);
         if (updatedBeach) {
             res.json(updatedBeach);
         } else {
@@ -66,7 +66,7 @@ async function updateBeach(req, res) {
 async function deleteBeach(req, res) {
     try {
         const beachId = req.params.beachId;
-        const result = await beachesService.remove(beachId);
+        const result = await beachService.remove(beachId);
         if (result) {
             res.status(204).end();
         } else {

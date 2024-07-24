@@ -54,7 +54,7 @@ async function query(filters = {}) {
 async function getById(beachId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT * FROM tbl_122_beach WHERE id = ?;`, [beachId]);
+        const [rows] = await connection.execute(`SELECT * FROM tbl_122_beach WHERE beach_id = ?;`, [beachId]);
         return rows[0];
     } catch (error) {
         console.error('Error getting beach by ID:', error);
@@ -112,7 +112,7 @@ async function update(body, beachId) {
             visibility
         } = body;
         const [result] = await connection.execute(
-            'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshore_wind = ?, rising_tide = ?, air_temperature = ?, wave_height = ?, wave_direction = ?, water_temperature = ?, visibility = ? WHERE id = ?',
+            'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshore_wind = ?, rising_tide = ?, air_temperature = ?, wave_height = ?, wave_direction = ?, water_temperature = ?, visibility = ? WHERE beach_id = ?',
             [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]
         );
         return {
@@ -136,7 +136,7 @@ async function update(body, beachId) {
 async function remove(beachId) {
     try {
         const connection = await dbConnection.connect();
-        const [result] = await connection.execute(`DELETE FROM dbShnkr24stud.tbl_122_beach WHERE id = ?`, [beachId]);
+        const [result] = await connection.execute(`DELETE FROM dbShnkr24stud.tbl_122_beach WHERE beach_id = ?`, [beachId]);
         return {message: 'Beach deleted successfully'};
     } catch (error) {
         console.error('Error deleting beach:', error);
