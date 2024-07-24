@@ -82,7 +82,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     margin-bottom: 40px;
 }
 
-.nav-item a {
+.item {
     padding-left: 10px;
 }
 
@@ -593,6 +593,38 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.btn {
+    background-color: #A9A9A9;
+    border-color: white;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #808080; 
+    border-color: #ffffff; 
+    color: white; 
+}
+
+#or {
+    margin-top: 50px;
+    text-align: center;
+    color: #808080;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.facebook {
+    margin-top: 50px;
+    text-align: center;
+    align-items: center; 
+}
+
+.facebook span {
+    color: #00008B;
+    font-size: 15px;
+}
+
 
 /* footer */
 
