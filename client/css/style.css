@@ -590,6 +590,7 @@ main {
     position: absolute;
     right: 20px;
     top: 90px;
+    cursor: pointer;
 }
 
 /* footer */

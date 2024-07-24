@@ -68,27 +68,27 @@ async function add(body) {
         const {
             name,
             distance,
-            onshore_wind,
-            rising_tide,
-            air_temperature,
-            wave_height,
-            wave_direction,
-            water_temperature,
+            onshoreWind,
+            risingTide,
+            airTemperature,
+            waveHeight,
+            waveDirection,
+            waterTemperature,
             visibility
         } = body;
         const [result] = await connection.execute(
             'INSERT INTO tbl_122_beach (name, distance, onshore_wind, rising_tide, air_temperature, wave_height, wave_direction, water_temperature, visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [name, distance, onshore_wind, rising_tide, air_temperature, wave_height, wave_direction, water_temperature, visibility]
+            [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility]
         );
         return {
             name,
             distance,
-            onshore_wind,
-            rising_tide,
-            air_temperature,
-            wave_height,
-            wave_direction,
-            water_temperature,
+            onshoreWind,
+            risingTide,
+            airTemperature,
+            waveHeight,
+            waveDirection,
+            waterTemperature,
             visibility
         };
     } catch (error) {
@@ -103,28 +103,28 @@ async function update(body, beachId) {
         const {
             name,
             distance,
-            onshore_wind,
-            rising_tide,
-            air_temperature,
-            wave_height,
-            wave_direction,
-            water_temperature,
+            onshoreWind,
+            risingTide,
+            airTemperature,
+            waveHeight,
+            waveDirection,
+            waterTemperature,
             visibility
         } = body;
         const [result] = await connection.execute(
             'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshore_wind = ?, rising_tide = ?, air_temperature = ?, wave_height = ?, wave_direction = ?, water_temperature = ?, visibility = ? WHERE id = ?',
-            [name, distance, onshore_wind, rising_tide, air_temperature, wave_height, wave_direction, water_temperature, visibility, beachId]
+            [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]
         );
         return {
             id: beachId,
             name,
             distance,
-            onshore_wind,
-            rising_tide,
-            air_temperature,
-            wave_height,
-            wave_direction,
-            water_temperature,
+            onshoreWind,
+            risingTide,
+            airTemperature,
+            waveHeight,
+            waveDirection,
+            waterTemperature,
             visibility
         };
     } catch (error) {

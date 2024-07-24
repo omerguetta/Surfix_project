@@ -9,34 +9,70 @@ module.exports = {
 }
 
 async function getBeaches(req, res) {
-    const {name, maxDistance, sortByName} = req.query;
+    try {
+        const {name, maxDistance, sortByName} = req.query;
+        const filters = {};
 
-    const filters = {};
-    if (name) filters.name = name;
-    if (maxDistance) filters.maxDistance = parseInt(maxDistance);
-    if (sortByName) filters.sortByName = sortByName;
+        if (name) filters.name = name;
+        if (maxDistance) filters.maxDistance = parseInt(maxDistance);
+        if (sortByName) filters.sortByName = sortByName;
 
-    const rows = await beachesService.query(filters);
-    res.send(rows);
+        const rows = await beachesService.query(filters);
+        res.json(rows);
+    } catch (error) {
+        res.status(500).json({message: 'Failed to retrieve beaches', error: error.message});
+    }
 }
 
 async function getBeach(req, res) {
-    const beach = await beachesService.getById(req.params.beachId);
-    res.send(beach);
+    try {
+        const beach = await beachesService.getById(req.params.beachId);
+        if (beach) {
+            res.json(beach);
+        } else {
+            res.status(404).json({message: 'Beach not found'});
+        }
+    } catch (error) {
+        res.status(500).json({message: 'Failed to retrieve beach', error: error.message});
+    }
 }
 
 async function addBeach(req, res) {
-    const beach = req.body;
-    await beachesService.add(beach);
-    res.send(beach);
+    try {
+        const beach = req.body;
+        const addedBeach = await beachesService.add(beach);
+        res.status(201).json(addedBeach);
+    } catch (error) {
+        console.error('Error adding beach:', error);
+        res.status(500).json({ message: 'Failed to add beach', error: error.message });
+    }
 }
 
 async function updateBeach(req, res) {
-    const beach = await beachesService.update(req.body, req.params.beachId);
-    res.send(beach);
+    try {
+        const beachId = req.params.beachId;
+        const beach = req.body;
+        const updatedBeach = await beachesService.update(beach, beachId);
+        if (updatedBeach) {
+            res.json(updatedBeach);
+        } else {
+            res.status(404).json({ message: 'Beach not found' });
+        }
+    } catch (error){
+        res.status(500).json({ message: 'Failed to update beach', error: error.message });
+    }
 }
 
 async function deleteBeach(req, res) {
-    await beachesService.remove(req.params.beachId);
-    res.end();
+    try {
+        const beachId = req.params.beachId;
+        const result = await beachesService.remove(beachId);
+        if (result) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({ message: 'Beach not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete beach', error: error.message });
+    }
 }
