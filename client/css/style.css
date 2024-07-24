@@ -610,12 +610,31 @@ main {
     margin-top: 50px;
     text-align: center;
     color: #808080;
-    text-decoration: underline;
     font-weight: bold;
+    border-top: 1px solid #bbb;
+}
+
+#sign-up {
+    margin-top: 80px;
+    text-align: center;
+    color: #808080;
+    border-top: 1px solid #bbb;
+}
+
+#sign-up-btn {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+
+#sign-up-btn:hover {
+    text-decoration: underline;
 }
 
 .facebook {
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
     align-items: center; 
 }
@@ -624,7 +643,6 @@ main {
     color: #00008B;
     font-size: 15px;
 }
-
 
 /* footer */
 
