@@ -1,3 +1,5 @@
+import beachService from './services/beachService.js';
+
 function createBeachItem(beachData) {
     const listItem = document.createElement('li');
     listItem.className = 'list-group-item beach-list-item';
@@ -59,8 +61,7 @@ function populateBeachesList(beachesData) {
 
 async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
     try {
-        const response = await fetch(`https://surfix.onrender.com/api/beach${filters}`);
-        const beachesData = await response.json();
+        const beachesData = await beachService.query(filters);
         if (isFirstLoad) {
             setMinMaxDistance(beachesData);
         }
@@ -70,7 +71,7 @@ async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
     }
 }
 
-function updateFilters() {
+async function updateFilters() {
     const searchInput = document.getElementById('searchInput');
     const distanceInput = document.getElementById('maxDistance');
 
@@ -87,7 +88,7 @@ function updateFilters() {
     }
 
     history.pushState({}, '', `?${newParams.toString()}`);
-    getBeachesListFromServer(`?${newParams.toString()}`);
+    await getBeachesListFromServer(`?${newParams.toString()}`);
 }
 
 function setMinMaxDistance(beachesData) {
@@ -103,15 +104,15 @@ function setMinMaxDistance(beachesData) {
     document.getElementById('rangeValue').textContent = maxDistance.toString();
 }
 
-window.onload = () => {
+window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
     document.querySelector('.add-new-beach').addEventListener('click', ()=>{
         window.location.href = '../pages/beach_form.html';
     });
-    document.getElementById('maxDistance').addEventListener('change', (event) => {
+    document.getElementById('maxDistance').addEventListener('change', async (event) => {
         document.getElementById('rangeValue').textContent = event.target.value;
-        updateFilters();
+        await updateFilters();
     });
-    getBeachesListFromServer(window.location.search, true);
+    await getBeachesListFromServer(window.location.search, true);
 };

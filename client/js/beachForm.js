@@ -1,3 +1,5 @@
+import beachService from "./services/beachService.js";
+
 async function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -6,42 +8,16 @@ async function handleFormSubmit(event) {
     const beachData = Object.fromEntries(formData);
     const beachId = form.getAttribute('data-beach-id');
 
-    try {
-        const url = beachId ? `https://surfix.onrender.com/api/beach/${beachId}` : 'https://surfix.onrender.com/api/beach';
-        const method = beachId ? 'PUT' : 'POST';
-        const response = await fetch(url, {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(beachData)
-        });
-        if (response.ok) {
-            window.location.href = document.referrer;
-        } else {
-            console.error(`Failed to ${beachId ? 'update' : 'create'} beach:`, response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error(`Error ${beachId ? 'updating' : 'creating'} beach:`, error);
+    if(beachId) {
+        await beachService.update(beachData, beachId);
+    } else {
+        await beachService.add(beachData);
     }
+
+
 }
 
-async function handleDeleteBeach(beachId) {
-    try {
-        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`, {
-            method: 'DELETE'
-        });
-        if (response.ok) {
-            window.location.href = 'for_you.html';
-        } else {
-            console.error('Failed to delete beach:', response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error('Error deleting beach:', error);
-    }
-}
-
-async function displayBeach(beach) {
+async function displayBeach(beach={}) {
     const form = document.querySelector('.beach-form');
     if (form) {
         form.name.value = beach.name || '';
@@ -56,9 +32,9 @@ async function displayBeach(beach) {
 
         if (beach.id) {
             form.setAttribute('data-beach-id', beach.id);
-            document.querySelector('.delete_btn').addEventListener('click', (event) => {
+            document.querySelector('.delete_btn').addEventListener('click', async (event) => {
                 event.preventDefault();
-                handleDeleteBeach(beach.id);
+                await beachService.remove(beach.id);
             });
         } else {
             form.removeAttribute('data-beach-id');
@@ -70,13 +46,8 @@ async function displayBeach(beach) {
 }
 
 async function getBeachFromServer(beachId) {
-    try {
-        const response = await fetch(`https://surfix.onrender.com/api/beach/${beachId}`);
-        const beachData = await response.json();
-        await displayBeach(beachData);
-    } catch (error) {
-        console.error(`Error fetching beach with ID ${beachId}:`, error);
-    }
+    const beachData = await beachService.getById(beachId);
+    await displayBeach(beachData);
 }
 
 window.onload = (async () => {
@@ -89,7 +60,7 @@ window.onload = (async () => {
     } else {
         document.querySelector('.delete_btn').style.visibility = 'hidden';
         document.querySelector('.submit_btn').textContent = 'Create';
-        await displayBeach({});
+        await displayBeach();
     }
     document.querySelector(".BeachPage").addEventListener('click', () => {
         window.location.href = document.referrer;
