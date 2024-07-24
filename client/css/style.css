@@ -644,6 +644,25 @@ main {
     font-size: 15px;
 }
 
+.sign-up-form {
+    margin-top: 50px;
+}
+
+.terms-text {
+    font-size: 0.875rem; 
+    margin-bottom: 1rem; 
+    color: #6c757d; 
+}
+
+.terms-text a {
+    color: #007bff; 
+    text-decoration: none; 
+}
+
+.terms-text a:hover {
+    text-decoration: underline; 
+}
+
 /* footer */
 
 footer {
