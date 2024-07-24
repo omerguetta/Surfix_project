@@ -729,3 +729,64 @@ footer .footer-item a {
     }
 }
 
+.session-card {
+    background-color: white;
+    display: flex;
+    margin-top: 20px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-title-col {
+    display: flex;
+    align-items: center;
+}
+
+.session-time-col {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.session-title {
+    font-weight: bold;
+}
+
+.session-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.star {
+    color: gold;
+    height: 21px;
+    width: 21px;
+}
+
+.session-details2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-icon img {
+    height: 21px;
+    width: 21px;
+}
+
+.wave-icon img {
+    height: 21px;
+    width: 21px;
+}
