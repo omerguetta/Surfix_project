@@ -1,79 +1,91 @@
-// const userService = require('../services/userService.js');
+const userService = require('../services/userService.js');
 
-// module.exports = {
-//     getUser,
-//     getUsers,
-//     deleteUser,
-//     updateUser,
-//     addUser,
-// }
+module.exports = {
+    registerUser,
+    loginUser,
+    getUsers,
+    getUser,
+    updateUser,
+    deleteUser
+};
 
-// async function getUsers(req, res) {
-//     try {
-//         const {name, maxDistance, sortByName} = req.query;
-//         const filters = {};
+async function registerUser(req, res) {
+    try {
+        const { userName, firstName, lastName, email, password, age, surfingLevel, weight, height, role } = req.body;
+        const userExists = await userService.isUserExists(userName, email);
+        if(userExists) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
 
-//         if (name) filters.name = name;
-//         if (maxDistance) filters.maxDistance = parseInt(maxDistance);
-//         if (sortByName) filters.sortByName = sortByName;
+        const currentUser = req.user;
+        let userRole = 'user';
+        if (currentUser && currentUser.role === 'admin' && role) {
+            userRole = role;
+        }
 
-//         const rows = await userService.query(filters);
-//         res.json(rows);
-//     } catch (error) {
-//         res.status(500).json({message: 'Failed to retrieve users', error: error.message});
-//     }
-// }
+        const newUser = { userName, firstName, lastName, email, password: password, age, surfingLevel, weight, height, role: userRole };
 
-// async function getUser(req, res) {
-//     try {
-//         console.log('getUser', req.params);
-//         const user = await userService.getById(req.params.userId);
-//         if (user) {
-//             res.json(user);
-//         } else {
-//             res.status(404).json({message: 'User not found'});
-//         }
-//     } catch (error) {
-//         res.status(500).json({message: 'Failed to retrieve user', error: error.message});
-//     }
-// }
+        await userService.add(newUser);
+        const authenticatedUser = await userService.authenticateUser(email, password);
+        res.status(201).json(authenticatedUser);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to add user', error: error.message });
+    }
+}
 
-// async function addUser(req, res) {
-//     try {
-//         const user = req.body;
-//         const addedUser = await userService.add(user);
-//         res.status(201).json(addedUser);
-//     } catch (error) {
-//         console.error('Error adding user:', error);
-//         res.status(500).json({ message: 'Failed to add user', error: error.message });
-//     }
-// }
+async function loginUser(req, res) {
+    try {
+        const { email, password } = req.body;
+        const result = await userService.authenticateUser(email, password);
+        res.json(result);
+    } catch (error) {
+        res.status(401).json({ error: 'Invalid email or password' });
+    }
+};
 
-// async function updateUser(req, res) {
-//     try {
-//         const userId = req.params.userId;
-//         const user = req.body;
-//         const updatedUser = await userService.update(user, userId);
-//         if (updatedUser) {
-//             res.json(updatedUser);
-//         } else {
-//             res.status(404).json({ message: 'User not found' });
-//         }
-//     } catch (error){
-//         res.status(500).json({ message: 'Failed to update user', error: error.message });
-//     }
-// }
+async function getUsers(req, res) {
+    try {
+        const users = await userService.query();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch users' });
+    }
+}
 
-// async function deleteUser(req, res) {
-//     try {
-//         const userId = req.params.userId;
-//         const result = await userService.remove(userId);
-//         if (result) {
-//             res.status(204).end();
-//         } else {
-//             res.status(404).json({ message: 'User not found' });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ message: 'Failed to delete user', error: error.message });
-//     }
-// }
+async function getUser(req, res) {
+    try {
+        const user = await userService.getById(req.params.userId);
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch user' });
+    }
+}
+
+async function updateUser(req, res) {
+    try {
+        const userId = req.params.userId;
+        const user = req.body;
+        const updatedUser = await userService.update(user, userId);
+        if (updatedUser) {
+            res.json(updatedUser);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update user', error: error.message });
+    }
+}
+
+async function deleteUser(req, res) {
+    try {
+        const userId = req.params.userId;
+        const result = await userService.remove(userId);
+        if (result) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete user', error: error.message });
+    }
+}

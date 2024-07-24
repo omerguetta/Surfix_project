@@ -1,4 +1,4 @@
-const {dbConnection} = require('../db_connection');
+const { dbConnection } = require('../db_connection');
 
 module.exports = {
     query,
@@ -14,12 +14,12 @@ async function query(filters = {}) {
 
         let whereClause = '';
         let sortClause = '';
-        
+
         const values = [];
 
         if (filters) {
-            
-            if(filters.date) {
+
+            if (filters.date) {
                 if (whereClause) whereClause += ' AND ';
                 whereClause += `date = ?`;
                 values.push(filters.date);
@@ -49,7 +49,7 @@ async function query(filters = {}) {
 async function getById(sessionId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT * FROM tbl_122_session WHERE session_id = ?;`, [sessionId]);
+        const [rows] = await connection.execute(`SELECT * FROM tbl_122_session WHERE session_id = '${sessionId}';`);
         return rows[0];
     } catch (error) {
         console.error('Error getting session by ID:', error);
@@ -72,8 +72,9 @@ async function add(body) {
             maxSpeed
         } = body;
         const [result] = await connection.execute(
-            'INSERT INTO tbl_122_session (date, name, user_id, stars, location, duration, wave_left, wave_right, max_speed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            `INSERT INTO tbl_122_session (date, name, user_id, stars, location, duration, wave_left, wave_right, max_speed) VALUES ('${date}','${name}',${userId},${stars},'${location}','${duration}',${waveLeft},${waveRight},${maxSpeed})`,
             [date, name, userId, stars, location, duration, waveLeft, waveRight, maxSpeed]
+
         );
         return {
             date,
@@ -107,9 +108,7 @@ async function update(body, sessionId) {
             maxSpeed
         } = body;
         const [result] = await connection.execute(
-            'UPDATE tbl_122_session SET date = ?, name = ?, user_id = ?, stars = ?, location = ?, duration = ?, wave_left = ?, wave_right = ?, max_speed = ? WHERE session_id = ?',
-            [date, name, userId, stars, location, duration, waveLeft, waveRight, maxSpeed, sessionId]
-        );
+            `UPDATE tbl_122_session SET date = '${date}', name = '${name}', user_id = ${userId}, stars = ${stars}, location = '${location}', duration = '${duration}', wave_left = ${waveLeft}, wave_right = ${waveRight}, max_speed = ${maxSpeed} WHERE session_id = '${sessionId}'`);
         return {
             sessionId,
             date,
@@ -131,7 +130,7 @@ async function update(body, sessionId) {
 async function remove(sessionId) {
     try {
         const connection = await dbConnection.connect();
-        const [result] = await connection.execute('DELETE FROM tbl_122_session WHERE session_id = ?', [sessionId]);
+        const [result] = await connection.execute(`DELETE FROM tbl_122_session WHERE session_id = ${sessionId}`);
         return { message: 'Session deleted successfully' };
     } catch (error) {
         console.error('Error deleting session:', error);
