@@ -663,6 +663,10 @@ main {
     text-decoration: underline; 
 }
 
+.terms {
+    font-family: Inter;
+}
+
 /* footer */
 
 footer {
