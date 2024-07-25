@@ -791,3 +791,7 @@ footer .footer-item a {
     height: 21px;
     width: 21px;
 }
+
+.session-card-container {
+    padding-bottom: 100px; /* Adjust as needed */
+}
