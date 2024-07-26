@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+    <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 </head>
 
 <body>
@@ -66,7 +68,7 @@
             <h4>SESSION COM</h4>
             <h5>Feb 14, 2024</h5>
             <div class="session-content">
-                <img src="../images/session-graph.png" alt="session-graph">
+                <div id="chart"></div>
                 <ul>
                     <li class="waves-graph"><h6>WaveLeft</h6></li>
                     <li class="speed-graph"><h6>WaveRight</h6></li>
@@ -130,6 +132,7 @@
     </div>
 </footer>
 
+<script type="module" src="../js/session_page.js"></script>
 </body>
 
 </html>
