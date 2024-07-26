@@ -3,3 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'sign_up.html'; 
     });
 });
+
+
+
