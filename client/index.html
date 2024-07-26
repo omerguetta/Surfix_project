@@ -16,20 +16,54 @@
 
 <body>
     <header>
-        <nav class="top-nav navbar bg-white fixed-top">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
-                <div class="profile-section">
+
+                <div class="profile-section d-lg-none d-flex">
                     <div class="profile-pic"></div>
                     <span class="profile-rating">★ 417</span>
                 </div>
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link selected" href="./index.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/session_page.html">SESSIONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/for_you.html">FOR YOU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LOCATIONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">GRAPH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">VIDEOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">WEATHER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/settings.html">SETTINGS</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="profile-section d-none d-lg-flex">
+                    <div class="profile-pic"></div>
+                    <span class="profile-rating">★ 417</span>
+                </div>
+
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Surfix</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -61,7 +95,7 @@
                                 <a class="item" href="#">WEATHER</a>
                             </li>
                             <li class="nav-item setting">
-                                <a href="./pages/session_page.html"><img src="./images/settings-icon.png" alt="setting-icon"></a>
+                                <a href="./pages/settings.html"><img src="./images/settings-icon.png" alt="setting-icon"></a>
                                 <a class="item" href="./pages/settings.html">SETTINGS</a>
                             </li>
                         </ul>
