@@ -197,6 +197,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
+            sessionCard.addEventListener('click', () => {
+                localStorage.setItem('selectedSession', JSON.stringify(session));
+                window.location.href = 'session_page.html';
+            });
             sessionCardContainer.appendChild(sessionCard);
         });
     }
