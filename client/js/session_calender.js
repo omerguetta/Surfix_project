@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displaySessions(selectedDateStr);
     }
 
-    function displaySessions(date) {
+    function displaySessions(date="") {
         sessionCardContainer.innerHTML = '';
 
         const filteredSessions = sessions.filter(session => session.date === date);
@@ -198,9 +198,9 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
 
             sessionCard.addEventListener('click', () => {
-                localStorage.setItem('selectedSession', JSON.stringify(session));
-                window.location.href = 'session_page.html';
+                window.location.href = `session_page.html?session_id=${session.session_id}`;
             });
+
             sessionCardContainer.appendChild(sessionCard);
         });
     }
@@ -249,10 +249,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
+            sessionCard.addEventListener('click', () => {
+                window.location.href = `session_page.html?session_id=${session.session_id}`;
+            });
+
             sessionCardContainer.appendChild(sessionCard);
         });
     }
-
-    createCalendar(currentDate.getFullYear(), currentDate.getMonth());
-    loadSessions();
-});
+        createCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        loadSessions();
+    });

@@ -1,23 +1,32 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('../data/sessions.json')
-    .then(response => response.json())
-        .then(data => {
-            const avgWaveLeft = d3.mean(data, d => d.wave_left);
-            const avgWaveRight = d3.mean(data, d => d.wave_right);
-            const avgMaxSpeed = d3.mean(data, d => parseFloat(d.max_speed.split(" ")[0]));
-            const avgRowing = d3.mean(data, d => d.rowing);
+async function getSessionFromServer(sessionId) {
+    try {
+        const response = await fetch('../data/sessions.json');
+        const data = await response.json();
+        const sessionData = data.find(session => session.session_id === sessionId);
+        displayGraph(data);
+        displaySession(sessionData);
+    } catch (error) {
+        console.error(`Error fetching beach with ID ${sessionId}:`, error);
+    }
+}
 
-            const chartData = [
-                {label: 'WaveLeft', value: avgWaveLeft},
-                {label: 'WaveRight', value: avgWaveRight},
-                {label: 'Speed', value: avgMaxSpeed},
-                {label: 'Rowing', value: avgRowing}
-            ];
+function displayGraph(data) {
+    const avgWaveLeft = d3.mean(data, d => d.wave_left);
+    const avgWaveRight = d3.mean(data, d => d.wave_right);
+    const avgMaxSpeed = d3.mean(data, d => parseFloat(d.max_speed.split(" ")[0]));
+    const avgRowing = d3.mean(data, d => d.rowing);
 
-            const width = 500;
-            const height = 500;
-            const outerRadius = height / 2 - 10;
-            const innerRadius = outerRadius * 0.75;
+    const chartData = [
+    {label: 'WaveLeft', value: avgWaveLeft},
+    {label: 'WaveRight', value: avgWaveRight},
+    {label: 'Speed', value: avgMaxSpeed},
+    {label: 'Rowing', value: avgRowing}
+    ];
+
+    const width = 500;
+    const height = 500;
+    const outerRadius = height / 2 - 10;
+    const innerRadius = outerRadius * 0.75;
             const color = d3.scaleOrdinal()
                 .domain(chartData.map(d => d.label))
                 .range(['#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3']);
@@ -63,8 +72,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 .attr("dy", ".35em")
                 .style("text-anchor", "start")
                 .text(d => d.label);
-        })
-        .catch(error => console.error('Error loading or processing data:', error));
+}
+
+function displaySession(sessionData){
+    const sessionName = document.querySelector(".session_name");
+    sessionName.textContent = sessionData.name;
+
+    const sessionDate = document.querySelector(".session_date");
+    sessionDate.textContent = sessionData.date;
+
+    const sessionWaveLeft = document.querySelector("WaveLeft");
+    sessionWaveLeft.textContent = `${sessionData.wave_left} m`;
+
+    const sessionWaveRight = document.querySelector("WaveRight");
+    sessionWaveRight.textContent = `${sessionData.wave_right}`;
+
+    const sessionMaxSpeed = document.querySelector("Speed");
+    sessionMaxSpeed.textContent = `${sessionData.max_speed}`;
+
+    const sessionRowing = document.querySelector("Rowing");
+    sessionRowing.textContent = `${sessionData.rowing}`;
+}
+
+window.onload = (async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+    await getSessionFromServer(sessionId);
+
+    // document.querySelector(".goBack").addEventListener('click', () => {
+    //     window.location.href = document.referrer;
+    // });
 });
-
-
