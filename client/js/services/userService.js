@@ -1,76 +1,175 @@
-// async function query(filters = {}) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/api/user/${filters}`);
-//         return await response.json();
-//     } catch (error) {
-//         console.error('Error fetching users:', error);
-//     }
-// }
+const BASE_URL = 'http://localhost:3000/api/user';
 
-// async function getById(userId) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/api/user/${userId}`);
-//         return await response.json();
-//     } catch (error) {
-//         console.error(`Error fetching user with ID ${userId}:`, error);
-//     }
-// }
+const headers = {
+    'Content-Type': 'application/json',
+};
 
-// async function add(body) {
-//     try {
-//         const response = await fetch('http://localhost:3000/api/user', {
-//             method: 'POST',
-//             headers: {'Content-Type': 'application/json'},
-//             body: JSON.stringify(body)
-//         });
-//         if (response.ok) {
-//             window.location.href = document.referrer;
-//         } else {
-//             console.error(`Failed to create user:`, response.status, response.statusText);
-//         }
-//     } catch (error) {
-//         console.error(`Error creating user:`, error);
-//     }
-// }
+async function registerUser(userData) {
+    try {
+        const response = await fetch(`${BASE_URL}/register`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(userData),
+        });
 
-// async function update(body, userId) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/api/user/${userId}`, {
-//             method: 'PUT',
-//             headers: {'Content-Type': 'application/json'},
-//             body: JSON.stringify(body)
-//         });
-//         if (response.ok) {
-//             window.location.href = document.referrer;
-//         } else {
-//             console.error(`Failed to update user:`, response.status, response.statusText);
-//         }
-//     } catch (error) {
-//         console.error(`Error updating user:`, error);
-//     }
-// }
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Registration failed');
+        }
 
-// async function remove(userId) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/api/user/${userId}`, {
-//             method: 'DELETE'
-//         });
-//         if (response.ok) {
-//             window.location.href = 'for_you.html';
-//         } else {
-//             console.error('Failed to delete user:', response.status, response.statusText);
-//         }
-//     } catch (error) {
-//         console.error('Error deleting user:', error);
-//     }
-// }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error during registration:', error);
+        throw error;
+    }
+}
 
-// const userService = {
-//     query,
-//     getById,
-//     add,
-//     update,
-//     remove
-// };
+async function loginUser(email, password) {
+    try {
+        const response = await fetch(`${BASE_URL}/login`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ email, password }),
+        });
 
-// export default userService;
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Login failed');
+        }
+
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        return data;
+    } catch (error) {
+        console.error('Error during login:', error);
+        throw error;
+    }
+}
+
+async function query() {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const response = await fetch(BASE_URL, {
+            method: 'GET',
+            headers: {
+                ...headers,
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            throw new Error('Unauthorized or forbidden');
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch users');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+}
+
+async function getById(userId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const response = await fetch(`${BASE_URL}/${userId}`, {
+            method: 'GET',
+            headers: {
+                ...headers,
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            throw new Error('Unauthorized or forbidden');
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        throw error;
+    }
+}
+
+async function update(userId, userData) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const response = await fetch(`${BASE_URL}/${userId}`, {
+            method: 'PUT',
+            headers: {
+                ...headers,
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(userData),
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            throw new Error('Unauthorized or forbidden');
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to update user');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+}
+
+async function remove(userId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const response = await fetch(`${BASE_URL}/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                ...headers,
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            throw new Error('Unauthorized or forbidden');
+        }
+
+        if (!response.ok) {
+            throw new Error('Failed to delete user');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        throw error;
+    }
+}
+
+export default userSerivce;

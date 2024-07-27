@@ -52,6 +52,7 @@ async function updateBeach(req, res) {
     try {
         const beachId = req.params.beachId;
         const beach = req.body;
+        console.log('Updating beach:', beach);
         const updatedBeach = await beachService.update(beach, beachId);
         if (updatedBeach) {
             res.json(updatedBeach);

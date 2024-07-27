@@ -5,22 +5,22 @@ async function displayBeach(beach) {
     beachName.textContent = beach.name;
 
     const onshoreWind = document.querySelector(".wind h6");
-    onshoreWind.textContent = `${beach.onshore_wind} km/h`;
+    onshoreWind.textContent = `${beach.onshoreWind} km/h`;
 
     const risingTide = document.querySelector(".tide h6");
-    risingTide.textContent = `${beach.rising_tide} m`;
+    risingTide.textContent = `${beach.risingTide} m`;
 
     const airTemperature = document.querySelector(".airTemperature");
-    airTemperature.textContent = `${beach.air_temperature} °C`;
+    airTemperature.textContent = `${beach.airTemperature} °C`;
 
     const waterTemperature = document.querySelector(".waterTemperature");
-    waterTemperature.textContent = `${beach.water_temperature} °C`;
+    waterTemperature.textContent = `${beach.waterTemperature} °C`;
 
     const waveHeight = document.querySelector(".waveHeight");
-    waveHeight.textContent = `${beach.wave_height} m`;
+    waveHeight.textContent = `${beach.waveHeight} m`;
 
     const waveDirection = document.querySelector(".waveDirection");
-    waveDirection.textContent = `${beach.wave_direction}`;
+    waveDirection.textContent = `${beach.waveDirection}`;
 }
 
 async function getBeachFromServer(beachId) {

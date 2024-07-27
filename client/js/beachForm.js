@@ -13,26 +13,24 @@ async function handleFormSubmit(event) {
     } else {
         await beachService.add(beachData);
     }
-
-
 }
 
 async function displayBeach(beach={}) {
     const form = document.querySelector('.beach-form');
     if (form) {
-        form.name.value = beach.name || '';
-        form.distance.value = (beach.distance || '') + ' km';
-        form.onshore_wind.value = (beach.onshore_wind || '') + ' km/h';
-        form.rising_tide.value = (beach.rising_tide || '') + ' m';
-        form.air_temperature.value = (beach.air_temperature || '') + ' °C';
-        form.water_temperature.value = (beach.water_temperature || '') + ' °C';
-        form.wave_direction.value = (beach.wave_direction || '') + ' °';
-        form.wave_height.value = (beach.wave_height || '') + ' m';
-        form.visibility.value = (beach.visibility || '') + ' km';
+        form.name.value = beach.name;
+        form.distance.value = beach.distance;
+        form.onshore_wind.value = beach.onshoreWind;
+        form.rising_tide.value = beach.risingTide;
+        form.air_temperature.value = beach.airTemperature;
+        form.water_temperature.value = beach.waterTemperature;
+        form.wave_direction.value = beach.waveDirection;
+        form.wave_height.value = beach.waveHeight;
+        form.visibility.value = beach.visibility;
 
         if (beach.id) {
             form.setAttribute('data-beach-id', beach.id);
-            document.querySelector('.delete_btn').addEventListener('click', async (event) => {
+            document.querySelector('.delete-btn').addEventListener('click', async (event) => {
                 event.preventDefault();
                 await beachService.remove(beach.id);
             });
@@ -54,15 +52,15 @@ window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get('beachId');
     if (beachId) {
-        document.querySelector('.delete_btn').style.visibility = 'visible';
-        document.querySelector('.submit_btn').textContent = 'Update';
+        document.querySelector('.delete-btn').style.visibility = 'visible';
+        document.querySelector('.submit-btn').textContent = 'Update';
         await getBeachFromServer(beachId);
     } else {
-        document.querySelector('.delete_btn').style.visibility = 'hidden';
-        document.querySelector('.submit_btn').textContent = 'Create';
+        document.querySelector('.delete-btn').style.visibility = 'hidden';
+        document.querySelector('.submit-btn').textContent = 'Create';
         await displayBeach();
     }
-    document.querySelector(".BeachPage").addEventListener('click', () => {
+    document.querySelector(".to-beach-page").addEventListener('click', () => {
         window.location.href = document.referrer;
     });
 });

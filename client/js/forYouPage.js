@@ -13,7 +13,7 @@ function createBeachItem(beachData) {
     title.textContent = beachData.name;
 
     const distance = document.createElement('span');
-    distance.textContent = beachData.distance;
+    distance.textContent = beachData.distance + ' km';
 
     const favorite = document.createElement('img');
     favorite.className = 'favorite_img';
@@ -40,7 +40,7 @@ function createBeachItem(beachData) {
     listItem.append(beachCard, beachActions);
 
     listItem.addEventListener('click', () => {
-        window.location.href = `beach.html?beachId=${beachData.id}`;
+        window.location.href = `beach.html?beachId=${beachData.beachId}`;
     });
 
     return listItem;
