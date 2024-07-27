@@ -12,6 +12,7 @@ async function login(email, password) {
     }
     catch (error) {
         console.log('ERROR:', error);
+        alert('Invalid credentials'); 
     }
 }
 

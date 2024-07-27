@@ -1,6 +1,8 @@
+const BASE_URL = 'http://localhost:3000/api/beach';
+
 async function query(filters = {}) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/?${filters}`);
+        const response = await fetch(`${BASE_URL}/?${filters}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching beaches:', error);
@@ -9,7 +11,7 @@ async function query(filters = {}) {
 
 async function getById(beachId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`);
+        const response = await fetch(`${BASE_URL}/${beachId}`);
         return await response.json();
     } catch (error) {
         console.error(`Error fetching beach with ID ${beachId}:`, error);
@@ -18,7 +20,7 @@ async function getById(beachId) {
 
 async function add(body) {
     try {
-        const response = await fetch('http://localhost:3000/api/beach', {
+        const response = await fetch(BASE_URL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
@@ -35,7 +37,7 @@ async function add(body) {
 
 async function update(body, beachId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
+        const response = await fetch(`${BASE_URL}/${beachId}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
@@ -52,7 +54,7 @@ async function update(body, beachId) {
 
 async function remove(beachId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
+        const response = await fetch(`${BASE_URL}/${beachId}`, {
             method: 'DELETE'
         });
         if (response.ok) {

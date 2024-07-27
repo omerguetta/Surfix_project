@@ -1,6 +1,8 @@
+const BASE_URL = 'http://localhost:3000/api/session';
+
 async function query(filters = {}) {
     try {
-        const response = await fetch(`http://localhost:3000/api/session/?${filters}`);
+        const response = await fetch(`${BASE_URL}/?${filters}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching sessions:', error);
@@ -18,7 +20,7 @@ async function getById(sessionId) {
 
 async function add(body) {
     try {
-        const response = await fetch('http://localhost:3000/api/session', {
+        const response = await fetch(BASE_URL, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
@@ -35,7 +37,7 @@ async function add(body) {
 
 async function update(body, sessionId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/session/${sessionId}`, {
+        const response = await fetch(`${BASE_URL}/${sessionId}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
@@ -52,7 +54,7 @@ async function update(body, sessionId) {
 
 async function remove(sessionId) {
     try {
-        const response = await fetch(`http://localhost:3000/api/session/${sessionId}`, {
+        const response = await fetch(`${BASE_URL}/${sessionId}`, {
             method: 'DELETE'
         });
         if (response.ok) {
