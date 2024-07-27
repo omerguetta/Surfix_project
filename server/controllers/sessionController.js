@@ -10,12 +10,13 @@ module.exports = {
 
 async function getSessions(req, res) {
     try {
-        const {name, maxDistance, sortByName} = req.query;
+        const {Date} = req.query;
         const filters = {};
 
-        if (name) filters.name = name;
-        if (maxDistance) filters.maxDistance = parseInt(maxDistance);
-        if (sortByName) filters.sortByName = sortByName;
+        //if we need to change the date format
+        // if (Date) filters.Date = new Date(Date);
+        filters.Date = Date;
+        // if (sortByName) filters.sortByName = sortByName;
 
         const rows = await sessionService.query(filters);
         res.json(rows);

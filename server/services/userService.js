@@ -133,7 +133,11 @@ async function authenticateUser(email, password) {
         }
 
         const token = jwt.sign(
-            { userId: user.user_id, userName: user.user_name, userRole: user.role },
+            {
+                userId: user.user_id,
+                userName: user.user_name,
+                userRole: user.role
+            },
             jwtSecret,
             { expiresIn: '1h' }
         );

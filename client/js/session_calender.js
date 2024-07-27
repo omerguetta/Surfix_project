@@ -1,3 +1,5 @@
+import sessionService from './services/sessionService.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     const calendarElement = document.getElementById('calendar');
     const currentDate = new Date();
@@ -77,7 +79,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let sessions = [];
 
-    function loadSessions() {
+    async function loadSessions() {
+        // sessions = await sessionService.query();
+        // console.log('Sessions:', sessions);
+        // displayAllSessions();
+
         fetch('../data/sessions.json')
             .then(response => response.json())
             .then(data => {
@@ -85,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 displayAllSessions();
             })
             .catch(error => console.error('Error loading sessions:', error));
+
+        
     }
 
     function createCalendar(year, month) {

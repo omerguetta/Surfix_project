@@ -172,4 +172,13 @@ async function remove(userId) {
     }
 }
 
-export default userSerivce;
+const userService = {
+    registerUser,
+    loginUser,
+    query,
+    getById,
+    update,
+    remove,
+};
+
+export default userService;
