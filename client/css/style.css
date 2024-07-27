@@ -65,6 +65,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     width: 32px;
     border-radius: 50%;
     margin-top: 8px;
+    cursor: pointer;
 }
 
 .profile-rating {
