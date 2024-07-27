@@ -1,5 +1,4 @@
-import sessionService from './services/sessionService.js';
-
+import sessionService from "./services/sessionService.js";
 document.addEventListener('DOMContentLoaded', function () {
     const calendarElement = document.getElementById('calendar');
     const currentDate = new Date();
@@ -79,20 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let sessions = [];
 
-    async function loadSessions() {
-        // sessions = await sessionService.query();
-        // console.log('Sessions:', sessions);
-        // displayAllSessions();
-
-        fetch('../data/sessions.json')
-            .then(response => response.json())
-            .then(data => {
-                sessions = data;
-                displayAllSessions();
-            })
-            .catch(error => console.error('Error loading sessions:', error));
-
-        
+    async function loadSessions(filters="") {
+        sessions = await sessionService.query(filters);
+        console.log('Sessions:', sessions);
+        displayAllSessions();
     }
 
     function createCalendar(year, month) {
@@ -189,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="side-col">
                         <div class="footer">
                             <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
-                            <span class="wave-value">${session.wave_left}</span>
+                            <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
@@ -200,13 +189,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="footer">
                         <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
-                        <span class="wave-value">${session.wave_right}</span>
+                        <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
             `;
 
             sessionCard.addEventListener('click', () => {
-                window.location.href = `session_page.html?session_id=${session.session_id}`;
+                window.location.href = `session_page.html?sessionId=${session.sessionId}`;
             });
 
             sessionCardContainer.appendChild(sessionCard);
@@ -241,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="side-col">
                         <div class="footer">
                             <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
-                            <span class="wave-value">${session.wave_left}</span>
+                            <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
@@ -252,13 +241,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="footer">
                         <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
-                        <span class="wave-value">${session.wave_right}</span>
+                        <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
             `;
 
             sessionCard.addEventListener('click', () => {
-                window.location.href = `session_page.html?session_id=${session.session_id}`;
+                window.location.href = `session_page.html?sessionId=${session.sessionId}`;
             });
 
             sessionCardContainer.appendChild(sessionCard);
