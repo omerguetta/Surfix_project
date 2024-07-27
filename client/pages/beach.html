@@ -23,8 +23,12 @@
 
                 <a id="logo" class="navbar-brand mx-auto" href="../index.html"></a>
 
-                <div class="profile-section d-lg-none d-flex">
-                    <div class="profile-pic"></div>
+                <div class="dropdown profile-section d-lg-none d-flex">
+                    <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
+                        <li><a class="dropdown-item" href="#">Account</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
                     <span class="profile-rating">★ 417</span>
                 </div>
 
@@ -57,8 +61,12 @@
                     </ul>
                 </div>
 
-                <div class="profile-section d-none d-lg-flex">
-                    <div class="profile-pic"></div>
+                <div class="dropdown profile-section d-none d-lg-flex">
+                    <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#">Account</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
                     <span class="profile-rating">★ 417</span>
                 </div>
 
