@@ -2,12 +2,12 @@
 window.onload = function() {
     const authToken = localStorage.getItem('token');
     
-    if (!authToken) {
+    if (!authToken || authToken.ttl > Date.now()) {
         window.location.href = 'login.html';
     }
     
     document.getElementById('logoutBtn').addEventListener('click', function() {
-        localStorage.removeItem('authToken'); // Clear token
-        window.location.href = 'login.html'; // Redirect to login page
+        localStorage.removeItem('authToken');
+        window.location.href = 'login.html';
     });
 };

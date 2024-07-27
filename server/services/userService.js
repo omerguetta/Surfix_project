@@ -140,7 +140,8 @@ async function authenticateUser(email, password) {
         return {
             userId: user.userId,
             userName: user.userName,
-            token
+            token,
+            ttl: Date.now() + 1000 * 60 * 60
         };
     } catch (error) {
         console.error('Error authenticating user:', error);
