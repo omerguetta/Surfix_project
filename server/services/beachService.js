@@ -10,7 +10,6 @@ module.exports = {
 
 async function query(filters = {}) {
     try {
-        console.log({filters});
         const connection = await dbConnection.connect();
 
         let whereClause = '';
@@ -54,7 +53,7 @@ async function query(filters = {}) {
 async function getById(beachId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT * FROM tbl_122_beach WHERE id = ?;`, [beachId]);
+        const [rows] = await connection.execute(`SELECT * FROM tbl_122_beach WHERE beachId='${beachId}';`);
         return rows[0];
     } catch (error) {
         console.error('Error getting beach by ID:', error);
@@ -77,7 +76,7 @@ async function add(body) {
             visibility
         } = body;
         const [result] = await connection.execute(
-            'INSERT INTO tbl_122_beach (name, distance, onshore_wind, rising_tide, air_temperature, wave_height, wave_direction, water_temperature, visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO tbl_122_beach (name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility]
         );
         return {
@@ -110,10 +109,11 @@ async function update(body, beachId) {
             waveDirection,
             waterTemperature,
             visibility
-        } = body;
+        }= body;
+        console.log('Updating beach:', name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility);
         const [result] = await connection.execute(
-            'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshore_wind = ?, rising_tide = ?, air_temperature = ?, wave_height = ?, wave_direction = ?, water_temperature = ?, visibility = ? WHERE id = ?',
-            [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]
+            'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshoreWind = ?, risingTide = ?, airTemperature = ?, waveHeight = ?, waveDdirection = ?, waterTemperature = ?, visibility = ? WHERE beachId = ?',
+            [name, distance, body.onshore_wind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]
         );
         return {
             id: beachId,
@@ -136,7 +136,7 @@ async function update(body, beachId) {
 async function remove(beachId) {
     try {
         const connection = await dbConnection.connect();
-        const [result] = await connection.execute(`DELETE FROM dbShnkr24stud.tbl_122_beach WHERE id = ?`, [beachId]);
+        const [result] = await connection.execute(`DELETE FROM dbShnkr24stud.tbl_122_beach WHERE beachId = ${beachId}`);
         return {message: 'Beach deleted successfully'};
     } catch (error) {
         console.error('Error deleting beach:', error);

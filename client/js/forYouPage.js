@@ -5,7 +5,7 @@ function createBeachItem(beachData) {
     listItem.className = 'list-group-item beach-list-item';
 
     const wave = document.createElement('img');
-    wave.className = 'wave_img';
+    wave.className = 'wave-img';
     wave.src = '../images/wave.svg';
     wave.alt = 'wave';
 
@@ -13,7 +13,7 @@ function createBeachItem(beachData) {
     title.textContent = beachData.name;
 
     const distance = document.createElement('span');
-    distance.textContent = beachData.distance;
+    distance.textContent = beachData.distance + ' km';
 
     const favorite = document.createElement('img');
     favorite.className = 'favorite_img';
@@ -40,14 +40,14 @@ function createBeachItem(beachData) {
     listItem.append(beachCard, beachActions);
 
     listItem.addEventListener('click', () => {
-        window.location.href = `beach.html?beachId=${beachData.id}`;
+        window.location.href = `beach.html?beachId=${beachData.beachId}`;
     });
 
     return listItem;
 }
 
 function populateBeachesList(beachesData) {
-    const beach_container = document.querySelector('.beaches_container');
+    const beach_container = document.querySelector('.beaches-container');
     beach_container.innerHTML = '';
 
     const beachList = document.createElement('ul');

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beach Page</title>
+    <title>Settings</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    <script type="module" src="../js/beach.js"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="../js/settings.js"></script>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
@@ -37,7 +39,7 @@
                             <a class="nav-link" href="./session_page.html">SESSIONS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link selected" href="./for_you.html">FOR YOU</a>
+                            <a class="nav-link" href="./for_you.html">FOR YOU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">LOCATIONS</a>
@@ -51,7 +53,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./weather.html">WEATHER</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item selected">
                             <a class="nav-link" href="./settings.html">SETTINGS</a>
                         </li>
                     </ul>
@@ -99,66 +101,69 @@
     </header>
 
     <main>
-        <div class="beach-header">
-            <img class="goBack" src="../images/back-icon.png" alt="back-icon">
-            <span id="beachName">Loading....</span>
-            <img id="plus-icon" src="../images/plus-icon.png" alt="edit-icon">
-            <img id="edit-icon" src="../images/edit-icon.png" alt="plus-icon">
-            <img id="remove-icon" src="../images/remove-icon.png" alt="remove-icon">
-        </div>
-        <nav class="menu-container">
-            <section class="menu-text">
-                <a href="#" class="menu-item">Live</a>
-                <a href="#" class="menu-item">Forecast</a>
-                <a href="#" class="menu-item">Analysis</a>
-                <a href="#" class="menu-item">Charts</a>
-                <a href="#" class="menu-item">Guide</a>
+        <div id="wrapper">
+            <section class="navigation-section">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
+                        <li class="breadcrumb-item">
+                            <a class="link-body-emphasis" href="../index.html">
+                                <img class="bread-home" src="../images/home-icon.png" alt="home">
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a class="link-body-emphasis">
+                                <img class="bread-home" src="../images/settings-icon.png" alt="settings">
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
             </section>
-        </nav>
-        <section class="beach-data">
-            <div class="row recommend-section">
-                <div class="col">
-                    <div class="profile">
-                        <div class="profile-pic"></div>
-                        <span class="profile-rating">★ 417</span>
-                    </div>
-                    <h5>Write your recommend</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col wind">
-                    <h5>Onshore wind</h5>
-                    <h6></h6>
-                    <p>16kph gust, W</p>
-                    <img src="../images/beach-video.png" alt="beach-video">
-                    <img id="play-button" src="../images/play-video-icon.png" alt="play-video-icon">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col tide">
-                    <h5>Rising tide</h5>
-                    <h6></h6>
-                    <p>0.3m high at 2:19pm</p>
-                </div>
-                <div class="col wetsuit">
-                    <h5>2mm wetsuit</h5>
-                    <img id="drop-icon" src="../images/drop-icon.png" alt="drop-icon">
-                    <p class="waterTemperature"></p>
-                    <img id="sun-icon" src="../images/sun-icon.png" alt="sun-icon">
-                    <p class="airTemperature"></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col knee">
-                    <h5>Shin to knee</h5>
-                    <p class="waveHeight"></p>
-                    <span>POOR</span>
-                    <p class="waveDirection"></p>
-                </div>
-            </div>
-        </section>
-    </main>
 
+            <section class="filters_container mb-3">
+                <input type="text" class="search-input form-control" id="searchInput" placeholder="Search">
+            </section>
+
+            <div class="offcanvas-body setting-data">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/lock-icon.png" alt="Privacy">
+                        <a class="item" href="#">Privacy</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/acount-icon.png" alt="acount-icon">
+                        <a class="item" href="#">Account</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img class="link-img" src="../images/security-icon.png" alt="security-icon">
+                        <a class="item" href="#">Security</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/help-icon.png" alt="help-icon">
+                        <a class="item" href="#">About</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/person-icon.png" alt="person-icon">
+                        <a class="item" href="#">Invite friends</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/eye-icon.png" alt="background">
+                        <a class="item" href="#">Change background</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                    <li class="nav-item">
+                        <img src="../images/notification_icon.png" alt="notification_icon">
+                        <a class="item" href="#">Notifications</a>
+                        <img class="arrow" src="../images/arrow.svg" alt="arrow-image">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">
             <div class="footer-item">
@@ -177,4 +182,5 @@
     </footer>
 
 </body>
+
 </html>

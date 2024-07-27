@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 
-const beachesRouter = require('./routers/beachesRouter.js');
+const beachRouter = require('./routers/beachRouter.js');
+const sessionRouter = require('./routers/sessionRouter.js');
+const userRouter = require('./routers/userRouter.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,8 +18,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/beach', beachesRouter);
+app.use('/api/beach', beachRouter);
+app.use('/api/session', sessionRouter);
+app.use('/api/user', userRouter);
 
-app.listen(port);
-
-console.log(`listening on port ${port}`);
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+});
