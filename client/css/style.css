@@ -325,7 +325,6 @@ main {
 
 .session-data-section {
     color: #000;
-    margin-top: 80px;
     margin-bottom: 20px;
 }
 
@@ -654,4 +653,145 @@ footer .footer-item a {
 
 .bread-home {
     height: 16px;
+}
+
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.calendar-header select {
+    margin: 0 5px;
+    flex: 1;
+    border-radius: 5px;
+    border: none;
+}
+
+.calendar-header select:nth-of-type(1) {
+    max-width: 150px;
+}
+
+.calendar-header select:nth-of-type(2) {
+    max-width: 150px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.calendar .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.calendar .day.selected {
+    background-color: #bec5cd;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        max-width: 90%;
+    }
+
+    .calendar-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .calendar-header select {
+        margin: 0;
+        flex: none;
+        max-width: 100%;
+    }
+}
+
+.session-card {
+    background-color: white;
+    display: flex;
+    margin-top: 20px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-title-col {
+    display: flex;
+    align-items: center;
+}
+
+.session-time-col {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.session-title {
+    font-weight: bold;
+}
+
+.session-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.star {
+    color: gold;
+    height: 21px;
+    width: 21px;
+}
+
+.session-details2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-icon img {
+    height: 21px;
+    width: 21px;
+}
+
+.wave-icon img {
+    height: 21px;
+    width: 21px;
+}
+
+.session-card-container {
+    padding-bottom: 100px; /* Adjust as needed */
 }

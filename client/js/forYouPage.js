@@ -83,7 +83,6 @@ async function updateFilters() {
     if (distanceInput.value.trim()) {
         newParams.set('maxDistance', distanceInput.value.trim());
     }
-
     if(document.getElementById('sortByName').checked){
         newParams.set('sortByName', 'name');
     }
