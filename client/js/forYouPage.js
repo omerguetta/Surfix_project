@@ -5,7 +5,7 @@ function createBeachItem(beachData) {
     listItem.className = 'list-group-item beach-list-item';
 
     const wave = document.createElement('img');
-    wave.className = 'wave_img';
+    wave.className = 'wave-img';
     wave.src = '../images/wave.svg';
     wave.alt = 'wave';
 
@@ -47,7 +47,7 @@ function createBeachItem(beachData) {
 }
 
 function populateBeachesList(beachesData) {
-    const beach_container = document.querySelector('.beaches_container');
+    const beach_container = document.querySelector('.beaches-container');
     beach_container.innerHTML = '';
 
     const beachList = document.createElement('ul');
