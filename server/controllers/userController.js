@@ -11,7 +11,8 @@ module.exports = {
 
 async function registerUser(req, res) {
     try {
-        const { userName, firstName, lastName, email, password, age, surfingLevel, weight, height, role } = req.body;
+        const { userName, fullName, email, password, age, surfingLevel, weight, height, role } = req.body;
+
         const userExists = await userService.isUserExists(userName, email);
         if(userExists) {
             return res.status(400).json({ message: 'User already exists' });
@@ -23,7 +24,16 @@ async function registerUser(req, res) {
             userRole = role;
         }
 
-        const newUser = { userName, firstName, lastName, email, password: password, age, surfingLevel, weight, height, role: userRole };
+        const newUser = { 
+            userName, 
+            fullName, 
+            email, 
+            password, 
+            age: parseInt(age) || 0, 
+            surfingLevel: surfingLevel || 'null', 
+            weight: weight || 0, 
+            height: height || 0, 
+            role: userRole };
 
         await userService.add(newUser);
         const authenticatedUser = await userService.authenticateUser(email, password);
