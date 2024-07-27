@@ -1,6 +1,6 @@
 async function query(filters = {}) {
     try {
-        const response = await fetch(`http://localhost:3000/api/beach/${filters}`);
+        const response = await fetch(`http://localhost:3000/api/beach/?${filters}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching beaches:', error);

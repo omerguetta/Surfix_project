@@ -114,5 +114,5 @@ window.onload = async () => {
         document.getElementById('rangeValue').textContent = event.target.value;
         await updateFilters();
     });
-    await getBeachesListFromServer(window.location.search, true);
+    await getBeachesListFromServer();
 };

@@ -1,6 +1,6 @@
 async function query(filters = {}) {
     try {
-        const response = await fetch(`http://localhost:3000/api/session/${filters}`);
+        const response = await fetch(`http://localhost:3000/api/session/?${filters}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching sessions:', error);
