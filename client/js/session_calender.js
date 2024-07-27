@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sessions = await sessionService.query(filters);
         console.log('Sessions:', sessions);
         displayAllSessions();
+        markDatesWithSessions();
     }
 
     function createCalendar(year, month) {
@@ -136,6 +137,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         monthSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
         yearSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
+    }
+
+    function markDatesWithSessions() {
+        const days = calendarElement.querySelectorAll('.day');
+        days.forEach(day => {
+            const dayText = day.textContent;
+            const dateStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(dayText).padStart(2, '0')}`;
+            if (sessions.some(session => session.date === dateStr)) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                day.appendChild(dot);
+            }
+        });
     }
 
     function selectDate(year, month, day, element) {

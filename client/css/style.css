@@ -892,3 +892,18 @@ footer .footer-item a {
 .session-card-container {
     padding-bottom: 100px;
 }
+
+.day {
+    position: relative;
+}
+
+.day .dot {
+    width: 5px;
+    height: 5px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
