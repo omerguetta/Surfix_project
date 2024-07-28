@@ -32,14 +32,18 @@ async function loginUser(email, password) {
             headers,
             body: JSON.stringify({ email, password }),
         });
-
+        console.log(response);
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.error || 'Login failed');
         }
 
         const data = await response.json();
-        localStorage.setItem('token', data.token);
+        
+        localStorage.setItem('access_token', data.token);
+        localStorage.setItem('access_token_ttl', data.ttl);
+
+        
         return data;
     } catch (error) {
         console.error('Error during login:', error);

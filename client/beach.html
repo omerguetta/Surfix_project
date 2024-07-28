@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>Beach Page</title>
+    <script src="./js/auth.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="../js/weather.js" defer></script>
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script type="module" src="./js/beach.js"></script>
 </head>
-
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
@@ -23,7 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand mx-auto" href="../index.html"></a>
+                <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
 
                 <div class="dropdown profile-section d-lg-none d-flex">
                     <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false"></div>
@@ -37,13 +36,13 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">HOME</a>
+                            <a class="nav-link" href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./session_page.html">SESSIONS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./for_you.html">FOR YOU</a>
+                            <a class="nav-link selected" href="./for_you.html">FOR YOU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">LOCATIONS</a>
@@ -54,8 +53,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">VIDEOS</a>
                         </li>
-                        <li class="nav-item selected">
-                            <a class="nav-link" href="#">WEATHER</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./weather.html">WEATHER</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./settings.html">SETTINGS</a>
@@ -81,25 +80,25 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a href="./session_page.html"><img src="../images/surfer-icon.png" alt="surfer-icon">SESSIONS</a>
+                                <a href="./session_page.html"><img src="./images/surfer-icon.png" alt="surfer-icon">SESSIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./for_you.html"><img src="../images/foryou-icon.png" alt="foryou-icon">FOR YOU</a>
+                                <a href="./for_you.html"><img src="./images/foryou-icon.png" alt="foryou-icon">FOR YOU</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/location-icon.png" alt="location-icon">LOCATIONS</a>
+                                <a href="#"><img src="./images/location-icon.png" alt="location-icon">LOCATIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/graph-icon.png" alt="graph-icon">GRAPH</a>
+                                <a href="#"><img src="./images/graph-icon.png" alt="graph-icon">GRAPH</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/video-icon.png" alt="video-icon">VIDEOS</a>
+                                <a href="#"><img src="./images/video-icon.png" alt="video-icon">VIDEOS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/cloud-icon.png" alt="cloud-icon">WEATHER</a>
+                                <a href="./weather.html"><img src="./images/cloud-icon.png" alt="cloud-icon">WEATHER</a>
                             </li>
                             <li class="nav-item setting">
-                                <a href="./settings.html"><img src="../images/settings-icon.png" alt="setting-icon">SETTINGS</a>
+                                <a href="./settings.html"><img src="./images/settings-icon.png" alt="setting-icon">SETTINGS</a>
                             </li>
                         </ul>
                     </div>
@@ -109,33 +108,64 @@
     </header>
 
     <main>
-        <div id="wrapper">
-            <section class="navigation-section">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
-                        <li class="breadcrumb-item">
-                            <a class="link-body-emphasis" href="../index.html">
-                                <img class="bread-home" src="../images/home-icon.png" alt="home">
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            WEATHER
-                        </li>
-                    </ol>
-                </nav>
-            </section>
-            <div class="container mt-5">
-                <h2>Current Weather</h2>
-                <div class="mb-3">
-                    <label for="city-input" class="form-label">Enter a city in Israel:</label>
-                    <input type="text" id="city-input" list="city-list" class="form-control"
-                        placeholder="e.g., Tel Aviv" oninput="validateCity()">
-                    <button class="btn btn-primary mt-2" id="get-weather-btn" onclick="checkWeather()" disabled>Get
-                        Weather</button>
-                </div>
-                <div id="weather-info"></div>
-            </div>
+        <div class="beach-header">
+            <img class="goBack" src="./images/back-icon.png" alt="back-icon">
+            <span id="beachName">Loading....</span>
+            <img id="plus-icon" src="./images/plus-icon.png" alt="edit-icon">
+            <img id="edit-icon" src="./images/edit-icon.png" alt="plus-icon">
+            <img id="remove-icon" src="./images/remove-icon.png" alt="remove-icon">
         </div>
+        <nav class="menu-container">
+            <section class="menu-text">
+                <a href="#" class="menu-item">Live</a>
+                <a href="#" class="menu-item">Forecast</a>
+                <a href="#" class="menu-item">Analysis</a>
+                <a href="#" class="menu-item">Charts</a>
+                <a href="#" class="menu-item">Guide</a>
+            </section>
+        </nav>
+        <section class="beach-data">
+            <div class="row recommend-section">
+                <div class="col">
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <span class="profile-rating">★ 417</span>
+                    </div>
+                    <h5>Write your recommend</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col wind">
+                    <h5>Onshore wind</h5>
+                    <h6></h6>
+                    <p>16kph gust, W</p>
+                    <img src="./images/beach-video.png" alt="beach-video">
+                    <img id="play-button" src="./images/play-video-icon.png" alt="play-video-icon">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col tide">
+                    <h5>Rising tide</h5>
+                    <h6></h6>
+                    <p>0.3m high at 2:19pm</p>
+                </div>
+                <div class="col wetsuit">
+                    <h5>2mm wetsuit</h5>
+                    <img id="drop-icon" src="./images/drop-icon.png" alt="drop-icon">
+                    <p class="waterTemperature"></p>
+                    <img id="sun-icon" src="./images/sun-icon.png" alt="sun-icon">
+                    <p class="airTemperature"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col knee">
+                    <h5>Shin to knee</h5>
+                    <p class="waveHeight"></p>
+                    <span>POOR</span>
+                    <p class="waveDirection"></p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -145,7 +175,7 @@
                 <span>Settings</span>
             </div>
             <div class="footer-item">
-                <a class="home-icon" href="../index.html"></a>
+                <a class="home-icon" href="./index.html"></a>
                 <span>Home</span>
             </div>
             <div class="footer-item">
@@ -154,6 +184,6 @@
             </div>
         </div>
     </footer>
-</body>
 
+</body>
 </html>

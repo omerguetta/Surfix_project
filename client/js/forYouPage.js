@@ -108,7 +108,7 @@ window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
     document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-        window.location.href = '../pages/beach_form.html';
+        window.location.href = './beach_form.html';
     });
     document.getElementById('maxDistance').addEventListener('change', async (event) => {
         document.getElementById('rangeValue').textContent = event.target.value;
