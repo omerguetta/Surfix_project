@@ -907,3 +907,14 @@ footer .footer-item a {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.profile-admin {
+    background-image: url('../images/admin_picture.jpeg');
+    background-size: cover;
+    height: 32px;
+    width: 40px;
+    border-radius: 0%;
+    margin-top: 8px;
+    size: 400px;
+
+}
