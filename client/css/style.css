@@ -918,3 +918,20 @@ footer .footer-item a {
     size: 400px;
 
 }
+
+.user-list-item .account-img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.user-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    /* padding-left: 0;
+    padding-right: 0; */
+    cursor: pointer;
+    margin-top: 10px;
+}
+
