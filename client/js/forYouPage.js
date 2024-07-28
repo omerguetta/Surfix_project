@@ -6,7 +6,7 @@ function createBeachItem(beachData) {
 
     const wave = document.createElement('img');
     wave.className = 'wave-img';
-    wave.src = '../images/wave.svg';
+    wave.src = './images/wave.svg';
     wave.alt = 'wave';
 
     const title = document.createElement('p');
@@ -17,12 +17,12 @@ function createBeachItem(beachData) {
 
     const favorite = document.createElement('img');
     favorite.className = 'favorite_img';
-    favorite.src = '../images/favorite.svg';
+    favorite.src = './images/favorite.svg';
     favorite.alt = 'favorite';
 
     const arrow = document.createElement('img');
     arrow.className = 'arrow_img';
-    arrow.src = '../images/arrow.svg';
+    arrow.src = './images/arrow.svg';
     arrow.alt = 'arrow';
 
     const beachDetails = document.createElement('div');
