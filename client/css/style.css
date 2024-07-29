@@ -897,7 +897,7 @@ footer .footer-item a {
 }
 
 .session-card-container {
-    padding-bottom: 100px; 
+    padding-bottom: 100px;
 }
 
 .surfing-level {
@@ -906,3 +906,46 @@ footer .footer-item a {
     border-radius: var(--bs-border-radius);
     border: var(--bs-border-width) solid var(--bs-border-color);
 }
+
+.day {
+    position: relative;
+}
+
+.day .dot {
+    width: 5px;
+    height: 5px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.profile-admin {
+    background-image: url('../images/admin_picture.jpeg');
+    background-size: cover;
+    height: 32px;
+    width: 40px;
+    border-radius: 0%;
+    margin-top: 8px;
+    size: 400px;
+
+}
+
+.user-list-item .account-img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.user-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    /* padding-left: 0;
+    padding-right: 0; */
+    cursor: pointer;
+    margin-top: 10px;
+}
+

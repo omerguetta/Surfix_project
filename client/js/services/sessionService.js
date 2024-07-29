@@ -2,7 +2,8 @@ const BASE_URL = 'http://localhost:3000/api/session';
 
 async function query(filters = {}) {
     try {
-        const response = await fetch(`${BASE_URL}/?${filters}`);
+        // const response = await fetch(`http://localhost:3000/api/session/?${filters}`);
+        const response = await fetch(`http://localhost:3000/api/session/?${new URLSearchParams(filters)}`);
         return await response.json();
     } catch (error) {
         console.error('Error fetching sessions:', error);

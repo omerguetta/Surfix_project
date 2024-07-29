@@ -19,7 +19,7 @@ module.exports = {
 async function query() {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute('SELECT userId, userName, fullName, email, age, surflingLevel, weight, height FROM tbl_122_user');
+        const [rows] = await connection.execute('SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user');
         return rows;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -30,7 +30,7 @@ async function query() {
 async function getById(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surflingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}'`);
+        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}'`);
         if (rows.length === 0) {
             throw new Error('User not found');
         }
