@@ -39,7 +39,10 @@ async function displayUser(user) {
 
     const waveRight = document.querySelector(".waveRight");
     waveRight.textContent = user.waveRight;
-    
+
+    document.querySelector(".edit-btn").addEventListener('click', () => {
+        window.location.href = `./update_user.html?userId=${user.userId}`;
+    });
 }
 
 async function getUserFromServer(UserId) {
@@ -60,6 +63,10 @@ window.onload = (async () => {
     document.querySelector(".goBack").addEventListener('click', () => {
         window.location.href = document.referrer;
     });
+
+    // document.querySelector(".edit-btn").addEventListener('click', () => {
+    //     window.location.href = `./update_user.html?userId=${UserData.userId}`;
+    // });
     // document.querySelector('#remove-icon').addEventListener('click', async (event) => {
     //     event.preventDefault();
     //     await beachService.remove(beachId);
