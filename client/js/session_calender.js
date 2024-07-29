@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Error loading sessions:', error));
 
-        
     }
 
     function createCalendar(year, month) {

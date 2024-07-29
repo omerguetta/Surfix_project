@@ -1,6 +1,6 @@
 import userService from "./services/userService.js";
 window.onload = () => {
-    document.querySelector('#sign-up-btn').addEventListener('click', async(event) => {
+    document.querySelector('#sign-up').addEventListener('click', async(event) => {
         event.preventDefault();
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;

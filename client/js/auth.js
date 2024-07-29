@@ -1,4 +1,3 @@
-
 window.onload = () => {
     console.log('Authenticating user');
     const authToken = localStorage.getItem('access_token');
@@ -8,10 +7,22 @@ window.onload = () => {
         window.location.href = 'login.html';
     }
     
-    document.getElementById('logout').addEventListener('click', function() {
-        console.log('Logout clicked');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('access_token_ttl');
-        window.location.href = './login.html';
+    const logoutBtns = document.querySelectorAll('.logout');
+
+    logoutBtns.forEach(elem => {
+        elem.addEventListener('click', () => {
+            console.log('Logout clicked');
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('access_token_ttl');
+            localStorage.removeItem('userId');
+            window.location.href = './login.html';
+        });
     });
+    // document.querySelector('.logout').addEventListener('click', () => {
+    //     console.log('Logout clicked');
+    //     localStorage.removeItem('access_token');
+    //     localStorage.removeItem('access_token_ttl');
+    //     localStorage.removeItem('userId');
+    //     window.location.href = './login.html';
+    // });
 };
