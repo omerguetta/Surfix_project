@@ -47,21 +47,22 @@ async function loginUser(email, password) {
     }
 }
 
-async function query() {
+async function query(filters={}) {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            throw new Error('No token found');
-        }
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     throw new Error('No token found');
+        // }
 
-        const response = await fetch(BASE_URL, {
-            method: 'GET',
-            headers: {
-                ...headers,
-                'Authorization': `Bearer ${token}`,
-            },
-        });
+        // const response = await fetch(BASE_URL, {
+        //     method: 'GET',
+        //     headers: {
+        //         ...headers,
+        //         'Authorization': `Bearer ${token}`,
+        //     },
+        // });
 
+        const response = await fetch(`${BASE_URL}/${filters}`);
         if (response.status === 401 || response.status === 403) {
             throw new Error('Unauthorized or forbidden');
         }
@@ -80,18 +81,20 @@ async function query() {
 
 async function getById(userId) {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            throw new Error('No token found');
-        }
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     throw new Error('No token found');
+        // }
 
-        const response = await fetch(`${BASE_URL}/${userId}`, {
-            method: 'GET',
-            headers: {
-                ...headers,
-                'Authorization': `Bearer ${token}`,
-            },
-        });
+        // const response = await fetch(`${BASE_URL}/${userId}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         ...headers,
+        //         'Authorization': `Bearer ${token}`,
+        //     },
+        // });
+
+        const response = await fetch(`${BASE_URL}/${userId}`);
 
         if (response.status === 401 || response.status === 403) {
             throw new Error('Unauthorized or forbidden');
