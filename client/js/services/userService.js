@@ -128,6 +128,8 @@ async function update(userId, userData) {
             body: JSON.stringify(userData),
         });
 
+        // const response = await fetch(`${BASE_URL}/${userId}`);
+
         if (response.status === 401 || response.status === 403) {
             throw new Error('Unauthorized or forbidden');
         }
