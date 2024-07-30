@@ -12,8 +12,8 @@ function createUserItem(UserData) {
     const title = document.createElement('p');
     title.textContent = UserData.fullName;
 
-    const surfingLevel = document.createElement('span');
-    surfingLevel.textContent = UserData.surfingLevel;
+    const role = document.createElement('span');
+    role.textContent = UserData.role;
 
     const editU = document.createElement('img');
     editU.className = 'edit_img';
@@ -22,7 +22,7 @@ function createUserItem(UserData) {
 
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
-    userDetails.append(title, surfingLevel);
+    userDetails.append(title, role);
 
     const userCard = document.createElement('div');
     userCard.className = 'user-card';
