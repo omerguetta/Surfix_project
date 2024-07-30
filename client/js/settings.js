@@ -1,20 +1,21 @@
 import userService from "./services/userService.js";
 
 async function displayUser(user) {
-    const userContainer = document.getElementById('user-container');
-    userContainer.innerHTML = `
-        <h1>${user.fullName}</h1>
-        <p><strong>Email:</strong> ${user.email}</p>
-        <p><strong>Age:</strong> ${user.age}</p>
-        <p><strong>Surfing Level:</strong> ${user.surfingLevel}</p>
-        <p><strong>Weight:</strong> ${user.weight} kg</p>
-        <p><strong>Height:</strong> ${user.height} cm</p>
-    `;
+    const fullName = document.querySelector("#accountFullName");
+    fullName.textContent = `${user.fullName}`;
+
+    const email = document.querySelector("#accountEmail");
+    email.textContent = `${user.email}`;
+
+    const userName = document.querySelector("#accountUserName");
+    userName.textContent = `${user.userName}`;
+
 }
 
 async function getUserFromServer(userId) {
     try {
         const userData = await userService.getById(userId);
+        console.log(userData);
         await displayUser(userData);
     } catch (error) {
         console.error(`Error fetching user with ID ${userId}:`, error);
@@ -22,11 +23,9 @@ async function getUserFromServer(userId) {
 }
 
 window.onload = (async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('userId');
+    const userId = localStorage.getItem('userId');
     await getUserFromServer(userId);
 
-    console.log('URL Parameters:', Array.from(urlParams.entries())); 
     console.log('User ID:', userId); 
 
 
@@ -37,7 +36,5 @@ window.onload = (async () => {
         });
     });
 });
-
-
 
 

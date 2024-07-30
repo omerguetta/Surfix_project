@@ -27,12 +27,12 @@ async function registerUser(userData) {
 
 async function loginUser(email, password) {
     try {
-        const response = await fetch(`${BASE_URL}/login`, {
+        const response = await fetch(`http://localhost:3000/api/user/login`, {
             method: 'POST',
             headers,
             body: JSON.stringify({ email, password }),
         });
-        console.log(response);
+        
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.error || 'Login failed');
@@ -41,10 +41,9 @@ async function loginUser(email, password) {
         const data = await response.json();
         
         localStorage.setItem('token', data.token);
-        localStorage.setItem('access_token_ttl', data.ttl);
+        localStorage.setItem('token_ttl', data.ttl);
         localStorage.setItem('userId', data.userId);
 
-        
         return data;
     } catch (error) {
         console.error('Error during login:', error);
@@ -52,21 +51,22 @@ async function loginUser(email, password) {
     }
 }
 
-async function query() {
+async function query(filters={}) {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            throw new Error('No token found');
-        }
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     throw new Error('No token found');
+        // }
 
-        const response = await fetch(BASE_URL, {
-            method: 'GET',
-            headers: {
-                ...headers,
-                'Authorization': `Bearer ${token}`,
-            },
-        });
+        // const response = await fetch(BASE_URL, {
+        //     method: 'GET',
+        //     headers: {
+        //         ...headers,
+        //         'Authorization': `Bearer ${token}`,
+        //     },
+        // });
 
+        const response = await fetch(`${BASE_URL}/${filters}`);
         if (response.status === 401 || response.status === 403) {
             throw new Error('Unauthorized or forbidden');
         }
@@ -85,33 +85,44 @@ async function query() {
 
 async function getById(userId) {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            throw new Error('No token found');
-        }
-
-        const response = await fetch(`${BASE_URL}/${userId}`, {
-            method: 'GET',
-            headers: {
-                ...headers,
-                'Authorization': `Bearer ${token}`,
-            },
-        });
-
-        if (response.status === 401 || response.status === 403) {
-            throw new Error('Unauthorized or forbidden');
-        }
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch user');
-        }
-
-        const data = await response.json();
-        return data;
+        const response = await fetch(`${BASE_URL}/${userId}`);
+        return await response.json();
     } catch (error) {
-        console.error('Error fetching user:', error);
-        throw error;
+        console.error(`ERROR`, error);
     }
+
+
+    // try {
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     throw new Error('No token found');
+        // }
+
+        // const response = await fetch(`${BASE_URL}/${userId}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         ...headers,
+        //         'Authorization': `Bearer ${userId}`,
+        //     },
+        // });
+
+    //     const response = await fetch(`${BASE_URL}/${userId}`);
+
+    //     if (response.status === 401 || response.status === 403) {
+    //         throw new Error('Unauthorized or forbidden');
+    //     }
+
+    //     if (!response.ok) {
+    //         throw new Error('Failed to fetch user');
+    //     }
+
+    //     const data = await response.json();
+    //     return data;
+    // } catch (error) {
+    //     console.error('Error fetching user:', error);
+    //     throw error;
+    // }
+
 }
 
 async function update(userId, userData) {

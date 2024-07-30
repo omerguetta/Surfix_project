@@ -30,10 +30,10 @@ async function query() {
 async function getById(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}'`);
-        if (rows.length === 0) {
-            throw new Error('User not found');
-        }
+        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}';`);
+        // if (rows.length === 0) {
+        //     throw new Error('User not found');
+        // }
         return rows[0];
     } catch (error) {
         console.error('Error getting user by ID:', error);
@@ -116,7 +116,7 @@ async function authenticateUser(email, password) {
   
         const [rows] = await connection.execute(`SELECT * FROM tbl_122_user WHERE email="${email}"`);
         if (rows.length === 0) {
-            throw new Error('User not found');
+            throw new Error('User not found, email, password');
         }
 
         const user = rows[0];
