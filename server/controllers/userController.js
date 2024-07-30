@@ -69,13 +69,7 @@ async function getUsers(req, res) {
 }
 
 async function getUser(req, res) {
-    // try {
-    //     const user = await userService.getById(req.params.userId);
-    //     res.json(user);
-    // } catch (error) {
-    //     res.status(500).json({ error: 'Failed to fetch user' });
-    // }
-
+ 
     try {
         const user = await userService.getById(req.params.userId);
         if (user) {

@@ -177,14 +177,13 @@ async function authenticateUser(email, password) {
                 userRole: user.role
             },
             jwtSecret,
-            { expiresIn: '1h' }
+            { expiresIn: '1d' }
         );
 
         return {
             userId: user.userId,
             userName: user.userName,
             token,
-            ttl: Date.now() + 1000 * 600 * 600 //change it to 1 hour (1000 * 60 * 60)
         };
     } catch (error) {
         console.error('Error authenticating user:', error);

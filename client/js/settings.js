@@ -9,7 +9,6 @@ async function displayUser(user) {
 
     const userName = document.querySelector("#accountUserName");
     userName.textContent = `${user.userName}`;
-
 }
 
 async function getUser(userId) {
@@ -22,9 +21,9 @@ async function getUser(userId) {
     }
 }
 
-window.onload = (async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const userId = localStorage.getItem('userId');
-    await getUserFromServer(userId);
+    await getUser(userId);
 
     document.querySelectorAll('#account-link').forEach(item => {
         item.addEventListener('click', () => {
@@ -33,5 +32,3 @@ window.onload = (async () => {
         });
     });
 });
-
-

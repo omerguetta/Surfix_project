@@ -1,6 +1,6 @@
 import sessionService from "./services/sessionService.js";
 
-async function getSessionFromServer(sessionId) {
+async function getSession(sessionId) {
     try {
         const data = await sessionService.query();
         if (!data || data.length === 0) {
@@ -108,7 +108,7 @@ window.onload = (async () => {
         console.error("No sessionId found in the URL parameters");
         return;
     }
-    await getSessionFromServer(sessionId);
+    await getSession(sessionId);
 
     // document.querySelector(".goBack").addEventListener('click', () => {
     //     window.location.href = document.referrer;
