@@ -6,7 +6,7 @@ function createUserItem(UserData) {
 
     const account = document.createElement('img');
     account.className = 'account-img';
-    account.src = './images/acount-icon.png';
+    account.src = '../images/acount-icon.png';
     account.alt = 'account';
 
     const title = document.createElement('p');
@@ -15,10 +15,15 @@ function createUserItem(UserData) {
     const role = document.createElement('span');
     role.textContent = UserData.role;
 
-    const editU = document.createElement('img');
-    editU.className = 'edit_img';
-    editU.src = './images/edit-icon.png';
-    editU.alt = 'edit';
+    const deleteU = document.createElement('img');
+    deleteU.className = 'delete_img';
+    deleteU.src = '../images/remove-icon.png';
+    deleteU.alt = 'delete';
+
+    const addU = document.createElement('img');
+    addU.className = 'add_img';
+    addU.src = '../images/person-icon.png';
+    addU.alt = 'add';
 
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
@@ -30,7 +35,8 @@ function createUserItem(UserData) {
 
     const userActions = document.createElement('div');
     userActions.className = 'user-actions';
-    userActions.append(editU);
+    userActions.append(deleteU);
+    userActions.append(addU);
 
     listItem.append(userCard,userActions);
 
@@ -41,8 +47,8 @@ function createUserItem(UserData) {
     return listItem;
 }
 
-function populateUserList(UsersData) {
-    const user_container = document.querySelector('.users-container');
+function populateUsersList(UsersData) {
+    const user_container = document.querySelector('.users-container1');
     user_container.innerHTML = '';
 
     const userList = document.createElement('ul');
@@ -54,44 +60,32 @@ function populateUserList(UsersData) {
     user_container.appendChild(userList);
 }
 
-async function getUserList(filters = '', isFirstLoad = false) {
+async function getUsersListFromServer(filters = '', isFirstLoad = false) {
     try {
         const UsersData = await userService.query(filters);
         console.log(UsersData);
-        // if (isFirstLoad) {
-        //     setMinMaxDistance(beachesData);
-        // }
-        populateUserList(UsersData);
+        populateUsersList(UsersData);
     } catch (error) {
         console.error('Error fetching users:', error);
     }
 }
 
 async function updateFilters() {
-    const searchInput = document.getElementById('searchInput');
     const newParams = new URLSearchParams();
-
-    if (searchInput.value.trim()) {
-        newParams.set('fullName', searchInput.value.trim());
-    }
-    if(document.getElementById('sortByName').checked){
-        newParams.set('sortByName', 'fullName');
-    }
-    history.pushState({}, '', `?${newParams.toString()}`);
-    await getUserList(`?${newParams.toString()}`);
+    await getUsersListFromServer(`?${newParams.toString()}`);
 }
 
 
 
 window.onload = async () => {
-    document.getElementById('sortByName').addEventListener('change', updateFilters);
-    document.getElementById('searchInput').addEventListener('input', updateFilters);
+    // document.getElementById('sortByName').addEventListener('change', updateFilters);
+    // document.getElementById('searchInput').addEventListener('input', updateFilters);
     // document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-    //     window.location.href = './pages/beach_form.html';
+    //     window.location.href = '../pages/beach_form.html';
     // });
     // document.getElementById('maxDistance').addEventListener('change', async (event) => {
     //     document.getElementById('rangeValue').textContent = event.target.value;
     //     await updateFilters();
     // });
-    await getUserList(window.location.search, true);
+    await getUsersListFromServer(window.location.search, true);
 };

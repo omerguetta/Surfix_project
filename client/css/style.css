@@ -51,7 +51,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     padding: 0;
 }
 
-.profile-section {
+.file-section {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -320,10 +320,12 @@ main {
 }
 
 .card {
-    align-items: center;
+    align-items: left;
+    text-align: left;
     border-color: white;
     cursor: pointer;
     --bs-card-spacer-y: 0.2rem;
+    margin-top: 5px;
 }
 
 .card h5 {
@@ -1110,4 +1112,49 @@ footer .footer-item a {
 
 .beginner {
     visibility: hidden;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.75rem 2rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.profile-img {
+width: 150px;
+height: 150px;
+margin-right: 1rem;
+border-radius: 50%;
+margin-bottom: 10x;
+}
+
+.form-check-input[type="checkbox"] {
+    width: 55px;
+    height: 30px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.form-check-input[type="checkbox"]::before {
+    width: 23px;
+    height: 23px;
+    top: 1px;
+    left: 1px;
+}
+
+.users-container1 {
+    max-width: 50%;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
 }

@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <script src="./js/auth.js"></script>
-    <script type="module" src="./js/settings.js" defer></script>
+    <title>System Setting Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-    <script type="module" src="../js/admin_page.js"></script>
+    <!-- <script type="module" src="../js/forYouPage.js"></script> -->
 </head>
 
 <body>
@@ -25,7 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
+                <a id="logo" class="navbar-brand mx-auto" href="../index.html"></a>
 
                 <div class="profile-section d-lg-none d-flex">
                     <div class="profile-admin"></div>
@@ -34,7 +32,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link selected" href="./admin_page.html">Home</a>
+                            <a class="nav-link" href="./admin_page.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./user_management_page.html">User Management</a>
@@ -43,7 +41,7 @@
                             <a class="nav-link" href="./for_you.html">Permissions management</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./system_setting.html">System settings</a>
+                            <a class="nav-link selected" href="./system_setting.html">System settings</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Maintenance & Updates</a>
@@ -64,23 +62,19 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a href="./admin_page.html"><img src="./images/home-icon.png" alt="home-icon">Home</a>
+                                <a href="./admin_page.html"><img src="../images/home-icon.png" alt="home-icon">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./user_management_page.html"><img src="./images/acount-icon.png"
-                                        alt="user-icon">User Management</a>
+                                <a href="./user_management_page.html"><img src="../images/acount-icon.png" alt="user-icon">User Management</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="./images/eye-icon.png" alt="location-icon">Permissions
-                                    management</a>
+                                <a href="#"><img src="../images/eye-icon.png" alt="location-icon">Permissions management</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./system_setting.html"><img src="./images/settings-icon.png"
-                                        alt="setting-icon">System settings</a>
+                                <a href="./system_setting.html"><img src="../images/settings-icon.png" alt="setting-icon">System settings</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="./images/notifications-icon.png"
-                                        alt="maintenance-icon">Maintenance & Updates</a>
+                                <a href="#"><img src="../images/notifications-icon.png" alt="maintenance-icon">Maintenance & Updates</a>
                             </li>
                         </ul>
                     </div>
@@ -90,45 +84,59 @@
     </header>
 
     <main>
-        <section class="users-container1"></section>
-        <div class="row">
-            <div class="col-md-9">
-                <div class="user-details">
-                    <div class="card-body">
-                        <h5 class="card-title">Admin User</h5>
-                        <div class="profile-info">
-                            <img src="../images/acount-icon.png" alt="User Image" class="profile-image">
-                            <div class="profile-details">
-                                <small id="fullName">dani</small>
-                            </div>
-                        </div>
-                        <div class="personal-information">
-                            <h6 class="text">Personal Information</h6>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span>User ID: </span>
-                                    <span id="userId">1</span>
-                                </li>
-                                <li class="list-group-item">
-                                    <span>Email: </span>
-                                    <span id="email">omer@gmail</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- <div id="wrapper">
+            <section class="navigation-section">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
+                        <li class="breadcrumb-item">
+                            <a class="link-body-emphasis" href="../index.html">
+                                <img class="bread-home" src="../images/home-icon.png" alt="home">
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            For You
+                        </li>
+                        <li>
+                            <img class="add-new-beach" src="../images/new-icon.png" alt="add-new-icon">
+                        </li>
+                    </ol>
+                </nav>
+            </section>
+
+            <section class="filters_container mb-3">
+                <input type="text" class="search-input form-control" id="searchInput" placeholder="Search">
+
+                <div class="form-group">
+                    <label for="maxDistance">Max Distance (km): <span id="rangeValue"></span></label>
+                    <input type="range" class="form-range" id="maxDistance" min="1" max="10" step="0.1" value="10">
                 </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sortByName">
+                    <label class="form-check-label" for="sortByName">
+                        Sort by name
+                    </label>
+                </div>
+
+            </section>
+
+            <div class="titles-container">
+                <p class="list-title">Nearby</p>
+                <button class="title-btn">View All</button>
             </div>
-        </div>
-    </div>
+
+            <section class="beaches-container"></section>
+
+        </div> -->
     </main>
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">
             <div class="footer-item">
-                <a class="settings-icon" href="./pages/settings.html"></a>
+                <a class="settings-icon" href="../pages/settings.html"></a>
                 <span>Settings</span>
             </div>
             <div class="footer-item">
-                <a class="home-icon" href="./index.html"></a>
+                <a class="home-icon" href="../index.html"></a>
                 <span>Home</span>
             </div>
             <div class="footer-item">
