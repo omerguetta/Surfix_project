@@ -320,8 +320,7 @@ main {
 }
 
 .card {
-    align-items: left;
-    text-align: left;
+    align-items: center;
     border-color: white;
     cursor: pointer;
     --bs-card-spacer-y: 0.2rem;
@@ -332,6 +331,21 @@ main {
     color: #000;
     font-size: 14px;
     font-weight: 700;
+}
+
+.card1 img {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.card1 {
+    align-items: left;
+    text-align: left;
+    border-color: white;
+    cursor: pointer;
+    --bs-card-spacer-y: 0.2rem;
+    margin-top: 5px;
 }
 
 .session-data-section {
