@@ -13,6 +13,7 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <script type="module" src="./js/forYouPage.js"></script>
+    <script type="module" src="./js/settings.js" defer></script>
 </head>
 
 <body>
@@ -67,7 +68,7 @@
                 <div class="dropdown profile-section d-none d-lg-flex">
                     <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"></div>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="#">Account</a></li>
+                        <li id="account-link"><a class="dropdown-item" href="#">Account</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                     <span class="profile-rating">★ 417</span>
@@ -152,6 +153,22 @@
             </div>
 
             <section class="beaches-container"></section>
+
+            <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="accountModalLabel">Account Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Full Name:</strong> <span id="accountFullName"></span></p>
+                            <p><strong>Email:</strong> <span id="accountEmail"></span></p>
+                            <p><strong>Username:</strong> <span id="accountUserName"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </main>

@@ -14,6 +14,7 @@
             crossorigin="anonymous"></script>
     <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script type="module" src="./js/settings.js" defer></script>
     <script type="module" src="./js/session_page.js"></script>
 </head>
 
@@ -31,7 +32,7 @@
             <div class="dropdown profile-section d-lg-none d-flex">
                 <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false"></div>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
-                    <li><a class="dropdown-item" href="#">Account</a></li>
+                    <li id="account-link"><a class="dropdown-item" href="#">Account</a></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
                 <span class="profile-rating">★ 417</span>
@@ -69,7 +70,7 @@
             <div class="dropdown profile-section d-none d-lg-flex">
                 <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"></div>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="#">Account</a></li>
+                    <li id="account-link"><a class="dropdown-item" href="#">Account</a></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
                 <span class="profile-rating">★ 417</span>
@@ -178,6 +179,21 @@
                     <img src="./images/helth-icon.svg" class="card-img-top" alt="helth-icon">
                     <div class="card-body">
                         <h5 class="card-title">HEALTH</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="accountModalLabel">Account Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Full Name:</strong> <span id="accountFullName"></span></p>
+                        <p><strong>Email:</strong> <span id="accountEmail"></span></p>
+                        <p><strong>Username:</strong> <span id="accountUserName"></span></p>
                     </div>
                 </div>
             </div>

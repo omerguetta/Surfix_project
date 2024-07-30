@@ -126,7 +126,9 @@ async function getById(userId) {
 }
 
 async function update(userId, userData) {
+    console.log('hi1');
     try {
+        console.log('hi2');
         const token = localStorage.getItem('token');
         if (!token) {
             throw new Error('No token found');
