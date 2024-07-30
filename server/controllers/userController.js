@@ -11,7 +11,8 @@ module.exports = {
 
 async function registerUser(req, res) {
     try {
-        const { userName, firstName, lastName, email, password, age, surfingLevel, weight, height, role } = req.body;
+        const { userName, fullName, email, password, age, surfingLevel, weight, height, role } = req.body;
+
         const userExists = await userService.isUserExists(userName, email);
         if(userExists) {
             return res.status(400).json({ message: 'User already exists' });
@@ -23,7 +24,16 @@ async function registerUser(req, res) {
             userRole = role;
         }
 
-        const newUser = { userName, firstName, lastName, email, password: password, age, surfingLevel, weight, height, role: userRole };
+        const newUser = { 
+            userName, 
+            fullName, 
+            email, 
+            password, 
+            age: parseInt(age) || 0, 
+            surfingLevel: surfingLevel || 'null', 
+            weight: weight || 0, 
+            height: height || 0, 
+            role: userRole };
 
         await userService.add(newUser);
         const authenticatedUser = await userService.authenticateUser(email, password);
@@ -36,6 +46,7 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
+        console.log(email, password);
         const result = await userService.authenticateUser(email, password);
         res.json(result);
     } catch (error) {
@@ -58,11 +69,16 @@ async function getUsers(req, res) {
 }
 
 async function getUser(req, res) {
+ 
     try {
         const user = await userService.getById(req.params.userId);
-        res.json(user);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({message: 'user not found'});
+        }
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch user' });
+        res.status(500).json({message: 'Failed to retrieve user', error: error.message});
     }
 }
 

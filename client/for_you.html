@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>For You</title>
+    <script src="./js/auth.js"></script>
+    <script type="module" src="./js/settings.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="../js/weather.js" defer></script>
+    <script type="module" src="./js/forYouPage.js"></script>
 </head>
 
 <body>
@@ -23,23 +25,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand mx-auto" href="../index.html"></a>
+                <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
 
-                <div class="profile-section d-lg-none d-flex">
-                    <div class="profile-pic"></div>
+                <div class="dropdown profile-section d-lg-none d-flex">
+                    <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown"
+                        aria-expanded="false"></div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
+                        <li><a class="dropdown-item" href="#">Account</a></li>
+                        <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
+                    </ul>
                     <span class="profile-rating">★ 417</span>
                 </div>
 
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">HOME</a>
+                            <a class="nav-link" href="./index.html">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./session_page.html">SESSIONS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./for_you.html">FOR YOU</a>
+                            <a class="nav-link selected" href="./for_you.html">FOR YOU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">LOCATIONS</a>
@@ -50,8 +57,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">VIDEOS</a>
                         </li>
-                        <li class="nav-item selected">
-                            <a class="nav-link" href="#">WEATHER</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./weather.html">WEATHER</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./settings.html">SETTINGS</a>
@@ -59,8 +66,13 @@
                     </ul>
                 </div>
 
-                <div class="profile-section d-none d-lg-flex">
-                    <div class="profile-pic"></div>
+                <div class="dropdown profile-section d-none d-lg-flex">
+                    <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false"></div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#">Account</a></li>
+                        <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
+                    </ul>
                     <span class="profile-rating">★ 417</span>
                 </div>
 
@@ -73,25 +85,28 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a href="./session_page.html"><img src="../images/surfer-icon.png" alt="surfer-icon">SESSIONS</a>
+                                <a href="./session_page.html"><img src="./images/surfer-icon.png"
+                                        alt="surfer-icon">SESSIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./for_you.html"><img src="../images/foryou-icon.png" alt="foryou-icon">FOR YOU</a>
+                                <a href="./for_you.html"><img src="./images/foryou-icon.png" alt="foryou-icon">FOR
+                                    YOU</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/location-icon.png" alt="location-icon">LOCATIONS</a>
+                                <a href="#"><img src="./images/location-icon.png" alt="location-icon">LOCATIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/graph-icon.png" alt="graph-icon">GRAPH</a>
+                                <a href="#"><img src="./images/graph-icon.png" alt="graph-icon">GRAPH</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/video-icon.png" alt="video-icon">VIDEOS</a>
+                                <a href="#"><img src="./images/video-icon.png" alt="video-icon">VIDEOS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><img src="../images/cloud-icon.png" alt="cloud-icon">WEATHER</a>
+                                <a href="./weather.html"><img src="./images/cloud-icon.png" alt="cloud-icon">WEATHER</a>
                             </li>
                             <li class="nav-item setting">
-                                <a href="./settings.html"><img src="../images/settings-icon.png" alt="setting-icon">SETTINGS</a>
+                                <a href="./settings.html"><img src="./images/settings-icon.png"
+                                        alt="setting-icon">SETTINGS</a>
                             </li>
                         </ul>
                     </div>
@@ -106,30 +121,47 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
                         <li class="breadcrumb-item">
-                            <a class="link-body-emphasis" href="../index.html">
-                                <img class="bread-home" src="../images/home-icon.png" alt="home">
+                            <a class="link-body-emphasis" href="./index.html">
+                                <img class="bread-home" src="./images/home-icon.png" alt="home">
                             </a>
                         </li>
                         <li class="breadcrumb-item active">
-                            WEATHER
+                            For You
+                        </li>
+                        <li>
+                            <img class="add-new-beach" src="./images/new-icon.png" alt="add-new-icon">
                         </li>
                     </ol>
                 </nav>
             </section>
-            <div class="container mt-5">
-                <h2>Current Weather</h2>
-                <div class="mb-3">
-                    <label for="city-input" class="form-label">Enter a city in Israel:</label>
-                    <input type="text" id="city-input" list="city-list" class="form-control"
-                        placeholder="e.g., Tel Aviv" oninput="validateCity()">
-                    <button class="btn btn-primary mt-2" id="get-weather-btn" onclick="checkWeather()" disabled>Get
-                        Weather</button>
-                </div>
-                <div id="weather-info"></div>
-            </div>
-        </div>
-    </main>
 
+            <section class="filters_container mb-3">
+                <input type="text" class="search-input form-control" id="searchInput" placeholder="Search">
+
+                <div class="form-group">
+                    <label for="maxDistance">Max Distance (km): <span id="rangeValue"></span></label>
+                    <input type="range" class="form-range" id="maxDistance" min="1" max="10" step="0.1" value="10">
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sortByName">
+                    <label class="form-check-label" for="sortByName">
+                        Sort by name
+                    </label>
+                </div>
+
+            </section>
+
+            <div class="titles-container">
+                <p class="list-title">Nearby</p>
+                <button class="title-btn">View All</button>
+            </div>
+
+            <section class="beaches-container"></section>
+        
+        </div>
+    </div>
+    </main>
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">
             <div class="footer-item">
@@ -137,7 +169,7 @@
                 <span>Settings</span>
             </div>
             <div class="footer-item">
-                <a class="home-icon" href="../index.html"></a>
+                <a class="home-icon" href="./index.html"></a>
                 <span>Home</span>
             </div>
             <div class="footer-item">
@@ -146,6 +178,7 @@
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>

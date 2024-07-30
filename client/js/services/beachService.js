@@ -1,68 +1,129 @@
+const BASE_URL = 'http://localhost:3000/api/beach';
+
+const headers = {
+    'Content-Type': 'application/json',
+};
+
 async function query(filters = {}) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/beach/${filters}`);
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching beaches:', error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}/${filters}`, {
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch beaches');
+    }
+
+    const data = await response.json();
+    return data;
 }
 
 async function getById(beachId) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`);
-        return await response.json();
-    } catch (error) {
-        console.error(`Error fetching beach with ID ${beachId}:`, error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}/${beachId}`, {
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch beach');
+    }
+
+    const data = await response.json();
+    return data;
 }
 
 async function add(body) {
-    try {
-        const response = await fetch('http://localhost:3000/api/beach', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        });
-        if (response.ok) {
-            window.location.href = document.referrer;
-        } else {
-            console.error(`Failed to create beach:`, response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error(`Error creating beach:`, error);
+
+    const response = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(body)
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
     }
+
+    if (!response.ok) {
+        throw new Error('Failed to update beach');
+    }
+
+    window.location.href = document.referrer;
 }
 
 async function update(body, beachId) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        });
-        if (response.ok) {
-            window.location.href = document.referrer;
-        } else {
-            console.error(`Failed to update beach:`, response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error(`Error updating beach:`, error);
+
+    const response = await fetch(`${BASE_URL}/${beachId}`, {
+        method: 'PUT',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(body)
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
     }
+
+    if (!response.ok) {
+        throw new Error('Failed to update beach');
+    }
+
+    window.location.href = document.referrer;
 }
 
 async function remove(beachId) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/beach/${beachId}`, {
-            method: 'DELETE'
-        });
-        if (response.ok) {
-            window.location.href = 'for_you.html';
-        } else {
-            console.error('Failed to delete beach:', response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error('Error deleting beach:', error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}/${beachId}`, {
+        method: 'DELETE',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to delete beach');
+    }
+
+    window.location.href = 'for_you.html';
 }
 
 const beachService = {

@@ -43,7 +43,7 @@ async function displayBeach(beach={}) {
     }
 }
 
-async function getBeachFromServer(beachId) {
+async function getBeach(beachId) {
     const beachData = await beachService.getById(beachId);
     await displayBeach(beachData);
 }
@@ -54,7 +54,7 @@ window.onload = (async () => {
     if (beachId) {
         document.querySelector('.delete-btn').style.visibility = 'visible';
         document.querySelector('.submit-btn').textContent = 'Update';
-        await getBeachFromServer(beachId);
+        await getBeach(beachId);
     } else {
         document.querySelector('.delete-btn').style.visibility = 'hidden';
         document.querySelector('.submit-btn').textContent = 'Create';

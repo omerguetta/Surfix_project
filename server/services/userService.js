@@ -67,12 +67,12 @@ async function getById(userId) {
 async function add(body) {
     try {
         const connection = await dbConnection.connect();
-        const { userName, firstName, lastName, email, password, age, surfingLevel, weight, height, role } = body;
+        const { userName, fullName, email, password, age, surfingLevel, weight, height, role } = body;
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const [result] = await connection.execute(
-            `INSERT INTO tbl_122_user (user_name, f_name, l_name, email, password, age, surfing_level, weight, height,role) VALUES ("${userName}","${firstName}","${lastName}","${email}","${hashedPassword}",${age},"${surfingLevel}",${weight},${height},"${role}")`);
-        return { userName, firstName, lastName, email, age, surfingLevel, weight, height, role };
+            `INSERT INTO tbl_122_user (userName, fullName, email, password, age, surfingLevel, weight, height,role) VALUES ("${userName}","${fullName}","${email}","${hashedPassword}",${age},"${surfingLevel}",${weight},${height},"${role}")`);
+        return { userName, fullName, email, age, surfingLevel, weight, height, role };
     } catch (error) {
         console.error('Error adding user:', error);
         throw error;
@@ -192,7 +192,7 @@ async function update(body, userId) {
 async function remove(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [result] = await connection.execute(`DELETE FROM tbl_122_user WHERE user_id = '${userId}'`);
+        const [result] = await connection.execute(`DELETE FROM tbl_122_user WHERE userId = '${userId}'`);
         return { message: 'Session deleted successfully' };
     } catch (error) {
         console.error('Error deleting user:', error);
@@ -203,36 +203,33 @@ async function remove(userId) {
 async function authenticateUser(email, password) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(
-            `SELECT * FROM tbl_122_user WHERE email = '${email}'`
-        );
 
+        const [rows] = await connection.execute(`SELECT * FROM tbl_122_user WHERE email="${email}"`);
         if (rows.length === 0) {
-            throw new Error('User not found');
+            throw new Error('User not found, email, password');
         }
 
         const user = rows[0];
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            console.log(password === user.password);
             throw new Error('Invalid password');
         }
 
         const token = jwt.sign(
             {
-                userId: user.user_id,
-                userName: user.user_name,
+                userId: user.userId,
+                userName: user.userName,
                 userRole: user.role
             },
             jwtSecret,
-            { expiresIn: '1h' }
+            { expiresIn: '1d' }
         );
 
         return {
-            userId: user.user_id,
-            userName: user.user_name,
-            token
+            userId: user.userId,
+            userName: user.userName,
+            token,
         };
     } catch (error) {
         console.error('Error authenticating user:', error);
@@ -244,9 +241,7 @@ async function isUserExists(userName, email) {
     try {
         const connection = await dbConnection.connect();
         const [rows] = await connection.execute(
-            `SELECT COUNT(*) AS count FROM tbl_122_user WHERE user_name='${userName}' OR email='${email}'`,
-            [userName, email]
-        );
+            `SELECT COUNT(*) AS count FROM tbl_122_user WHERE userName='${userName}' OR email='${email}'`);
         return rows[0].count > 0;
     } catch (error) {
         console.error('Error checking if user exists:', error);

@@ -6,7 +6,7 @@ function createUserItem(UserData) {
 
     const account = document.createElement('img');
     account.className = 'account-img';
-    account.src = '../images/acount-icon.png';
+    account.src = './images/acount-icon.png';
     account.alt = 'account';
 
     const title = document.createElement('p');
@@ -17,7 +17,7 @@ function createUserItem(UserData) {
 
     const editU = document.createElement('img');
     editU.className = 'edit_img';
-    editU.src = '../images/edit-icon.png';
+    editU.src = './images/edit-icon.png';
     editU.alt = 'edit';
 
     const userDetails = document.createElement('div');
@@ -41,7 +41,7 @@ function createUserItem(UserData) {
     return listItem;
 }
 
-function populateUsersList(UsersData) {
+function populateUserList(UsersData) {
     const user_container = document.querySelector('.users-container');
     user_container.innerHTML = '';
 
@@ -54,14 +54,14 @@ function populateUsersList(UsersData) {
     user_container.appendChild(userList);
 }
 
-async function getUsersListFromServer(filters = '', isFirstLoad = false) {
+async function getUserList(filters = '', isFirstLoad = false) {
     try {
         const UsersData = await userService.query(filters);
         console.log(UsersData);
         // if (isFirstLoad) {
         //     setMinMaxDistance(beachesData);
         // }
-        populateUsersList(UsersData);
+        populateUserList(UsersData);
     } catch (error) {
         console.error('Error fetching users:', error);
     }
@@ -78,7 +78,7 @@ async function updateFilters() {
         newParams.set('sortByName', 'fullName');
     }
     history.pushState({}, '', `?${newParams.toString()}`);
-    await getUsersListFromServer(`?${newParams.toString()}`);
+    await getUserList(`?${newParams.toString()}`);
 }
 
 
@@ -87,11 +87,11 @@ window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
     // document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-    //     window.location.href = '../pages/beach_form.html';
+    //     window.location.href = './pages/beach_form.html';
     // });
     // document.getElementById('maxDistance').addEventListener('change', async (event) => {
     //     document.getElementById('rangeValue').textContent = event.target.value;
     //     await updateFilters();
     // });
-    await getUsersListFromServer(window.location.search, true);
+    await getUserList(window.location.search, true);
 };

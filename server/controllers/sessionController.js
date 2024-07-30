@@ -27,7 +27,6 @@ async function getSessions(req, res) {
 
 async function getSession(req, res) {
     try {
-        console.log('getSession', req.params);
         const session = await sessionService.getById(req.params.sessionId);
         if (session) {
             res.json(session);

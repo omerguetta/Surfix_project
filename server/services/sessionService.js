@@ -11,34 +11,7 @@ module.exports = {
 async function query(filters = {}) {
     try {
         const connection = await dbConnection.connect();
-
-        // let whereClause = '';
-        // let sortClause = '';
-
-        const values = [];
-
-        // if (filters) {
-
-        //     if (filters.date) {
-        //         if (whereClause) whereClause += ' AND ';
-        //         whereClause += `date = ?`;
-        //         values.push(filters.date);
-        //     }
-
-        //     if (filters.sortByDate) {
-        //         sortClause += ' ORDER BY date ASC';
-        //     }
-        // }
-
-        let sql = `SELECT * FROM tbl_122_session`;
-        // if (whereClause) {
-        //     sql += ` WHERE (${whereClause})`;
-        // }
-        // if (sortClause) {
-        //     sql += sortClause;
-        // }
-
-        const [rows] = await connection.execute(sql, values);
+        const [rows] = await connection.execute(`SELECT * FROM tbl_122_session`);
         return rows;
     } catch (error) {
         console.error('Error executing query:', error);

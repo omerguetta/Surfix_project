@@ -18,8 +18,6 @@ async function checkWeather() {
         }
         const data = await response.json();
 
-        console.log(data);
-
         const weatherInfo = document.getElementById("weather-info");
         weatherInfo.innerHTML = `
             <p>Location: ${data.name}, ${data.sys.country}</p>

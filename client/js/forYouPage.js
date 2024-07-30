@@ -6,7 +6,7 @@ function createBeachItem(beachData) {
 
     const wave = document.createElement('img');
     wave.className = 'wave-img';
-    wave.src = '../images/wave.svg';
+    wave.src = './images/wave.svg';
     wave.alt = 'wave';
 
     const title = document.createElement('p');
@@ -17,12 +17,12 @@ function createBeachItem(beachData) {
 
     const favorite = document.createElement('img');
     favorite.className = 'favorite_img';
-    favorite.src = '../images/favorite.svg';
+    favorite.src = './images/favorite.svg';
     favorite.alt = 'favorite';
 
     const arrow = document.createElement('img');
     arrow.className = 'arrow_img';
-    arrow.src = '../images/arrow.svg';
+    arrow.src = './images/arrow.svg';
     arrow.alt = 'arrow';
 
     const beachDetails = document.createElement('div');
@@ -46,7 +46,7 @@ function createBeachItem(beachData) {
     return listItem;
 }
 
-function populateBeachesList(beachesData) {
+function populateBeachList(beachesData) {
     const beach_container = document.querySelector('.beaches-container');
     beach_container.innerHTML = '';
 
@@ -59,13 +59,13 @@ function populateBeachesList(beachesData) {
     beach_container.appendChild(beachList);
 }
 
-async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
+async function getBeachList(filters = '', isFirstLoad = false) {
     try {
         const beachesData = await beachService.query(filters);
         if (isFirstLoad) {
             setMinMaxDistance(beachesData);
         }
-        populateBeachesList(beachesData);
+        populateBeachList(beachesData);
     } catch (error) {
         console.error('Error fetching beaches:', error);
     }
@@ -88,7 +88,7 @@ async function updateFilters() {
     }
 
     history.pushState({}, '', `?${newParams.toString()}`);
-    await getBeachesListFromServer(`?${newParams.toString()}`);
+    await getBeachList(`?${newParams.toString()}`);
 }
 
 function setMinMaxDistance(beachesData) {
@@ -108,11 +108,11 @@ window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
     document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-        window.location.href = '../pages/beach_form.html';
+        window.location.href = './beach_form.html';
     });
     document.getElementById('maxDistance').addEventListener('change', async (event) => {
         document.getElementById('rangeValue').textContent = event.target.value;
         await updateFilters();
     });
-    await getBeachesListFromServer(window.location.search, true);
+    await getBeachList();
 };

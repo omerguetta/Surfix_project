@@ -45,7 +45,7 @@ async function displayUser(user) {
     });
 }
 
-async function getUserFromServer(UserId) {
+async function getUser(UserId) {
     try {
         const userData = await userService.getById(UserId);
         console.log(userData);
@@ -58,11 +58,11 @@ async function getUserFromServer(UserId) {
 window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
-    await getUserFromServer(userId);
+    await getUser(userId);
 
-    document.querySelector(".goBack").addEventListener('click', () => {
-        window.location.href = document.referrer;
-    });
+    // document.querySelector(".goBack").addEventListener('click', () => {
+    //     window.location.href = document.referrer;
+    // });
 
     // document.querySelector(".edit-btn").addEventListener('click', () => {
     //     window.location.href = `./update_user.html?userId=${UserData.userId}`;
