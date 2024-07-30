@@ -26,9 +26,8 @@ window.onload = (async () => {
     const userId = urlParams.get('userId');
     await getUserFromServer(userId);
 
-    // Debugging output
-    console.log('URL Parameters:', Array.from(urlParams.entries())); // Log all URL parameters
-    console.log('User ID:', userId); // Log the userId to see if it's being retrieved correctly
+    console.log('URL Parameters:', Array.from(urlParams.entries())); 
+    console.log('User ID:', userId); 
 
 
     document.querySelectorAll('#account-link').forEach(item => {
@@ -39,21 +38,6 @@ window.onload = (async () => {
     });
 });
 
-/*window.onload = () => {
-    console.log('Authenticating user');
-    const authToken = localStorage.getItem('access_token');
-    const authTokenTtl = localStorage.getItem('access_token_ttl');
-    
-    if (!authToken || !authTokenTtl || authTokenTtl < Date.now()) {
-        window.location.href = 'login.html';
-    }
-    
-    document.getElementById('logout').addEventListener('click', function() {
-        console.log('Logout clicked');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('access_token_ttl');
-        window.location.href = './login.html';
-    });
-};*/
+
 
 

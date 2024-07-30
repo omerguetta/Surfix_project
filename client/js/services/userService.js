@@ -40,8 +40,9 @@ async function loginUser(email, password) {
 
         const data = await response.json();
         
-        localStorage.setItem('access_token', data.token);
+        localStorage.setItem('token', data.token);
         localStorage.setItem('access_token_ttl', data.ttl);
+        localStorage.setItem('userId', data.userId);
 
         
         return data;
