@@ -97,7 +97,7 @@ async function update(body, userId) {
         let updateParts = [];
 
         if (userName) {
-            updateParts.push(`userName = %{userName}`);
+            updateParts.push(`userName = ${userName}`);
         }
         if (fullName) {
             updateParts.push(`fullName = ${fullName}`);
