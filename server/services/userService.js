@@ -82,6 +82,7 @@ async function add(body) {
 async function update(body, userId) {
     try {
         const connection = await dbConnection.connect();
+
         const {
             userName,
             fullName,
@@ -93,28 +94,48 @@ async function update(body, userId) {
             height
         } = body;
 
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        let updateParts = [];
 
-        const [result] = await connection.execute(
-            `UPDATE tbl_122_user SET userName = ${userName},
-            fullName = ${fullName},
-            email = ${email},
-            password = ${hashedPassword},
-            age = ${age},
-            surfingLevel = ${surfingLevel},
-            weight = ${weight},
-            height = ${height} 
-            WHERE userId = ${userId}`
-        );
+        if (userName) {
+            updateParts.push(`userName = %{userName}`);
+        }
+        if (fullName) {
+            updateParts.push(`fullName = ${fullName}`);
+        }
+        if (email) {
+            updateParts.push(`email = ${email}`);
+        }
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            updateParts.push(`password = ${hashedPassword}`);
+        }
+        if (age) {
+            updateParts.push(`age = ${age}`);
+        }
+        if (surfingLevel) {
+            updateParts.push(`surfingLevel = ${surfingLevel}`);
+        }
+        if (weight) {
+            updateParts.push(`weight = ${weight}`);
+        }
+        if (height) {
+            updateParts.push(`height = ${height}`);
+        }
+        if (updateParts.length === 0) {
+            throw new Error('No fields to update');
+        }
+
+        const [result] = await connection.execute(`UPDATE tbl_122_user SET ${updateParts.join(', ')} WHERE userId = ${userId}`);
+
         return {
             userId,
-            userName,
-            fullName,
-            email,
-            age,
-            surfingLevel,
-            weight,
-            height
+            ...(userName && { userName }),
+            ...(fullName && { fullName }),
+            ...(email && { email }),
+            ...(age && { age }),
+            ...(surfingLevel && { surfingLevel }),
+            ...(weight && { weight }),
+            ...(height && { height })
         };
     } catch (error) {
         console.error('Error updating user:', error);
@@ -136,7 +157,7 @@ async function remove(userId) {
 async function authenticateUser(email, password) {
     try {
         const connection = await dbConnection.connect();
-  
+
         const [rows] = await connection.execute(`SELECT * FROM tbl_122_user WHERE email="${email}"`);
         if (rows.length === 0) {
             throw new Error('User not found');
