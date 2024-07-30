@@ -27,7 +27,7 @@ async function registerUser(userData) {
 
 async function loginUser(email, password) {
     try {
-        const response = await fetch(`${BASE_URL}/login`, {
+        const response = await fetch(`http://localhost:3000/api/user/login`, {
             method: 'POST',
             headers,
             body: JSON.stringify({ email, password }),
@@ -111,9 +111,41 @@ async function getById(userId) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Error fetching user:', error);
-        throw error;
+        console.error(`ERROR`, error);
     }
+
+
+    // try {
+        // const token = localStorage.getItem('token');
+        // if (!token) {
+        //     throw new Error('No token found');
+        // }
+
+        // const response = await fetch(`${BASE_URL}/${userId}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         ...headers,
+        //         'Authorization': `Bearer ${userId}`,
+        //     },
+        // });
+
+    //     const response = await fetch(`${BASE_URL}/${userId}`);
+
+    //     if (response.status === 401 || response.status === 403) {
+    //         throw new Error('Unauthorized or forbidden');
+    //     }
+
+    //     if (!response.ok) {
+    //         throw new Error('Failed to fetch user');
+    //     }
+
+    //     const data = await response.json();
+    //     return data;
+    // } catch (error) {
+    //     console.error('Error fetching user:', error);
+    //     throw error;
+    // }
+
 }
 
 async function update(userId, userData) {

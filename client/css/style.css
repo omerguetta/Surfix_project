@@ -35,8 +35,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
 
 .nav-link {
     padding: 0;
-    margin-top: 30px;
-    margin-right: 6px;
+    margin: 30px 6px 0 0;
 }
 
 .top-nav {
@@ -83,8 +82,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     font-size: 1rem;
     color: black;
     cursor: pointer;
-    margin-left: 15px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 15px;
 }
 
 .offcanvas-body .nav-item {
@@ -93,8 +91,7 @@ span, h5, .beach-header, p, .airTemperature, h6, .waterTemperature, .waveHeight 
     font-size: 1rem;
     color: black;
     cursor: pointer;
-    margin-left: 15px;
-    margin-bottom: 30px;
+    margin: 0 0 30px 15px;
     border-bottom: 1px solid #F5F5F5;
 }
 
@@ -199,14 +196,14 @@ main {
 
 .welcome-section {
     display: flex;
-    margin-bottom: 22px;
+    margin-bottom: 10px;
 }
 
 .welcome-section h5 {
     color: rgba(0, 0, 0, 0.70);
     font-size: 14px;
     font-weight: 700;
-    margin-top: 13px;
+    margin-top: 10px;
 }
 
 .data-section {
@@ -290,7 +287,7 @@ main {
 }
 
 .top-section {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .top-section span {
@@ -308,7 +305,7 @@ main {
     max-width: 200px;
     background-color: #FFF;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #start-surfing-icon {
@@ -600,13 +597,11 @@ main {
 .add-new-beach {
     position: absolute;
     right: 20px;
-    /* top: 90px; */
     cursor: pointer;
 }
 
 .setting-data {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .btn {
@@ -837,12 +832,11 @@ footer .footer-item a {
 .session-card {
     background-color: white;
     display: flex;
-    margin-top: 20px;
+    margin: 20px 0 16px;
     padding: 16px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     flex-direction: column;
-    margin-bottom: 16px;
 }
 
 .session-header {
@@ -1043,3 +1037,78 @@ footer .footer-item a {
     width: 16px;
     height: 16px;
 }
+.set-targets {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.set-targets p {
+    margin: 2px 0;
+}
+
+.set-target-btn {
+    border-radius: 8px;
+    padding: 2px;
+}
+
+.target {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.target > p {
+    margin-top: 20px;
+}
+
+.target > img {
+    height: 240px;
+}
+
+@media (min-width: 991px) {
+    .target > img {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+    .target > img {
+        width: 100%;
+    }
+}
+
+.btn-container {
+    display: flex;
+    gap: 15rem;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.btn-secondary {
+    border-radius: 20px;
+
+} 
+
+.btn-primary {
+    border-radius: 20px;
+    background-color: #3C8CE2;
+}
+
+.skip {
+    display: flex;
+}
+
+.intro {
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+

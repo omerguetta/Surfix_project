@@ -160,7 +160,7 @@ async function authenticateUser(email, password) {
 
         const [rows] = await connection.execute(`SELECT * FROM tbl_122_user WHERE email="${email}"`);
         if (rows.length === 0) {
-            throw new Error('User not found');
+            throw new Error('User not found, email, password');
         }
 
         const user = rows[0];

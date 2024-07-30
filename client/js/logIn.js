@@ -12,7 +12,7 @@ async function login(email, password) {
     }
 }
 
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('sign-up-btn').addEventListener('click', () => {
         window.location.href = 'sign_up.html';
     });
@@ -24,5 +24,5 @@ window.onload = () => {
 
         await login(email, password)
     });
-}
+})
 

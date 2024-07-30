@@ -46,6 +46,7 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
+        console.log(email, password);
         const result = await userService.authenticateUser(email, password);
         res.json(result);
     } catch (error) {
@@ -68,11 +69,22 @@ async function getUsers(req, res) {
 }
 
 async function getUser(req, res) {
+    // try {
+    //     const user = await userService.getById(req.params.userId);
+    //     res.json(user);
+    // } catch (error) {
+    //     res.status(500).json({ error: 'Failed to fetch user' });
+    // }
+
     try {
         const user = await userService.getById(req.params.userId);
-        res.json(user);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({message: 'user not found'});
+        }
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch user' });
+        res.status(500).json({message: 'Failed to retrieve user', error: error.message});
     }
 }
 
