@@ -1,7 +1,7 @@
 window.onload = () => {
-    console.log('Authenticating user');
-    const authToken = localStorage.getItem('access_token');
-    const authTokenTtl = localStorage.getItem('access_token_ttl');
+
+    const authToken = localStorage.getItem('token');
+    const authTokenTtl = localStorage.getItem('token_ttl');
     
     if (!authToken || !authTokenTtl || authTokenTtl < Date.now()) {
         window.location.href = 'login.html';
@@ -11,17 +11,16 @@ window.onload = () => {
 
     logoutBtns.forEach(elem => {
         elem.addEventListener('click', () => {
-            console.log('Logout clicked');
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('access_token_ttl');
+            localStorage.removeItem('token');
+            localStorage.removeItem('token_ttl');
             localStorage.removeItem('userId');
             window.location.href = './login.html';
         });
     });
     // document.querySelector('.logout').addEventListener('click', () => {
     //     console.log('Logout clicked');
-    //     localStorage.removeItem('access_token');
-    //     localStorage.removeItem('access_token_ttl');
+    //     localStorage.removeItem('token');
+    //     localStorage.removeItem('token_ttl');
     //     localStorage.removeItem('userId');
     //     window.location.href = './login.html';
     // });

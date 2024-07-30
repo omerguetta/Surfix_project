@@ -123,7 +123,6 @@ async function authenticateUser(email, password) {
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            console.log(password === user.password);
             throw new Error('Invalid password');
         }
 

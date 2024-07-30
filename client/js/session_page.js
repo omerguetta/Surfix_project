@@ -3,19 +3,13 @@ import sessionService from "./services/sessionService.js";
 async function getSessionFromServer(sessionId) {
     try {
         const data = await sessionService.query();
-        console.log('Fetched data:', data);
-
         if (!data || data.length === 0) {
             throw new Error("No data found for the given session ID");
         }
-
         const sessionData = data.find(session => session.sessionId == sessionId);
-        console.log('Found session data:', sessionData);
-
         if (!sessionData) {
             throw new Error("No session found with the given session ID");
         }
-
         displayGraph(data);
         displaySession(sessionData);
     } catch (error) {

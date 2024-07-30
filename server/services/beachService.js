@@ -110,7 +110,6 @@ async function update(body, beachId) {
             waterTemperature,
             visibility
         }= body;
-        console.log('Updating beach:', name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility);
         const [result] = await connection.execute(
             'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshoreWind = ?, risingTide = ?, airTemperature = ?, waveHeight = ?, waveDdirection = ?, waterTemperature = ?, visibility = ? WHERE beachId = ?',
             [name, distance, body.onshore_wind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]

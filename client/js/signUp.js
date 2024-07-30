@@ -9,13 +9,12 @@ window.onload = () => {
        
         try {
             let data = await userService.registerUser({ email, password, fullName, userName });
-            console.log('DATA:', data);
             if (data) {
                 window.location.href = 'index.html';
             }
         }
         catch (error) {
-            console.log('ERROR:', error);
+            console.error('ERROR:', error);
         }
     });
 }

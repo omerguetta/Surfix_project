@@ -1,4 +1,5 @@
 import sessionService from "./services/sessionService.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     const calendarElement = document.getElementById('calendar');
     const currentDate = new Date();
@@ -64,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         selectedDate = element;
         selectedDate.classList.add('selected');
-        console.log(`Selected date: ${year}-${month + 1}-${day}`);
     }
 
     createCalendar(currentDate.getFullYear(), currentDate.getMonth());
@@ -78,9 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let sessions = [];
 
-    async function loadSessions(filters="") {
+    async function loadSessions(filters = "") {
         sessions = await sessionService.query(filters);
-        console.log('Sessions:', sessions);
         displayAllSessions();
         markDatesWithSessions();
     }
@@ -162,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displaySessions(selectedDateStr);
     }
 
-    function displaySessions(date="") {
+    function displaySessions(date = "") {
         sessionCardContainer.innerHTML = '';
 
         const filteredSessions = sessions.filter(session => session.date === date);
@@ -177,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="session-header">
                     <div class="session-title-col">
-                        <span class="icon"><img src="../images/surfer-icon.png" alt=""></span>
+                        <span class="icon"><img src="./images/surfer-icon.png" alt=""></span>
                         <span class="session-title">${session.name}</span>
                     </div>
                     <div class="session-time-col">
@@ -191,18 +190,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="side-col">
                         <div class="footer">
-                            <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
+                            <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Left</span>
                             <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
                 <div class="session-details2">
                     <div class="location-col">
-                        <span class="location-icon"><img src="../images/location-icon.png" alt=""></span>
+                        <span class="location-icon"><img src="./images/location-icon.png" alt=""></span>
                         <span class="detail-value">${session.location}</span>
                     </div>
                     <div class="footer">
-                        <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
+                        <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Right</span>
                         <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
@@ -229,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="session-header">
                     <div class="session-title-col">
-                        <span class="icon"><img src="../images/surfer-icon.png" alt=""></span>
+                        <span class="icon"><img src="./images/surfer-icon.png" alt=""></span>
                         <span class="session-title">${session.name}</span>
                     </div>
                     <div class="session-time-col">
@@ -243,18 +242,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="side-col">
                         <div class="footer">
-                            <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
+                            <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Left</span>
                             <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
                 <div class="session-details2">
                     <div class="location-col">
-                        <span class="location-icon"><img src="../images/location-icon.png" alt=""></span>
+                        <span class="location-icon"><img src="./images/location-icon.png" alt=""></span>
                         <span class="detail-value">${session.location}</span>
                     </div>
                     <div class="footer">
-                        <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
+                        <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Right</span>
                         <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
@@ -267,6 +266,6 @@ document.addEventListener('DOMContentLoaded', function () {
             sessionCardContainer.appendChild(sessionCard);
         });
     }
-        createCalendar(currentDate.getFullYear(), currentDate.getMonth());
-        loadSessions();
-    });
+    createCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    loadSessions();
+});
