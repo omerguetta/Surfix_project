@@ -13,7 +13,7 @@ async function displayBeach(user) {
     `;
 }
 
-async function getUserFromServer(userId) {
+async function getUser(userId) {
     try {
         const userData = await userService.getById(userId);
         await displayBeach(userData);
@@ -26,7 +26,7 @@ window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
     if (userId) {
-        await getUserFromServer(userId);
+        await getUser(userId);
     } else {
         console.error('No userId found in URL parameters');
     }

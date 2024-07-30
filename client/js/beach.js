@@ -23,7 +23,7 @@ async function displayBeach(beach) {
     waveDirection.textContent = `${beach.waveDirection}`;
 }
 
-async function getBeachFromServer(beachId) {
+async function getBeach(beachId) {
     try {
         const beachData = await beachService.getById(beachId);
         await displayBeach(beachData);
@@ -35,7 +35,7 @@ async function getBeachFromServer(beachId) {
 window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get('beachId');
-    await getBeachFromServer(beachId);
+    await getBeach(beachId);
 
     document.querySelector(".goBack").addEventListener('click', () => {
         window.location.href = document.referrer;
