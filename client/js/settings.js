@@ -14,8 +14,7 @@ async function displayUser(user) {
 async function getUser(userId) {
     try {
         const userData = await userService.getById(userId);
-        console.log(userData);
-        await displayUser(userData);
+        return userData;
     } catch (error) {
         console.error(`Error fetching user with ID ${userId}:`, error);
     }
@@ -23,7 +22,20 @@ async function getUser(userId) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const userId = localStorage.getItem('userId');
-    await getUser(userId);
+    const user = await getUser(userId);
+    await displayUser(user);
+
+    if (user.role === 'admin') {
+        document.querySelectorAll('.admin').forEach(item => {
+            item.style.visibility = 'visible';
+        });
+    }
+
+    if (user.stars === 0) {
+        document.querySelectorAll('.beginner').forEach(item => {
+            item.style.visibility = 'visible';
+        });
+    }
 
     document.querySelectorAll('#account-link').forEach(item => {
         item.addEventListener('click', () => {
@@ -31,4 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             accountModal.show();
         });
     });
+    console.log(user.stars);
+    document.querySelector('.profile-rating').setAttribute('value', user.stars);
 });

@@ -1104,11 +1104,10 @@ footer .footer-item a {
     justify-content: center;
 }
 
+.admin {
+    visibility: hidden;
+}
 
-
-
-
-
-
-
-
+.beginner {
+    visibility: hidden;
+}

@@ -6,27 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Targets</title>
     <script src="./js/auth.js"></script>
+    <script type="module" src="./js/settings.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script> 
-    <script src="./js/targets.js"></script>  
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="./js/targets.js"></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
 
                 <div class="dropdown profile-section d-lg-none d-flex">
-                    <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                    <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown"
+                        aria-expanded="false"></div>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
                         <li><a class="dropdown-item" href="#">Account</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
@@ -64,7 +67,8 @@
                 </div>
 
                 <div class="dropdown profile-section d-none d-lg-flex">
-                    <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                    <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false"></div>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="#">Account</a></li>
                         <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
@@ -72,7 +76,8 @@
                     <span class="profile-rating">★ 417</span>
                 </div>
 
-                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Surfix</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -80,10 +85,12 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a href="./session_page.html"><img src="./images/surfer-icon.png" alt="surfer-icon">SESSIONS</a>
+                                <a href="./session_page.html"><img src="./images/surfer-icon.png"
+                                        alt="surfer-icon">SESSIONS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./for_you.html"><img src="./images/foryou-icon.png" alt="foryou-icon">FOR YOU</a>
+                                <a href="./for_you.html"><img src="./images/foryou-icon.png" alt="foryou-icon">FOR
+                                    YOU</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#"><img src="./images/location-icon.png" alt="location-icon">LOCATIONS</a>
@@ -98,7 +105,8 @@
                                 <a href="#"><img src="./images/cloud-icon.png" alt="cloud-icon">WEATHER</a>
                             </li>
                             <li class="nav-item setting">
-                                <a href="./settings.html"><img src="./images/settings-icon.png" alt="setting-icon">SETTINGS</a>
+                                <a href="./settings.html"><img src="./images/settings-icon.png"
+                                        alt="setting-icon">SETTINGS</a>
                             </li>
                         </ul>
                     </div>
@@ -137,7 +145,8 @@
             <section class="target" id="target1">
                 <img src="images/waves.jpeg" alt="waves-pic">
                 <p>How many waves do you expect to catch?</p>
-                <input type="range" class="form-range" id="maxDistance" min="50" max="70" step="1" value="50" oninput="updateValue(this.value, 'chosenValue1')">
+                <input type="range" class="form-range" id="maxDistance" min="50" max="70" step="1" value="50"
+                    oninput="updateValue(this.value, 'chosenValue1')">
                 <p>Value: <span id="chosenValue1">50</span></p>
                 <div class="btn-container">
                     <button class="btn btn-secondary" id="skip1" type="button">Skip</button>
@@ -148,7 +157,8 @@
             <section class="target" id="target2">
                 <img src="images/waves.jpeg" alt="waves-pic">
                 <p>How many waves do you expect to catch?</p>
-                <input type="range" class="form-range" id="maxSpeed1" min="50" max="70" step="1" value="50" oninput="updateValue(this.value, 'chosenValue2')">
+                <input type="range" class="form-range" id="maxSpeed1" min="50" max="70" step="1" value="50"
+                    oninput="updateValue(this.value, 'chosenValue2')">
                 <p>Value: <span id="chosenValue2">50</span></p>
                 <div class="btn-container">
                     <button class="btn btn-secondary" id="back2" type="button">Back</button>
@@ -159,7 +169,8 @@
             <section class="target" id="target3">
                 <img src="images/speed.jpeg" alt="speed-pic">
                 <p>What is the rowing speed you expect?</p>
-                <input type="range" class="form-range" id="maxSpeed2" min="30" max="50" step="1" value="30" oninput="updateValue(this.value, 'chosenValue3')">
+                <input type="range" class="form-range" id="maxSpeed2" min="30" max="50" step="1" value="30"
+                    oninput="updateValue(this.value, 'chosenValue3')">
                 <p>Value: <span id="chosenValue3">30</span></p>
                 <div class="btn-container">
                     <button class="btn btn-secondary" id="back3" type="button">Back</button>
@@ -170,7 +181,8 @@
             <section class="target" id="target4">
                 <img src="images/speed.jpeg" alt="speed-pic">
                 <p>What is the rowing speed you expect?</p>
-                <input type="range" class="form-range" id="maxSpeed3" min="1" max="10" step="1" value="1" oninput="updateValue(this.value, 'chosenValue4')">
+                <input type="range" class="form-range" id="maxSpeed3" min="1" max="10" step="1" value="1"
+                    oninput="updateValue(this.value, 'chosenValue4')">
                 <p>Value: <span id="chosenValue4">1</span></p>
                 <div class="btn-container">
                     <button class="btn btn-secondary" id="back4" type="button">Back</button>
@@ -180,7 +192,7 @@
             </section>
         </div>
     </main>
-           
+
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">
             <div class="footer-item">

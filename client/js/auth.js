@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function ()  {
     }
     
     document.querySelector('#logout').addEventListener('click', () => {
-        console.log('Logout clicked');
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
         window.location.href = './login.html';
