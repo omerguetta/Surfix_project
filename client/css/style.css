@@ -943,9 +943,103 @@ footer .footer-item a {
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    /* padding-left: 0;
-    padding-right: 0; */
     cursor: pointer;
     margin-top: 10px;
 }
 
+.user-header img {
+    cursor: pointer;
+}
+
+.user-header {
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.user-details {
+    margin-bottom: 1.5rem;
+}
+
+.user-details .card-body {
+    padding: 1.5rem;
+}
+
+.sidebar-menu {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-menu .list-group-item {
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 1rem;
+}
+
+.sidebar-menu .list-group-item.active {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.sidebar-menu .list-group-item.text-danger {
+    color: #dc3545;
+}
+
+.user-details .profile-info .btn {
+    margin-left: auto;
+}
+
+.user-details .profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.user-details .profile-info .profile-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+
+.user-details .profile-info .profile-details {
+    flex-grow: 1;
+}
+
+.user-details .personal-information h6,
+.user-details .personal-goals h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #6c757d;
+}
+
+.user-details .list-group-item {
+    border: none;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-details .list-group-item + .list-group-item {
+    border-top: 1px solid #e9ecef;
+}
+
+.edit-btn {
+    margin-left: auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn img {
+    margin-left: 0.5rem;
+    width: 16px;
+    height: 16px;
+}

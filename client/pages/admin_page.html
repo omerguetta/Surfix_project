@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management Page</title>
+    <title>Admin Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
-    <script type="module" src="../js/user_management_page.js"></script>
+    <!-- <script type="module" src="../js/forYouPage.js"></script> -->
 </head>
 
 <body>
@@ -32,10 +32,10 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="./admin_page.html">Home</a>
+                            <a class="nav-link selected" href="./admin_page.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link selected" href="./user_management_page.html">User Management</a>
+                            <a class="nav-link" href="./user_management_page.html">User Management</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./for_you.html">Permissions management</a>
@@ -84,21 +84,21 @@
     </header>
 
     <main>
-        <div id="wrapper">
+        <!-- <div id="wrapper">
             <section class="navigation-section">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-chevron p-1 rounded-3">
                         <li class="breadcrumb-item">
-                            <a class="link-body-emphasis" href="./admin_page.html">
+                            <a class="link-body-emphasis" href="../index.html">
                                 <img class="bread-home" src="../images/home-icon.png" alt="home">
                             </a>
                         </li>
                         <li class="breadcrumb-item active">
-                            User Management
+                            For You
                         </li>
-                        <!-- <li>
+                        <li>
                             <img class="add-new-beach" src="../images/new-icon.png" alt="add-new-icon">
-                        </li> -->
+                        </li>
                     </ol>
                 </nav>
             </section>
@@ -106,10 +106,10 @@
             <section class="filters_container mb-3">
                 <input type="text" class="search-input form-control" id="searchInput" placeholder="Search">
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for="maxDistance">Max Distance (km): <span id="rangeValue"></span></label>
                     <input type="range" class="form-range" id="maxDistance" min="1" max="10" step="0.1" value="10">
-                </div> -->
+                </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="sortByName">
@@ -121,12 +121,13 @@
             </section>
 
             <div class="titles-container">
+                <p class="list-title">Nearby</p>
                 <button class="title-btn">View All</button>
             </div>
 
-            <section class="users-container"></section>
+            <section class="beaches-container"></section>
 
-        </div>
+        </div> -->
     </main>
     <footer>
         <div class="container-fluid d-flex justify-content-around align-items-center">

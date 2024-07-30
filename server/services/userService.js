@@ -16,10 +16,32 @@ module.exports = {
     isUserExists
 }
 
-async function query() {
+async function query(filters = {}) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute('SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user');
+        let whereClause = '';
+        let sortClause = '';
+        const values = [];
+        if (filters) {
+            if (filters.fullName) {
+                if (whereClause) whereClause += ' AND ';
+                whereClause += `fullName LIKE CONCAT('%', ?, '%')`;
+                values.push(filters.fullName);
+            }
+
+            if (filters.sortByName) {
+                sortClause += ' ORDER BY fullName ASC';
+            }
+        }
+        let sql = `SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role
+            FROM tbl_122_user;`;
+        if (whereClause) {
+            sql += ` WHERE (${whereClause})`;
+        }
+        if (sortClause) {
+            sql += sortClause;
+        }
+        const [rows] = await connection.execute(sql, values);
         return rows;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -30,7 +52,8 @@ async function query() {
 async function getById(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}'`);
+        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role
+            FROM tbl_122_user WHERE userId = '${userId}'`);
         if (rows.length === 0) {
             throw new Error('User not found');
         }

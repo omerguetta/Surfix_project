@@ -55,7 +55,12 @@ async function loginUser(req, res) {
 
 async function getUsers(req, res) {
     try {
-        const users = await userService.query();
+        const {fullName, sortByName} = req.query;
+        const filters = {};
+
+        if (fullName) filters.fullName = fullName;
+        if (sortByName) filters.sortByName = sortByName;
+        const users = await userService.query(filters);
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch users' });
