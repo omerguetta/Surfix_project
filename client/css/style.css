@@ -207,10 +207,6 @@ main {
     min-height: 110vh;
 }
 
-.navbar-toggler {
-    padding-bottom: 10px;
-}
-
 .welcome-section {
     display: flex;
     margin-bottom: 10px;
