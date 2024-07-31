@@ -3,3 +3,4 @@ server/.idea
 server/node_modules
 server/.env
 .idea
+.DS_Store

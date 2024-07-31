@@ -1,4 +1,4 @@
-import sessionService from './services/sessionService.js';
+import sessionService from "./services/sessionService.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarElement = document.getElementById('calendar');
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         selectedDate = element;
         selectedDate.classList.add('selected');
-        console.log(`Selected date: ${year}-${month + 1}-${day}`);
     }
 
     createCalendar(currentDate.getFullYear(), currentDate.getMonth());
@@ -79,20 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let sessions = [];
 
-    async function loadSessions() {
-        // sessions = await sessionService.query();
-        // console.log('Sessions:', sessions);
-        // displayAllSessions();
-
-        fetch('../data/sessions.json')
-            .then(response => response.json())
-            .then(data => {
-                sessions = data;
-                displayAllSessions();
-            })
-            .catch(error => console.error('Error loading sessions:', error));
-
-        
+    async function loadSessions(filters = "") {
+        sessions = await sessionService.query(filters);
+        displayAllSessions();
+        markDatesWithSessions();
     }
 
     function createCalendar(year, month) {
@@ -144,9 +133,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         calendarElement.appendChild(calendar);
-
+        
         monthSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
         yearSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
+    }
+
+    function markDatesWithSessions() {
+        const days = calendarElement.querySelectorAll('.day');
+        days.forEach(day => {
+            const dayText = day.textContent;
+            const dateStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(dayText).padStart(2, '0')}`;
+            if (sessions.some(session => session.date === dateStr)) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                day.appendChild(dot);
+            }
+        });
     }
 
     function selectDate(year, month, day, element) {
@@ -159,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displaySessions(selectedDateStr);
     }
 
-    function displaySessions(date="") {
+    function displaySessions(date = "") {
         sessionCardContainer.innerHTML = '';
 
         const filteredSessions = sessions.filter(session => session.date === date);
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="session-header">
                     <div class="session-title-col">
-                        <span class="icon"><img src="../images/surfer-icon.png" alt=""></span>
+                        <span class="icon"><img src="./images/surfer-icon.png" alt=""></span>
                         <span class="session-title">${session.name}</span>
                     </div>
                     <div class="session-time-col">
@@ -188,25 +190,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="side-col">
                         <div class="footer">
-                            <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
-                            <span class="wave-value">${session.wave_left}</span>
+                            <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Left</span>
+                            <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
                 <div class="session-details2">
                     <div class="location-col">
-                        <span class="location-icon"><img src="../images/location-icon.png" alt=""></span>
+                        <span class="location-icon"><img src="./images/location-icon.png" alt=""></span>
                         <span class="detail-value">${session.location}</span>
                     </div>
                     <div class="footer">
-                        <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
-                        <span class="wave-value">${session.wave_right}</span>
+                        <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Right</span>
+                        <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
             `;
 
             sessionCard.addEventListener('click', () => {
-                window.location.href = `session_page.html?session_id=${session.session_id}`;
+                window.location.href = `session_page.html?sessionId=${session.sessionId}`;
             });
 
             sessionCardContainer.appendChild(sessionCard);
@@ -226,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="session-header">
                     <div class="session-title-col">
-                        <span class="icon"><img src="../images/surfer-icon.png" alt=""></span>
+                        <span class="icon"><img src="./images/surfer-icon.png" alt=""></span>
                         <span class="session-title">${session.name}</span>
                     </div>
                     <div class="session-time-col">
@@ -240,30 +242,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="side-col">
                         <div class="footer">
-                            <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Left</span>
-                            <span class="wave-value">${session.wave_left}</span>
+                            <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Left</span>
+                            <span class="wave-value">${session.waveLeft}</span>
                         </div>
                     </div>
                 </div>
                 <div class="session-details2">
                     <div class="location-col">
-                        <span class="location-icon"><img src="../images/location-icon.png" alt=""></span>
+                        <span class="location-icon"><img src="./images/location-icon.png" alt=""></span>
                         <span class="detail-value">${session.location}</span>
                     </div>
                     <div class="footer">
-                        <span class="wave-icon"><img src="../images/wave-svgrepo-com.svg" alt=""> Right</span>
-                        <span class="wave-value">${session.wave_right}</span>
+                        <span class="wave-icon"><img src="./images/wave-svgrepo-com.svg" alt=""> Right</span>
+                        <span class="wave-value">${session.waveRight}</span>
                     </div>
                 </div>
             `;
 
             sessionCard.addEventListener('click', () => {
-                window.location.href = `session_page.html?session_id=${session.session_id}`;
+                window.location.href = `session_page.html?sessionId=${session.sessionId}`;
             });
 
             sessionCardContainer.appendChild(sessionCard);
         });
     }
-        createCalendar(currentDate.getFullYear(), currentDate.getMonth());
-        loadSessions();
-    });
+    createCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    loadSessions();
+});

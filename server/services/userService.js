@@ -16,10 +16,36 @@ module.exports = {
     isUserExists
 }
 
-async function query() {
+async function query(filters = {}) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute('SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user');
+        let whereClause = '';
+        let sortClause = '';
+        const values = [];
+
+        if (filters) {
+            if (filters.fullName) {
+                if (whereClause) whereClause += ' AND ';
+                whereClause += `fullName LIKE CONCAT('%', ?, '%')`;
+                values.push(filters.fullName);
+            }
+
+            if (filters.sortByName) {
+                sortClause += ' ORDER BY fullName ASC;';
+            }
+        }
+
+        let sql = `SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role FROM tbl_122_user`;
+        
+        if (whereClause) {
+            sql += ` WHERE (${whereClause})`;
+        }
+
+        if (sortClause) {
+            sql += sortClause;
+        }
+
+        const [rows] = await connection.execute(sql, values);
         return rows;
     } catch (error) {
         console.error('Error executing query:', error);
@@ -30,10 +56,11 @@ async function query() {
 async function getById(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height FROM tbl_122_user WHERE userId = '${userId}';`);
-        // if (rows.length === 0) {
-        //     throw new Error('User not found');
-        // }
+        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role
+            FROM tbl_122_user WHERE userId = '${userId}'`);
+        if (rows.length === 0) {
+            throw new Error('User not found');
+        }
         return rows[0];
     } catch (error) {
         console.error('Error getting user by ID:', error);
@@ -134,7 +161,7 @@ async function remove(userId) {
 async function authenticateUser(email, password) {
     try {
         const connection = await dbConnection.connect();
-  
+
         const [rows] = await connection.execute(`SELECT * FROM tbl_122_user WHERE email="${email}"`);
         if (rows.length === 0) {
             throw new Error('User not found, email, password');
@@ -144,7 +171,6 @@ async function authenticateUser(email, password) {
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            console.log(password === user.password);
             throw new Error('Invalid password');
         }
 
@@ -155,14 +181,13 @@ async function authenticateUser(email, password) {
                 userRole: user.role
             },
             jwtSecret,
-            { expiresIn: '1h' }
+            { expiresIn: '1d' }
         );
 
         return {
             userId: user.userId,
             userName: user.userName,
             token,
-            ttl: Date.now() + 1000 * 600 * 600 //change it to 1 hour (1000 * 60 * 60)
         };
     } catch (error) {
         console.error('Error authenticating user:', error);

@@ -1,69 +1,138 @@
 const BASE_URL = 'http://localhost:3000/api/session';
 
+const headers = {
+    'Content-Type': 'application/json',
+};
+
 async function query(filters = {}) {
-    try {
-        const response = await fetch(`${BASE_URL}/?${filters}`);
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching sessions:', error);
+
+    const searchParams = new URLSearchParams(filters);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}?${searchParams}`, {
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch sessions');
+    }
+
+    const data = await response.json();
+    return data;
 }
 
 async function getById(sessionId) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/session/${sessionId}`);
-        return await response.json();
-    } catch (error) {
-        console.error(`Error fetching session with ID ${sessionId}:`, error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}/${sessionId}`, {
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch session');
+    }
+
+    const data = await response.json();
+    return data;
 }
 
 async function add(body) {
-    try {
-        const response = await fetch(BASE_URL, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        });
-        if (response.ok) {
-            window.location.href = document.referrer;
-        } else {
-            console.error(`Failed to create session:`, response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error(`Error creating session:`, error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
+    };
+
+    const response = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(body)
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
     }
+
+    if (!response.ok) {
+        throw new Error('Failed to update session');
+    }
+
+    window.location.href = document.referrer;
 }
 
 async function update(body, sessionId) {
-    try {
-        const response = await fetch(`${BASE_URL}/${sessionId}`, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body)
-        });
-        if (response.ok) {
-            window.location.href = document.referrer;
-        } else {
-            console.error(`Failed to update session:`, response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error(`Error updating session:`, error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
     }
+
+    const response = await fetch(`${BASE_URL}/${sessionId}`, {
+        method: 'PUT',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(body)
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to update session');
+    }
+
+    window.location.href = document.referrer;
 }
 
 async function remove(sessionId) {
-    try {
-        const response = await fetch(`${BASE_URL}/${sessionId}`, {
-            method: 'DELETE'
-        });
-        if (response.ok) {
-            window.location.href = 'for_you.html';
-        } else {
-            console.error('Failed to delete session:', response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error('Error deleting session:', error);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
+    }
+
+    const response = await fetch(`${BASE_URL}/${sessionId}`, {
+        method: 'DELETE',
+        headers: {
+            ...headers,
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        throw new Error('Unauthorized or forbidden');
+    }
+
+    if (!response.ok) {
+        throw new Error('Failed to delete session');
     }
 }
 

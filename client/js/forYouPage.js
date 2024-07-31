@@ -46,7 +46,7 @@ function createBeachItem(beachData) {
     return listItem;
 }
 
-function populateBeachesList(beachesData) {
+function populateBeachList(beachesData) {
     const beach_container = document.querySelector('.beaches-container');
     beach_container.innerHTML = '';
 
@@ -59,13 +59,13 @@ function populateBeachesList(beachesData) {
     beach_container.appendChild(beachList);
 }
 
-async function getBeachesListFromServer(filters = '', isFirstLoad = false) {
+async function getBeachList(filters = '', isFirstLoad = false) {
     try {
         const beachesData = await beachService.query(filters);
         if (isFirstLoad) {
             setMinMaxDistance(beachesData);
         }
-        populateBeachesList(beachesData);
+        populateBeachList(beachesData);
     } catch (error) {
         console.error('Error fetching beaches:', error);
     }
@@ -88,7 +88,7 @@ async function updateFilters() {
     }
 
     history.pushState({}, '', `?${newParams.toString()}`);
-    await getBeachesListFromServer(`?${newParams.toString()}`);
+    await getBeachList(`?${newParams.toString()}`);
 }
 
 function setMinMaxDistance(beachesData) {
@@ -114,5 +114,5 @@ window.onload = async () => {
         document.getElementById('rangeValue').textContent = event.target.value;
         await updateFilters();
     });
-    await getBeachesListFromServer();
+    await getBeachList();
 };

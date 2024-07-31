@@ -3,13 +3,12 @@ import userService from './services/userService.js';
 async function login(email, password) {
     try {
         let data = await userService.loginUser(email, password)
-        console.log('DATA:', data);
-
+        
         if (data.token) {
             window.location.href = './index.html';
         }
     } catch (error) {
-        console.log('ERROR:', error);
+        console.error('ERROR:', error);
     }
 }
 

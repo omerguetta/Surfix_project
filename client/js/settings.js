@@ -9,25 +9,33 @@ async function displayUser(user) {
 
     const userName = document.querySelector("#accountUserName");
     userName.textContent = `${user.userName}`;
-
 }
 
-async function getUserFromServer(userId) {
+async function getUser(userId) {
     try {
         const userData = await userService.getById(userId);
-        console.log(userData);
-        await displayUser(userData);
+        return userData;
     } catch (error) {
         console.error(`Error fetching user with ID ${userId}:`, error);
     }
 }
 
-window.onload = (async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const userId = localStorage.getItem('userId');
-    await getUserFromServer(userId);
+    const user = await getUser(userId);
+    await displayUser(user);
 
-    console.log('User ID:', userId); 
+    if (user.role === 'admin') {
+        document.querySelectorAll('.admin').forEach(item => {
+            item.style.visibility = 'visible';
+        });
+    }
 
+    if (user.stars === 0) {
+        document.querySelectorAll('.beginner').forEach(item => {
+            item.style.visibility = 'visible';
+        });
+    }
 
     document.querySelectorAll('#account-link').forEach(item => {
         item.addEventListener('click', () => {
@@ -35,6 +43,6 @@ window.onload = (async () => {
             accountModal.show();
         });
     });
+    // console.log(user.stars);
+    // document.querySelector('.profile-rating').setAttribute('value', user.stars);
 });
-
-
