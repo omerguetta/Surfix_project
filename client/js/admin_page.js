@@ -20,10 +20,10 @@ function createUserItem(UserData) {
     deleteU.src = './images/remove-icon.png';
     deleteU.alt = 'delete';
 
-    const addU = document.createElement('img');
-    addU.className = 'add_img';
-    addU.src = './images/person-icon.png';
-    addU.alt = 'add';
+    // const addU = document.createElement('img');
+    // addU.className = 'add_img';
+    // addU.src = './images/person-icon.png';
+    // addU.alt = 'add';
 
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
@@ -36,7 +36,6 @@ function createUserItem(UserData) {
     const userActions = document.createElement('div');
     userActions.className = 'user-actions';
     userActions.append(deleteU);
-    userActions.append(addU);
 
     listItem.append(userCard,userActions);
 
