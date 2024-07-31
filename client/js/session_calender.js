@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         calendarElement.appendChild(calendar);
-
+        
         monthSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
         yearSelect.addEventListener('change', () => createCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value)));
     }
