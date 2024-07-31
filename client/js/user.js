@@ -48,7 +48,6 @@ async function displayUser(user) {
 async function getUser(UserId) {
     try {
         const userData = await userService.getById(UserId);
-        console.log(userData);
         await displayUser(userData);
     } catch (error) {
         console.error(`Error fetching user with ID ${UserId}:`, error);

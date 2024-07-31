@@ -38,7 +38,7 @@ window.onload = (async () => {
     await getBeach(beachId);
 
     document.querySelector(".goBack").addEventListener('click', () => {
-        window.location.href = document.referrer;
+        window.location.href = './for_you.html';
     });
     document.querySelector('#remove-icon').addEventListener('click', async (event) => {
         event.preventDefault();

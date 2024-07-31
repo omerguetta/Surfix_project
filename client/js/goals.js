@@ -9,7 +9,6 @@ async function getSessionData() {
     }
     try {
         const sessionData = JSON.parse(decodeURIComponent(sessionDataEncoded));
-        console.log("Session data received:", sessionData);
         displaySessionData(sessionData);
     } catch (error) {
         console.error("Error parsing session data from URL parameters:", error);

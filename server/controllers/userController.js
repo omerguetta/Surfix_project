@@ -46,7 +46,6 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
     try {
         const { email, password } = req.body;
-        console.log(email, password);
         const result = await userService.authenticateUser(email, password);
         res.json(result);
     } catch (error) {

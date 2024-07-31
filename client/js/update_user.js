@@ -9,7 +9,7 @@ async function handleFormSubmit(event) {
         stars: event.target.stars.value,
         role
     };
-    console.log({ filters });
+
     await userService.update(userId, filters);
     window.location.href = `./user.html?userId=${userId}`;
 }

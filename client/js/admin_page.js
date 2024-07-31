@@ -66,9 +66,7 @@ function populateUsersList(UsersData) {
 
 async function getUsersList(filters = '', isFirstLoad = false) {
     try {
-        console.log('Fetching users...');
         const UsersData = await userService.query(filters);
-        console.log(UsersData);
         populateUsersList(UsersData);
     } catch (error) {
         console.error('Error fetching users:', error);

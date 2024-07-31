@@ -43,8 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             accountModal.show();
         });
     });
-
-    console.log(user.stars);
     document.querySelectorAll('.profile-rating').forEach(item => {
         item.textContent = `★ ${user.stars}`;
     });

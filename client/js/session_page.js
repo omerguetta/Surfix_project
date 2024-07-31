@@ -15,7 +15,6 @@ async function getSession(sessionId) {
 
         document.querySelector(".card").addEventListener('click', () => {
             const sessionDataEncoded = encodeURIComponent(JSON.stringify(sessionData));
-            // console.log("Redirecting to goals.html with data:", sessionData);
             window.location.href = `goals.html?sessionData=${sessionDataEncoded}`;
         });
 
