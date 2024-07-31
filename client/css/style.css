@@ -1099,8 +1099,6 @@ margin-bottom: 10x;
 }
 
 .form-check-input[type="checkbox"] {
-    width: 55px;
-    height: 30px;
     margin-right: 5px;
     margin-bottom: 5px;
 }

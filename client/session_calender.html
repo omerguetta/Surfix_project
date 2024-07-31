@@ -33,7 +33,7 @@
                         <div class="profile-pic dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown"
                             aria-expanded="false"></div>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
-                            <li><a class="dropdown-item" href="#">Account</a></li>
+                            <li id="account-link"><a class="dropdown-item" href="#">Account</a></li>
                             <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
                         </ul>
                         <span class="profile-rating">★ 417</span>
@@ -45,7 +45,7 @@
                                 <a class="nav-link" href="./index.html">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./session_page.html">SESSIONS</a>
+                                <a class="nav-link" href="./session_calender.html">SESSIONS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link selected" href="./for_you.html">FOR YOU</a>
@@ -72,7 +72,7 @@
                         <div class="profile-pic dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown"
                             aria-expanded="false"></div>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="#">Account</a></li>
+                            <li id="account-link"><a class="dropdown-item" href="#">Account</a></li>
                             <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
                         </ul>
                         <span class="profile-rating">★ 417</span>
@@ -88,7 +88,7 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a href="./session_page.html"><img src="./images/surfer-icon.png"
+                                    <a href="./session_calender.html"><img src="./images/surfer-icon.png"
                                             alt="surfer-icon">SESSIONS</a>
                                 </li>
                                 <li class="nav-item">
@@ -124,6 +124,21 @@
                 <div id="calendar"></div>
             </div>
             <div class="session-card-container"></div>
+            <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="accountModalLabel">Account Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Full Name:</strong> <span id="accountFullName"></span></p>
+                            <p><strong>Email:</strong> <span id="accountEmail"></span></p>
+                            <p><strong>Username:</strong> <span id="accountUserName"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <footer>
