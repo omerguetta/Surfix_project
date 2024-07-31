@@ -337,7 +337,6 @@ main {
     border-color: white;
     cursor: pointer;
     --bs-card-spacer-y: 0.2rem;
-    margin-top: 5px;
 }
 
 .card h5 {

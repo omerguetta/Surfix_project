@@ -27,10 +27,6 @@
 
                 <a id="logo" class="navbar-brand mx-auto" href="./index.html"></a>
 
-                <div class="profile-section d-lg-none d-flex">
-                    <div class="profile-admin"></div>
-                </div>
-
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
@@ -51,9 +47,9 @@
                     </ul>
                 </div>
 
-                <div class="profile-section d-none d-lg-flex">
+                <!-- <div class="profile-section d-none d-lg-flex">
                     <div class="profile-admin"></div>
-                </div>
+                </div> -->
 
                 <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -85,6 +81,14 @@
                         </ul>
                     </div>
                 </div>
+                <section class="profile-section" id="profileSection">
+                    <section class="profile-admin dropdown-toggle" id="profileDropdownMobile" data-bs-toggle="dropdown"
+                        aria-expanded="false"></section>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdownMobile">
+                        <li id="logout"><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                    <span class="profile-rating"></span>
+                </section>
             </div>
         </nav>
     </header>
@@ -95,7 +99,7 @@
             <div class="col-md-9">
                 <div class="user-details1">
                     <div class="card-body">
-                        <h5 class="card-title">Admin User</h5>
+                        <h5 class="card-title">User Admin</h5>
                         <div class="profile-info">
                             <img src="./images/acount-icon.png" alt="User Image" class="profile-image">
                             <div class="profile-details">

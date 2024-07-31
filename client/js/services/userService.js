@@ -143,9 +143,6 @@ async function remove(userId) {
     if (!response.ok) {
         throw new Error('Failed to delete user');
     }
-
-    const data = await response.json();
-    return data;
 }
 
 const userService = {
