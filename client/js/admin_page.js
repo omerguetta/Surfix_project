@@ -6,7 +6,7 @@ function createUserItem(UserData) {
 
     const account = document.createElement('img');
     account.className = 'account-img';
-    account.src = '../images/acount-icon.png';
+    account.src = './images/acount-icon.png';
     account.alt = 'account';
 
     const title = document.createElement('p');
@@ -17,13 +17,8 @@ function createUserItem(UserData) {
 
     const deleteU = document.createElement('img');
     deleteU.className = 'delete_img';
-    deleteU.src = '../images/remove-icon.png';
+    deleteU.src = './images/remove-icon.png';
     deleteU.alt = 'delete';
-
-    const addU = document.createElement('img');
-    addU.className = 'add_img';
-    addU.src = '../images/person-icon.png';
-    addU.alt = 'add';
 
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
@@ -36,7 +31,6 @@ function createUserItem(UserData) {
     const userActions = document.createElement('div');
     userActions.className = 'user-actions';
     userActions.append(deleteU);
-    userActions.append(addU);
 
     listItem.append(userCard,userActions);
 
@@ -81,7 +75,7 @@ window.onload = async () => {
     // document.getElementById('sortByName').addEventListener('change', updateFilters);
     // document.getElementById('searchInput').addEventListener('input', updateFilters);
     // document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-    //     window.location.href = '../pages/beach_form.html';
+    //     window.location.href = './pages/beach_form.html';
     // });
     // document.getElementById('maxDistance').addEventListener('change', async (event) => {
     //     document.getElementById('rangeValue').textContent = event.target.value;

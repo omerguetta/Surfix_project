@@ -973,7 +973,27 @@ footer .footer-item a {
     margin-bottom: 1.5rem;
 }
 
+.user-details1 {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.user-details1 .card-body {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+}
+
 .user-details .card-body {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
     padding: 1.5rem;
 }
 
@@ -1090,13 +1110,14 @@ margin-bottom: 10x;
 }
 
 .users-container1 {
-    max-width: 50%;
+    width: 45%;
     margin-top: 100px;
     margin-bottom: 10px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
     padding: 1rem;
+    float: left; 
 }
 .set-targets {
     margin-bottom: 10px;
