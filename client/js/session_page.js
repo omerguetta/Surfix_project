@@ -12,6 +12,13 @@ async function getSession(sessionId) {
         }
         displayGraph(data);
         displaySession(sessionData);
+
+        document.querySelector(".card").addEventListener('click', () => {
+            const sessionDataEncoded = encodeURIComponent(JSON.stringify(sessionData));
+            console.log("Redirecting to goals.html with data:", sessionData);
+            window.location.href = `goals.html?sessionData=${sessionDataEncoded}`;
+        });
+
     } catch (error) {
         console.error(`Error fetching session with ID ${sessionId}:`, error);
     }
@@ -109,8 +116,4 @@ window.onload = (async () => {
         return;
     }
     await getSession(sessionId);
-
-    // document.querySelector(".goBack").addEventListener('click', () => {
-    //     window.location.href = document.referrer;
-    // });
 })();
