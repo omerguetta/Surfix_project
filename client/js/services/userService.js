@@ -5,7 +5,6 @@ const headers = {
 };
 
 async function registerUser(userData) {
-
     const response = await fetch(`${BASE_URL}/register`, {
         method: 'POST',
         headers,
@@ -23,7 +22,7 @@ async function registerUser(userData) {
 
 async function loginUser(email, password) {
 
-    const response = await fetch('http://localhost:3000/api/user/login', {
+    const response = await fetch(`http://localhost:3000/api/user/login`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ email, password }),
@@ -37,6 +36,7 @@ async function loginUser(email, password) {
     const data = await response.json();
 
     localStorage.setItem('token', data.token);
+    localStorage.setItem('token_ttl', data.ttl);
     localStorage.setItem('userId', data.userId);
 
     return data;
@@ -50,6 +50,7 @@ async function query(filters = {}) {
     }
 
     const response = await fetch(`${BASE_URL}/${filters}`, {
+        method: 'GET',
         headers: {
             ...headers,
             'Authorization': `Bearer ${token}`,
@@ -69,16 +70,16 @@ async function query(filters = {}) {
 }
 
 async function getById(userId) {
-
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
     }
 
     const response = await fetch(`${BASE_URL}/${userId}`, {
+        method: 'GET',
         headers: {
             ...headers,
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${userId}`,
         },
     });
 
@@ -95,7 +96,6 @@ async function getById(userId) {
 }
 
 async function update(userId, userData) {
-
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
@@ -123,7 +123,6 @@ async function update(userId, userData) {
 }
 
 async function remove(userId) {
-
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
@@ -144,6 +143,9 @@ async function remove(userId) {
     if (!response.ok) {
         throw new Error('Failed to delete user');
     }
+
+    const data = await response.json();
+    return data;
 }
 
 const userService = {

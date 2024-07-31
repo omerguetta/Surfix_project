@@ -10,9 +10,11 @@ document.addEventListener("DOMContentLoaded", function() {
         showTarget('target1');
     });
 
-
-    document.getElementById('skip1').addEventListener('click', function() {
-        showTarget('target2');
+    document.getElementById('back1').addEventListener('click', function() {
+        const sections = document.querySelectorAll('.target, .intro');
+        sections.forEach(section => section.style.display = 'none');
+        
+        document.getElementById('intro').style.display = 'block';
     });
 
     document.getElementById('next1').addEventListener('click', function() {

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function ()  {
     if (!authToken || authToken === 'undefined') {
         window.location.href = 'login.html';
     }
-    
+
     document.querySelector('#logout').addEventListener('click', () => {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
