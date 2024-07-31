@@ -61,6 +61,7 @@ async function getUsers(req, res) {
 
         if (fullName) filters.fullName = fullName;
         if (sortByName) filters.sortByName = sortByName;
+
         const users = await userService.query(filters);
         res.json(users);
     } catch (error) {

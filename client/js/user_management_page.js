@@ -54,13 +54,10 @@ function populateUserList(UsersData) {
     user_container.appendChild(userList);
 }
 
-async function getUserList(filters = '', isFirstLoad = false) {
+async function getUserList(filters = '') {
     try {
         const UsersData = await userService.query(filters);
         console.log(UsersData);
-        // if (isFirstLoad) {
-        //     setMinMaxDistance(beachesData);
-        // }
         populateUserList(UsersData);
     } catch (error) {
         console.error('Error fetching users:', error);
@@ -75,7 +72,7 @@ async function updateFilters() {
         newParams.set('fullName', searchInput.value.trim());
     }
     if(document.getElementById('sortByName').checked){
-        newParams.set('sortByName', 'fullName');
+        newParams.set('sortByName', 'true');
     }
     history.pushState({}, '', `?${newParams.toString()}`);
     await getUserList(`?${newParams.toString()}`);

@@ -22,6 +22,7 @@ async function query(filters = {}) {
         let whereClause = '';
         let sortClause = '';
         const values = [];
+
         if (filters) {
             if (filters.fullName) {
                 if (whereClause) whereClause += ' AND ';
@@ -30,17 +31,20 @@ async function query(filters = {}) {
             }
 
             if (filters.sortByName) {
-                sortClause += ' ORDER BY fullName ASC';
+                sortClause += ' ORDER BY fullName ASC;';
             }
         }
-        let sql = `SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role
-            FROM tbl_122_user;`;
+
+        let sql = `SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role FROM tbl_122_user`;
+        
         if (whereClause) {
             sql += ` WHERE (${whereClause})`;
         }
+
         if (sortClause) {
             sql += sortClause;
         }
+
         const [rows] = await connection.execute(sql, values);
         return rows;
     } catch (error) {
@@ -78,52 +82,6 @@ async function add(body) {
         throw error;
     }
 }
-
-// async function update(body, userId) {
-//     try {
-//         const connection = await dbConnection.connect();
-//         const {
-//             userName,
-//             firstName,
-//             lastName,
-//             email,
-//             password,
-//             age,
-//             surfingLevel,
-//             weight,
-//             height
-//         } = body;
-
-//         const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-//         const [result] = await connection.execute(
-//             `UPDATE tbl_122_user SET user_name = ${userName},
-//             f_name = ${firstName},
-//             l_name = ${lastName},
-//             email = ${email},
-//             password = ${hashedPassword},
-//             age = ${age},
-//             surfing_level = ${surfingLevel},
-//             weight = ${weight},
-//             height = ${height}
-//             WHERE user_id = ${userId}`
-//         );
-//         return {
-//             userId,
-//             userName,
-//             firstName,
-//             lastName,
-//             email,
-//             age,
-//             surfingLevel,
-//             weight,
-//             height
-//         };
-//     } catch (error) {
-//         console.error('Error updating user:', error);
-//         throw error;
-//     }
-// }
 
 async function update(body, userId) {
     try {
