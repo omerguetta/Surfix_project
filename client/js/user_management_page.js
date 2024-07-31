@@ -20,6 +20,11 @@ function createUserItem(UserData) {
     editU.src = './images/edit-icon.png';
     editU.alt = 'edit';
 
+    editU.addEventListener('click', async (event) => {
+        event.stopPropagation();
+        window.location.href = `update_user.html?userId=${UserData.userId}`;
+    });
+
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
     userDetails.append(title, role);
@@ -83,12 +88,6 @@ async function updateFilters() {
 window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);
     document.getElementById('searchInput').addEventListener('input', updateFilters);
-    // document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-    //     window.location.href = './pages/beach_form.html';
-    // });
-    // document.getElementById('maxDistance').addEventListener('change', async (event) => {
-    //     document.getElementById('rangeValue').textContent = event.target.value;
-    //     await updateFilters();
-    // });
+
     await getUserList(window.location.search, true);
 };

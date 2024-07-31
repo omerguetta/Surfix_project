@@ -20,10 +20,15 @@ function createUserItem(UserData) {
     deleteU.src = './images/remove-icon.png';
     deleteU.alt = 'delete';
 
-    // const addU = document.createElement('img');
-    // addU.className = 'add_img';
-    // addU.src = './images/person-icon.png';
-    // addU.alt = 'add';
+    deleteU.addEventListener('click', async (event) => {
+        event.stopPropagation();
+        try {
+            await userService.remove(UserData.userId);
+            await getUsersList();
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
+    });
 
     const userDetails = document.createElement('div');
     userDetails.className = 'beach-details';
@@ -59,8 +64,9 @@ function populateUsersList(UsersData) {
     user_container.appendChild(userList);
 }
 
-async function getUsersListFromServer(filters = '', isFirstLoad = false) {
+async function getUsersList(filters = '', isFirstLoad = false) {
     try {
+        console.log('Fetching users...');
         const UsersData = await userService.query(filters);
         console.log(UsersData);
         populateUsersList(UsersData);
@@ -69,22 +75,7 @@ async function getUsersListFromServer(filters = '', isFirstLoad = false) {
     }
 }
 
-async function updateFilters() {
-    const newParams = new URLSearchParams();
-    await getUsersListFromServer(`?${newParams.toString()}`);
-}
-
-
 
 window.onload = async () => {
-    // document.getElementById('sortByName').addEventListener('change', updateFilters);
-    // document.getElementById('searchInput').addEventListener('input', updateFilters);
-    // document.querySelector('.add-new-beach').addEventListener('click', ()=>{
-    //     window.location.href = './pages/beach_form.html';
-    // });
-    // document.getElementById('maxDistance').addEventListener('change', async (event) => {
-    //     document.getElementById('rangeValue').textContent = event.target.value;
-    //     await updateFilters();
-    // });
-    await getUsersListFromServer(window.location.search, true);
+    await getUsersList();
 };

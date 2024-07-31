@@ -2,23 +2,19 @@ import userService from "./services/userService.js";
 
 async function handleFormSubmit(event) {
     event.preventDefault();
-
-    const form = event.target;
-    console.log(form);
-    const formData = new FormData(form);
-    console.log(formData);
-    const userData = Object.fromEntries(formData);
-    const userId = form.getAttribute('data-user-id');
-
-    if(userId) {
-        await userService.update(userData, userId);
-    }
-    // } else {
-    //     await userService.add(userData);
-    // }
+    const userId = event.target.dataset.userId;
+    const role = document.querySelector('.form-check-input.role:checked').getAttribute('id').split('-')[1];
+    const filters = {
+        fullName: event.target.fullName.value,
+        stars: event.target.stars.value,
+        role
+    };
+    console.log({ filters });
+    await userService.update(userId, filters);
+    window.location.href = `./user.html?userId=${userId}`;
 }
 
-async function displayUser(user={}) {
+async function displayUser(user = {}) {
     const form = document.querySelector('.user-form');
     if (form) {
         form.fullName.value = user.fullName;
@@ -26,10 +22,6 @@ async function displayUser(user={}) {
 
         if (user.userId) {
             form.setAttribute('data-user-id', user.userId);
-            // document.querySelector('.cancel-btn').addEventListener('click', async (event) => {
-            //     event.preventDefault();
-            //     await userService.remove(user.userId);
-            // });
         } else {
             form.removeAttribute('data-user-id');
         }
@@ -39,25 +31,51 @@ async function displayUser(user={}) {
     }
 }
 
-async function getUserFromServer(userId) {
+async function getUser(userId) {
     const userData = await userService.getById(userId);
-    console.log(userData);
     await displayUser(userData);
+    return userData;
+}
+
+function initRoleCheckboxes(role) {
+    const roleCheckboxes = document.querySelectorAll('.form-check-input.role');
+
+    roleCheckboxes.forEach(checkbox => {
+        if (checkbox.getAttribute('id').includes(role)) {
+            checkbox.checked = true; 
+        } else {
+            checkbox.checked = false;
+        }
+    });
+
+    roleCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                roleCheckboxes.forEach(cb => {
+                    if (cb !== checkbox) cb.checked = false;
+                });
+            }
+        });
+    });
 }
 
 window.onload = (async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
-    if (userId) {
-        // document.querySelector('.delete-btn').style.visibility = 'visible';
-        document.querySelector('.submit-btn').textContent = 'Update';
-        await getUserFromServer(userId);
-    } else {
-        // document.querySelector('.delete-btn').style.visibility = 'hidden';
-        document.querySelector('.submit-btn').textContent = 'Submit';
-        await displayUser();
-    }
-    // document.querySelector(".to-user-page").addEventListener('click', () => {
-    //     window.location.href = document.referrer;
-    // });
+    const user = await getUser(userId);
+
+    initRoleCheckboxes(user.role);
+    document.querySelector('.submit-btn').textContent = 'Update';
+    
+    const deleteAcBtn = document.querySelector('.dlt-btn');
+    deleteAcBtn.addEventListener('click', async (event) => {
+        event.stopPropagation();
+        try {
+            await userService.remove(userId);
+            window.location.href = './user_management_page.html';
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
+    });
+
 });

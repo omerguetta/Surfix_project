@@ -43,7 +43,7 @@ async function loginUser(email, password) {
 }
 
 async function query(filters = {}) {
-    
+
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
@@ -144,9 +144,6 @@ async function remove(userId) {
     if (!response.ok) {
         throw new Error('Failed to delete user');
     }
-
-    const data = await response.json();
-    return data;
 }
 
 const userService = {

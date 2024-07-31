@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
             sessionCardContainer.appendChild(sessionCard);
         });
     }
+    
     createCalendar(currentDate.getFullYear(), currentDate.getMonth());
     loadSessions();
 });

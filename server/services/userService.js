@@ -36,7 +36,7 @@ async function query(filters = {}) {
         }
 
         let sql = `SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role FROM tbl_122_user`;
-        
+
         if (whereClause) {
             sql += ` WHERE (${whereClause})`;
         }
@@ -95,35 +95,43 @@ async function update(body, userId) {
             age,
             surfingLevel,
             weight,
-            height
+            height,
+            stars,
+            role
         } = body;
 
         let updateParts = [];
 
         if (userName) {
-            updateParts.push(`userName = ${userName}`);
+            updateParts.push(`userName = '${userName}'`);
         }
         if (fullName) {
-            updateParts.push(`fullName = ${fullName}`);
+            updateParts.push(`fullName = '${fullName}'`);
         }
         if (email) {
-            updateParts.push(`email = ${email}`);
+            updateParts.push(`email = '${email}'`);
         }
         if (password) {
             const hashedPassword = await bcrypt.hash(password, saltRounds);
-            updateParts.push(`password = ${hashedPassword}`);
+            updateParts.push(`password = '${hashedPassword}'`);
         }
         if (age) {
             updateParts.push(`age = ${age}`);
         }
         if (surfingLevel) {
-            updateParts.push(`surfingLevel = ${surfingLevel}`);
+            updateParts.push(`surfingLevel = '${surfingLevel}'`);
         }
         if (weight) {
             updateParts.push(`weight = ${weight}`);
         }
         if (height) {
             updateParts.push(`height = ${height}`);
+        }
+        if (stars) {
+            updateParts.push(`stars = ${stars}`);
+        }
+        if (role) {
+            updateParts.push(`role = '${role}'`);
         }
         if (updateParts.length === 0) {
             throw new Error('No fields to update');
@@ -139,7 +147,8 @@ async function update(body, userId) {
             ...(age && { age }),
             ...(surfingLevel && { surfingLevel }),
             ...(weight && { weight }),
-            ...(height && { height })
+            ...(height && { height }),
+            ...(stars && { stars }),
         };
     } catch (error) {
         console.error('Error updating user:', error);

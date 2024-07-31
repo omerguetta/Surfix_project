@@ -60,18 +60,14 @@ window.onload = (async () => {
     const userId = urlParams.get('userId');
     await getUser(userId);
 
-    // document.querySelector(".goBack").addEventListener('click', () => {
-    //     window.location.href = document.referrer;
-    // });
-
-    // document.querySelector(".edit-btn").addEventListener('click', () => {
-    //     window.location.href = `./update_user.html?userId=${UserData.userId}`;
-    // });
-    // document.querySelector('#remove-icon').addEventListener('click', async (event) => {
-    //     event.preventDefault();
-    //     await beachService.remove(beachId);
-    // });
-    // document.querySelector('#edit-icon').addEventListener('click', () => {
-    //     window.location.href = `./beach_form.html?beachId=${beachId}`;
-    // });
+    const deleteAcBtn = document.querySelector('.dlt-btn');
+    deleteAcBtn.addEventListener('click', async (event) => {
+        event.stopPropagation();
+        try {
+            await userService.remove(userId);
+            window.location.href = document.referrer;
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
+    });
 });
