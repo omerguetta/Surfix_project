@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             accountModal.show();
         });
     });
-    // console.log(user.stars);
-    // document.querySelector('.profile-rating').setAttribute('value', user.stars);
+
+    console.log(user.stars);
+    document.querySelectorAll('.profile-rating').forEach(item => {
+        item.textContent = `★ ${user.stars}`;
+    });
 });
