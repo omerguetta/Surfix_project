@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/api/session';
+const BASE_URL = 'https://surfix.onrender.com/api/session';
 
 const headers = {
     'Content-Type': 'application/json',
