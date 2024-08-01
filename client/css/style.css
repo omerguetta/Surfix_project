@@ -1200,3 +1200,7 @@ footer .footer-item a {
 .beginner {
     visibility: hidden;
 }
+
+.intermediate{
+    visibility: visible;
+}

@@ -36,7 +36,6 @@ async function loginUser(email, password) {
     const data = await response.json();
 
     localStorage.setItem('token', data.token);
-    localStorage.setItem('token_ttl', data.ttl);
     localStorage.setItem('userId', data.userId);
 
     return data;
@@ -95,12 +94,11 @@ async function getById(userId) {
     return data;
 }
 
-async function update(userId, userData) {
+async function update(userData, userId) {
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
     }
-
     const response = await fetch(`${BASE_URL}/${userId}`, {
         method: 'PUT',
         headers: {

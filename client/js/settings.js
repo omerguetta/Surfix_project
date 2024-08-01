@@ -23,7 +23,17 @@ async function getUser(userId) {
 document.addEventListener('DOMContentLoaded', async () => {
     const userId = localStorage.getItem('userId');
     const user = await getUser(userId);
-    await displayUser(user);
+
+    const userDisplay = document.querySelectorAll('#account-link');
+    if (userDisplay) {
+        await displayUser(user);
+        userDisplay.forEach(item => {
+            item.addEventListener('click', () => {
+                const accountModal = new bootstrap.Modal(document.getElementById('accountModal'));
+                accountModal.show();
+            });
+        });
+    }
 
     if (user.role === 'admin') {
         document.querySelectorAll('.admin').forEach(item => {
@@ -35,16 +45,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.querySelectorAll('.beginner').forEach(item => {
             item.style.visibility = 'visible';
         });
+        document.querySelectorAll('.intermediate').forEach(item => {
+            item.style.visibility = 'hidden';
+        });
     }
 
-    document.querySelectorAll('#account-link').forEach(item => {
-        item.addEventListener('click', () => {
-            const accountModal = new bootstrap.Modal(document.getElementById('accountModal'));
-            accountModal.show();
+    const starsContainer = document.querySelectorAll('.profile-rating');
+    if (starsContainer) {
+        starsContainer.forEach(item => {
+            item.textContent = `★ ${user.stars}`;
         });
-    });
-    
-    document.querySelectorAll('.profile-rating').forEach(item => {
-        item.textContent = `★ ${user.stars}`;
-    });
+    }
 });
