@@ -77,5 +77,4 @@ window.onload = (async () => {
             console.error('Error deleting user:', error);
         }
     });
-
 });

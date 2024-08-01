@@ -19,7 +19,7 @@ async function registerUser(req, res) {
         }
 
         const currentUser = req.user;
-        let userRole = 'user';
+        let userRole = 'regular';
         if (currentUser && currentUser.role === 'admin' && role) {
             userRole = role;
         }
