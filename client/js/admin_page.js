@@ -75,4 +75,15 @@ async function getUsersList(filters = '', isFirstLoad = false) {
 
 window.onload = async () => {
     await getUsersList();
+
+    const userId = localStorage.getItem('userId');
+    const userData = await userService.getById(userId);
+    const userName = document.getElementById("fullName");
+    userName.textContent = userData.fullName || "No Name Provided";
+
+    const userID= document.getElementById("userId");
+    userID.textContent = userData.userId || "No Date Provided";
+
+    const userEmail = document.getElementById("email");
+    userEmail.textContent = userData.email || "No Date Provided";
 };
