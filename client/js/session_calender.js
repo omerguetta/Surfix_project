@@ -3,9 +3,9 @@ import sessionService from "./services/sessionService.js";
 document.addEventListener('DOMContentLoaded', async () => {
     const calendarElement = document.getElementById('calendar');
     const sessionCardContainer = document.querySelector('.session-card-container');
+    
     const currentDate = new Date();
     let selectedDate = null;
-
     let sessions = [];
 
     await loadSessions();

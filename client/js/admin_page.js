@@ -73,7 +73,6 @@ async function getUsersList(filters = '', isFirstLoad = false) {
     }
 }
 
-
 window.onload = async () => {
     await getUsersList();
 };

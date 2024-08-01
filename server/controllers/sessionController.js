@@ -10,18 +10,13 @@ module.exports = {
 
 async function getSessions(req, res) {
     try {
-        const {Date} = req.query;
+        const { Date } = req.query;
         const filters = {};
-
-        //if we need to change the date format
-        // if (Date) filters.Date = new Date(Date);
         filters.Date = Date;
-        // if (sortByName) filters.sortByName = sortByName;
-
         const rows = await sessionService.query(filters);
         res.json(rows);
     } catch (error) {
-        res.status(500).json({message: 'Failed to retrieve sessions', error: error.message});
+        res.status(500).json({ message: 'Failed to retrieve sessions', error: error.message });
     }
 }
 
@@ -31,10 +26,10 @@ async function getSession(req, res) {
         if (session) {
             res.json(session);
         } else {
-            res.status(404).json({message: 'Session not found'});
+            res.status(404).json({ message: 'Session not found' });
         }
     } catch (error) {
-        res.status(500).json({message: 'Failed to retrieve session', error: error.message});
+        res.status(500).json({ message: 'Failed to retrieve session', error: error.message });
     }
 }
 
@@ -59,7 +54,7 @@ async function updateSession(req, res) {
         } else {
             res.status(404).json({ message: 'Session not found' });
         }
-    } catch (error){
+    } catch (error) {
         res.status(500).json({ message: 'Failed to update session', error: error.message });
     }
 }

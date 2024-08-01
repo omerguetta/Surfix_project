@@ -17,7 +17,6 @@ async function getSession(sessionId) {
             const sessionDataEncoded = encodeURIComponent(JSON.stringify(sessionData));
             window.location.href = `goals.html?sessionData=${sessionDataEncoded}`;
         });
-
     } catch (error) {
         console.error(`Error fetching session with ID ${sessionId}:`, error);
     }
@@ -93,18 +92,6 @@ function displaySession(sessionData) {
 
     const sessionDate = document.querySelector(".session_date");
     sessionDate.textContent = sessionData.date;
-
-    // const sessionWaveLeft = document.querySelector("WaveLeft");
-    // sessionWaveLeft.textContent = `${sessionData.wave_left} m`;
-
-    // const sessionWaveRight = document.querySelector("WaveRight");
-    // sessionWaveRight.textContent = `${sessionData.wave_right}`;
-
-    // const sessionMaxSpeed = document.querySelector("Speed");
-    // sessionMaxSpeed.textContent = `${sessionData.max_speed}`;
-
-    // const sessionRowing = document.querySelector("Rowing");
-    // sessionRowing.textContent = `${sessionData.rowing}`;
 }
 
 window.onload = (async () => {

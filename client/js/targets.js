@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rowing: 0,
         speed: 0,
     }
+
     const sections = document.querySelectorAll('.target, .intro');
     sections.forEach(section => section.style.display = 'none');
 
@@ -19,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('userInfoForm').addEventListener('submit', function (event) {
         event.preventDefault();
-
         const form = event.target;
         const formData = new FormData(form);
         user.age = parseInt(formData.get('age'));
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('next2').addEventListener('click', function () {
         user.waveRight = parseInt(document.getElementById('maxSpeed1').value);
     });
+
     document.getElementById('next3').addEventListener('click', function () {
         user.rowing = parseInt(document.getElementById('maxSpeed2').value);
     });
@@ -91,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
         await userService.update(user, userId);
         window.location.href = './index.html';
     });
-    
 });
 
 function updateValue(value, spanId) {

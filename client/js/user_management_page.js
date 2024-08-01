@@ -37,7 +37,7 @@ function createUserItem(UserData) {
     userActions.className = 'user-actions';
     userActions.append(editU);
 
-    listItem.append(userCard,userActions);
+    listItem.append(userCard, userActions);
 
     listItem.addEventListener('click', () => {
         window.location.href = `user.html?userId=${UserData.userId}`;
@@ -56,6 +56,7 @@ function populateUserList(UsersData) {
         const user = createUserItem(UserData);
         userList.appendChild(user);
     });
+
     user_container.appendChild(userList);
 }
 
@@ -75,14 +76,12 @@ async function updateFilters() {
     if (searchInput.value.trim()) {
         newParams.set('fullName', searchInput.value.trim());
     }
-    if(document.getElementById('sortByName').checked){
+    if (document.getElementById('sortByName').checked) {
         newParams.set('sortByName', 'true');
     }
     history.pushState({}, '', `?${newParams.toString()}`);
     await getUserList(`?${newParams.toString()}`);
 }
-
-
 
 window.onload = async () => {
     document.getElementById('sortByName').addEventListener('change', updateFilters);

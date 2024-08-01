@@ -1,5 +1,3 @@
-const apiKey = "4535ce1be115d4c30e55d144d175ff09";
-
 function validateCity() {
     const cityInput = document.getElementById("city-input").value;
     const getWeatherBtn = document.getElementById("get-weather-btn");
@@ -8,8 +6,8 @@ function validateCity() {
 
 async function checkWeather() {
     const city = document.getElementById("city-input").value;
-    
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},IL&units=metric&appid=${apiKey}`;
+
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},IL&units=metric&appid=4535ce1be115d4c30e55d144d175ff09`;
 
     try {
         const response = await fetch(apiUrl);

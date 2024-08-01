@@ -5,6 +5,7 @@ const headers = {
 };
 
 async function registerUser(userData) {
+
     const response = await fetch(`${BASE_URL}/register`, {
         method: 'POST',
         headers,
@@ -69,6 +70,7 @@ async function query(filters = {}) {
 }
 
 async function getById(userId) {
+
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
@@ -95,6 +97,7 @@ async function getById(userId) {
 }
 
 async function update(userData, userId) {
+
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');
@@ -121,6 +124,7 @@ async function update(userData, userId) {
 }
 
 async function remove(userId) {
+
     const token = localStorage.getItem('token');
     if (!token) {
         throw new Error('No token found');

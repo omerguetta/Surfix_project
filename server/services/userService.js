@@ -85,7 +85,6 @@ async function add(body) {
 
 async function update(body, userId) {
     try {
-        console.log('update body', body);
         const connection = await dbConnection.connect();
         
         const {
@@ -100,7 +99,6 @@ async function update(body, userId) {
             stars,
             role
         } = body;
-        console.log('body', body);
 
         let updateParts = [];
 
@@ -139,7 +137,6 @@ async function update(body, userId) {
             throw new Error('No fields to update');
         }
 
-        console.log('updateParts', updateParts);
         const [result] = await connection.execute(`UPDATE tbl_122_user SET ${updateParts.join(', ')} WHERE userId = ${userId}`);
 
         return {

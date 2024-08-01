@@ -1,4 +1,5 @@
 import userService from "./services/userService.js";
+
 window.onload = () => {
     document.querySelector('#sign-up').addEventListener('click', async(event) => {
         event.preventDefault();

@@ -42,7 +42,7 @@ function initRoleCheckboxes(role) {
 
     roleCheckboxes.forEach(checkbox => {
         if (checkbox.getAttribute('id').includes(role)) {
-            checkbox.checked = true; 
+            checkbox.checked = true;
         } else {
             checkbox.checked = false;
         }
@@ -66,7 +66,7 @@ window.onload = (async () => {
 
     initRoleCheckboxes(user.role);
     document.querySelector('.submit-btn').textContent = 'Update';
-    
+
     const deleteAcBtn = document.querySelector('.dlt-btn');
     deleteAcBtn.addEventListener('click', async (event) => {
         event.stopPropagation();

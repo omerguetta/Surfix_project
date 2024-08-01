@@ -1,5 +1,3 @@
-import sessionService from "./services/sessionService.js";
-
 async function getSessionData() {
     const urlParams = new URLSearchParams(window.location.search);
     const sessionDataEncoded = urlParams.get('sessionData');
