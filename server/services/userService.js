@@ -96,6 +96,10 @@ async function update(body, userId) {
             weight,
             height,
             stars,
+            waveLeft,
+            waveRight,
+            rowing,
+            speed,
             role
         } = body;
 
@@ -132,6 +136,18 @@ async function update(body, userId) {
         if (role) {
             updateParts.push(`role = '${role}'`);
         }
+        if (waveLeft) {
+            updateParts.push(`waveLeft = ${waveLeft}`);
+        }
+        if (waveRight) {
+            updateParts.push(`waveRight = ${waveRight}`);
+        }
+        if (rowing) {
+            updateParts.push(`rowing = ${rowing}`);
+        }
+        if (speed) {
+            updateParts.push(`speed = ${speed}`);
+        }
         if (updateParts.length === 0) {
             throw new Error('No fields to update');
         }
@@ -148,6 +164,11 @@ async function update(body, userId) {
             ...(weight && { weight }),
             ...(height && { height }),
             ...(stars && { stars }),
+            ...(waveLeft && { waveLeft }),
+            ...(waveRight && { waveRight }),
+            ...(rowing && { rowing }),
+            ...(speed && { speed }),
+            ...(role && { role }),
         };
     } catch (error) {
         console.error('Error updating user:', error);
