@@ -14,7 +14,7 @@ async function registerUser(req, res) {
         const { userName, fullName, email, password, age, surfingLevel, weight, height, role } = req.body;
 
         const userExists = await userService.isUserExists(userName, email);
-        if(userExists) {
+        if (userExists) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
@@ -24,16 +24,17 @@ async function registerUser(req, res) {
             userRole = role;
         }
 
-        const newUser = { 
-            userName, 
-            fullName, 
-            email, 
-            password, 
-            age: parseInt(age) || 0, 
-            surfingLevel: surfingLevel || 'null', 
-            weight: weight || 0, 
-            height: height || 0, 
-            role: userRole };
+        const newUser = {
+            userName,
+            fullName,
+            email,
+            password,
+            age: parseInt(age) || 0,
+            surfingLevel: surfingLevel || 'null',
+            weight: weight || 0,
+            height: height || 0,
+            role: userRole
+        };
 
         await userService.add(newUser);
         const authenticatedUser = await userService.authenticateUser(email, password);
@@ -55,7 +56,7 @@ async function loginUser(req, res) {
 
 async function getUsers(req, res) {
     try {
-        const {fullName, sortByName} = req.query;
+        const { fullName, sortByName } = req.query;
         const filters = {};
 
         if (fullName) filters.fullName = fullName;
@@ -74,10 +75,10 @@ async function getUser(req, res) {
         if (user) {
             res.json(user);
         } else {
-            res.status(404).json({message: 'user not found'});
+            res.status(404).json({ message: 'user not found' });
         }
     } catch (error) {
-        res.status(500).json({message: 'Failed to retrieve user', error: error.message});
+        res.status(500).json({ message: 'Failed to retrieve user', error: error.message });
     }
 }
 
@@ -101,7 +102,7 @@ async function deleteUser(req, res) {
         const userId = req.params.userId;
         const result = await userService.remove(userId);
         if (result) {
-            res.status(204).end();
+            res.send({ result });
         } else {
             res.status(404).json({ message: 'User not found' });
         }
