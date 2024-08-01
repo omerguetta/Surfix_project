@@ -36,9 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (user.role === 'admin') {
-        document.querySelectorAll('.admin').forEach(item => {
-            item.style.visibility = 'visible';
-        });
+        window.location.href = './admin_page.html';
     }
 
     if (user.stars === 0) {
