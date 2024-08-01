@@ -58,6 +58,11 @@ async function getById(beachId) {
 
 async function add(body) {
 
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
+    }
+    
     const response = await fetch(BASE_URL, {
         method: 'POST',
         headers: {
