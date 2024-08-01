@@ -36,8 +36,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (user.role === 'admin') {
-        console.log('User is an admin');
         window.location.href = './admin_page.html';
+    }
+
+    if(user.role === 'plus'){
+        document.querySelectorAll('.user-plus').forEach(item => {
+            item.style.visibility = 'visible';
+        });
     }
 
     if (user.stars === 0) {
