@@ -159,7 +159,7 @@ async function remove(userId) {
     try {
         const connection = await dbConnection.connect();
         const [result] = await connection.execute(`DELETE FROM tbl_122_user WHERE userId = '${userId}'`);
-        return { message: 'Session deleted successfully' };
+        return { message: 'User deleted successfully' };
     } catch (error) {
         console.error('Error deleting user:', error);
         throw error;
