@@ -64,7 +64,7 @@ async function deleteSession(req, res) {
         const sessionId = req.params.sessionId;
         const result = await sessionService.remove(sessionId);
         if (result) {
-            res.status(204).end();
+            res.send({ result });
         } else {
             res.status(404).json({ message: 'Session not found' });
         }
