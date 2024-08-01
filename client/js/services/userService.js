@@ -23,7 +23,7 @@ async function registerUser(userData) {
 
 async function loginUser(email, password) {
 
-    const response = await fetch(`http://localhost:3000/api/user/login`, {
+    const response = await fetch(`${BASE_URL}/login`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ email, password }),
