@@ -69,7 +69,6 @@ async function getUsers(req, res) {
 }
 
 async function getUser(req, res) {
- 
     try {
         const user = await userService.getById(req.params.userId);
         if (user) {

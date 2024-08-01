@@ -1,4 +1,4 @@
-const {dbConnection} = require('../db_connection');
+const { dbConnection } = require('../db_connection');
 
 module.exports = {
     query,
@@ -41,7 +41,6 @@ async function query(filters = {}) {
         if (sortClause) {
             sql += sortClause;
         }
-
         const [rows] = await connection.execute(sql, values);
         return rows;
     } catch (error) {
@@ -109,7 +108,7 @@ async function update(body, beachId) {
             waveDirection,
             waterTemperature,
             visibility
-        }= body;
+        } = body;
         const [result] = await connection.execute(
             'UPDATE dbShnkr24stud.tbl_122_beach SET name = ?, distance = ?, onshoreWind = ?, risingTide = ?, airTemperature = ?, waveHeight = ?, waveDdirection = ?, waterTemperature = ?, visibility = ? WHERE beachId = ?',
             [name, distance, body.onshore_wind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility, beachId]
@@ -136,7 +135,7 @@ async function remove(beachId) {
     try {
         const connection = await dbConnection.connect();
         const [result] = await connection.execute(`DELETE FROM dbShnkr24stud.tbl_122_beach WHERE beachId = ${beachId}`);
-        return {message: 'Beach deleted successfully'};
+        return { message: 'Beach deleted successfully' };
     } catch (error) {
         console.error('Error deleting beach:', error);
         throw error;
