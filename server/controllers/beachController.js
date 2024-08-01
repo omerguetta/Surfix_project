@@ -10,7 +10,7 @@ module.exports = {
 
 async function getBeaches(req, res) {
     try {
-        const {name, maxDistance, sortByName} = req.query;
+        const { name, maxDistance, sortByName } = req.query;
         const filters = {};
 
         if (name) filters.name = name;
@@ -20,7 +20,7 @@ async function getBeaches(req, res) {
         const rows = await beachService.query(filters);
         res.json(rows);
     } catch (error) {
-        res.status(500).json({message: 'Failed to retrieve beaches', error: error.message});
+        res.status(500).json({ message: 'Failed to retrieve beaches', error: error.message });
     }
 }
 
@@ -30,10 +30,10 @@ async function getBeach(req, res) {
         if (beach) {
             res.json(beach);
         } else {
-            res.status(404).json({message: 'Beach not found'});
+            res.status(404).json({ message: 'Beach not found' });
         }
     } catch (error) {
-        res.status(500).json({message: 'Failed to retrieve beach', error: error.message});
+        res.status(500).json({ message: 'Failed to retrieve beach', error: error.message });
     }
 }
 
@@ -59,7 +59,7 @@ async function updateBeach(req, res) {
         } else {
             res.status(404).json({ message: 'Beach not found' });
         }
-    } catch (error){
+    } catch (error) {
         res.status(500).json({ message: 'Failed to update beach', error: error.message });
     }
 }
@@ -69,7 +69,7 @@ async function deleteBeach(req, res) {
         const beachId = req.params.beachId;
         const result = await beachService.remove(beachId);
         if (result) {
-            res.status(204).end();
+            res.send({ result });
         } else {
             res.status(404).json({ message: 'Beach not found' });
         }
