@@ -4,13 +4,13 @@ async function handleFormSubmit(event) {
     event.preventDefault();
     const userId = event.target.dataset.userId;
     const role = document.querySelector('.form-check-input.role:checked').getAttribute('id').split('-')[1];
-    const filters = {
+    const userData= {
         fullName: event.target.fullName.value,
         stars: event.target.stars.value,
         role
     };
 
-    await userService.update(userId, filters);
+    await userService.update(userData, userId);
     window.location.href = `./user.html?userId=${userId}`;
 }
 
