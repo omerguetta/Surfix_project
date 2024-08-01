@@ -56,8 +56,7 @@ async function query(filters = {}) {
 async function getById(userId) {
     try {
         const connection = await dbConnection.connect();
-        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role
-            FROM tbl_122_user WHERE userId = '${userId}'`);
+        const [rows] = await connection.execute(`SELECT userId, userName, fullName, email, age, surfingLevel, weight, height, stars, waveLeft, waveRight, rowing, speed, role FROM tbl_122_user WHERE userId = '${userId}'`);
         if (rows.length === 0) {
             throw new Error('User not found');
         }

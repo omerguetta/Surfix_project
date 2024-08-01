@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     if (user.role === 'admin') {
+        console.log('User is an admin');
         window.location.href = './admin_page.html';
     }
 

@@ -6,7 +6,7 @@ const { authenticateToken, authorizeRoles } = require('../middleware/authMiddlew
 router.get('/', authenticateToken, beachController.getBeaches);
 router.get('/:beachId', authenticateToken, beachController.getBeach);
 router.post('/', authenticateToken, beachController.addBeach);
-router.put('/:beachId', authenticateToken, beachController.updateBeach);
-router.delete('/:beachId', authenticateToken, beachController.deleteBeach);
+router.put('/:beachId', authenticateToken,authorizeRoles("admin"), beachController.updateBeach);
+router.delete('/:beachId', authenticateToken,authorizeRoles("admin"), beachController.deleteBeach);
 
 module.exports = router;
