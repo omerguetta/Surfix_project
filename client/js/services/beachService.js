@@ -1,4 +1,5 @@
-const BASE_URL = 'https://surfix.onrender.com/api/beach';
+// const BASE_URL = 'https://surfix.onrender.com/api/beach';
+const BASE_URL = 'http://localhost:3000/api/beach';
 
 const headers = {
     'Content-Type': 'application/json',
@@ -85,6 +86,11 @@ async function add(body) {
 
 async function update(body, beachId) {
 
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found');
+    }
+    
     const response = await fetch(`${BASE_URL}/${beachId}`, {
         method: 'PUT',
         headers: {
@@ -101,8 +107,6 @@ async function update(body, beachId) {
     if (!response.ok) {
         throw new Error('Failed to update beach');
     }
-
-    window.location.href = document.referrer;
 }
 
 async function remove(beachId) {

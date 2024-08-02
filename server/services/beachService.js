@@ -74,6 +74,7 @@ async function add(body) {
             waterTemperature,
             visibility
         } = body;
+        console.log('Adding beach:', body);
         const [result] = await connection.execute(
             'INSERT INTO tbl_122_beach (name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [name, distance, onshoreWind, risingTide, airTemperature, waveHeight, waveDirection, waterTemperature, visibility]

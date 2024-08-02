@@ -6,27 +6,30 @@ async function handleFormSubmit(event) {
     const form = event.target;
     const formData = new FormData(form);
     const beachData = Object.fromEntries(formData);
-    const beachId = form.getAttribute('data-beach-id');
 
-    if(beachId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const beachId = urlParams.get('beachId');
+    
+    if (beachId) {
         await beachService.update(beachData, beachId);
     } else {
         await beachService.add(beachData);
     }
+    window.location.href = './index.html';
 }
 
-async function displayBeach(beach={}) {
+async function displayBeach(beach = {}) {
     const form = document.querySelector('.beach-form');
     if (form) {
-        form.name.value = beach.name;
-        form.distance.value = beach.distance;
-        form.onshore_wind.value = beach.onshoreWind;
-        form.rising_tide.value = beach.risingTide;
-        form.air_temperature.value = beach.airTemperature;
-        form.water_temperature.value = beach.waterTemperature;
-        form.wave_direction.value = beach.waveDirection;
-        form.wave_height.value = beach.waveHeight;
-        form.visibility.value = beach.visibility;
+        form.name.value = beach.name || '';
+        form.distance.value = beach.distance || '';
+        form.onshoreWind.value = beach.onshoreWind || '';
+        form.risingTide.value = beach.risingTide || '';
+        form.airTemperature.value = beach.airTemperature || '';
+        form.waterTemperature.value = beach.waterTemperature || '';
+        form.waveDirection.value = beach.waveDirection || '';
+        form.waveHeight.value = beach.waveHeight || '';
+        form.visibility.value = beach.visibility || '';
 
         if (beach.id) {
             form.setAttribute('data-beach-id', beach.id);

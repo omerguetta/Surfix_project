@@ -41,7 +41,7 @@ async function addBeach(req, res) {
     try {
         const beach = req.body;
         const addedBeach = await beachService.add(beach);
-        res.status(201).json(addedBeach);
+        res.send({ addedBeach });
     } catch (error) {
         console.error('Error adding beach:', error);
         res.status(500).json({ message: 'Failed to add beach', error: error.message });
@@ -52,7 +52,6 @@ async function updateBeach(req, res) {
     try {
         const beachId = req.params.beachId;
         const beach = req.body;
-
         const updatedBeach = await beachService.update(beach, beachId);
         if (updatedBeach) {
             res.json(updatedBeach);
