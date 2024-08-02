@@ -1,5 +1,4 @@
-// const BASE_URL = 'https://surfix.onrender.com/api/beach';
-const BASE_URL = 'http://localhost:3000/api/beach';
+const BASE_URL = 'https://surfix.onrender.com/api/beach';
 
 const headers = {
     'Content-Type': 'application/json',
